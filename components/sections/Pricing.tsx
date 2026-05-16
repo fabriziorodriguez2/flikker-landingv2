@@ -7,6 +7,13 @@ import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 /* ─── Data ─── */
 
+const FREE_FEATURES = [
+  "Hasta 100 mensajes WhatsApp",
+  "Reseñas automáticas en Google",
+  "Filtro inteligente de reseñas",
+  "Dashboard básico",
+];
+
 const STARTER_FEATURES = [
   "200 mensajes WhatsApp / mes",
   "Reseñas automáticas en Google",
@@ -138,7 +145,40 @@ export function Pricing() {
         </div>
 
         {/* ── Plan cards ── */}
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+
+          {/* Gratis */}
+          <div className="flex flex-col rounded-3xl border border-dashed border-neutral-300 bg-neutral-50 p-8">
+            <p className="text-sm font-semibold text-neutral-500">Gratis</p>
+            <div className="mt-4 flex items-baseline gap-1">
+              <span className="text-[28px] font-black leading-none text-neutral-300">$</span>
+              <span className="font-display text-[56px] font-black leading-none tracking-tight text-neutral-900">0</span>
+            </div>
+            <p className="mt-2 text-sm font-medium text-neutral-500">Para probar sin comprometerte.</p>
+            <p className="mt-3 text-sm leading-[1.6] text-neutral-400">
+              Hasta 100 mensajes o 20 reseñas nuevas. Cuando querés más, subís de plan.
+            </p>
+
+            <hr className="my-6 border-neutral-200" />
+
+            <ul className="flex-1 space-y-3">
+              {FREE_FEATURES.map((f) => (
+                <li key={f} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" strokeWidth={2.5} />
+                  <span className="text-[14px] text-neutral-500">{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 flex w-full items-center justify-center rounded-2xl border border-neutral-300 bg-white px-6 py-3.5 text-[15px] font-semibold text-neutral-700 transition-colors hover:border-neutral-400 hover:bg-neutral-100"
+            >
+              Empezar gratis
+            </a>
+          </div>
 
           {/* Starter */}
           <div className="flex flex-col rounded-3xl border border-neutral-200 bg-white p-8">

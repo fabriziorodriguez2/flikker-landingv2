@@ -10,18 +10,18 @@ import { Footer } from "@/components/sections/Footer";
 
 type Cell = true | false | string;
 
-const ROWS: { label: string; highlight?: boolean; starter: Cell; pro: Cell; custom: Cell }[] = [
-  { label: "Mensajes WhatsApp / mes",   starter: "200",    pro: "600",          custom: "Ilimitados" },
-  { label: "Reseñas automáticas",        starter: true,     pro: true,           custom: true },
-  { label: "Filtro inteligente",         starter: true,     pro: true,           custom: true },
-  { label: "Dashboard",                  starter: "Básico", pro: "Completo",     custom: "Personalizado" },
-  { label: "Reactivación de clientes",   highlight: true, starter: false, pro: true,  custom: true },
-  { label: "Widget de prueba social",    highlight: true, starter: false, pro: true,  custom: true },
-  { label: "Widget de notificaciones",   highlight: true, starter: false, pro: true,  custom: true },
-  { label: "Reporte mensual",            starter: false,    pro: true,           custom: true },
-  { label: "Soporte",                    starter: "Email",  pro: "WhatsApp 24h", custom: "Prioritario" },
-  { label: "Setup asistido",             starter: false,    pro: "Opcional",     custom: true },
-  { label: "Múltiples locales",          starter: false,    pro: false,          custom: true },
+const ROWS: { label: string; highlight?: boolean; free: Cell; starter: Cell; pro: Cell; custom: Cell }[] = [
+  { label: "Mensajes WhatsApp / mes",   free: "100",   starter: "200",    pro: "600",          custom: "Ilimitados" },
+  { label: "Reseñas automáticas",        free: true,    starter: true,     pro: true,           custom: true },
+  { label: "Filtro inteligente",         free: true,    starter: true,     pro: true,           custom: true },
+  { label: "Dashboard",                  free: "Básico",starter: "Básico", pro: "Completo",     custom: "Personalizado" },
+  { label: "Reactivación de clientes",   highlight: true, free: false, starter: false, pro: true, custom: true },
+  { label: "Widget de prueba social",    highlight: true, free: false, starter: false, pro: true, custom: true },
+  { label: "Widget de notificaciones",   highlight: true, free: false, starter: false, pro: true, custom: true },
+  { label: "Reporte mensual",            free: false,   starter: false,    pro: true,           custom: true },
+  { label: "Soporte",                    free: "Email", starter: "Email",  pro: "WhatsApp 24h", custom: "Prioritario" },
+  { label: "Setup asistido",             free: false,   starter: false,    pro: "Opcional",     custom: true },
+  { label: "Múltiples locales",          free: false,   starter: false,    pro: false,          custom: true },
 ];
 
 function Toggle({ annual, onChange }: { annual: boolean; onChange: (v: boolean) => void }) {
@@ -122,11 +122,16 @@ export default function PlanesPage() {
 
           {/* Table */}
           <div className="mt-14 overflow-x-auto">
-            <table className="w-full min-w-[560px] border-collapse">
+            <table className="w-full min-w-[680px] border-collapse">
               <thead>
                 <tr className="border-b border-neutral-100">
-                  <th className="pb-5 text-left w-[40%]">
+                  <th className="pb-5 text-left w-[32%]">
                     <span className="text-[12px] font-semibold text-neutral-400">Características</span>
+                  </th>
+                  <th className="pb-5 text-center">
+                    <p className="text-[15px] font-bold text-neutral-900">Gratis</p>
+                    <p className="mt-0.5 text-[13px] text-neutral-400">$0</p>
+                    <p className="mt-0.5 text-[11px] text-neutral-400">hasta 100 msg o 20 reseñas</p>
                   </th>
                   <th className="pb-5 text-center">
                     <p className="text-[15px] font-bold text-neutral-900">Starter</p>
@@ -149,7 +154,7 @@ export default function PlanesPage() {
               </thead>
 
               <tbody className="divide-y divide-neutral-100">
-                {ROWS.map(({ label, highlight, starter, pro, custom }) => (
+                {ROWS.map(({ label, highlight, free, starter, pro, custom }) => (
                   <tr key={label} className="hover:bg-neutral-50/60 transition-colors">
                     <td className="py-4 pr-6">
                       <span className={cn(
@@ -159,6 +164,7 @@ export default function PlanesPage() {
                         {label}
                       </span>
                     </td>
+                    <td className="py-4 text-center"><CellValue value={free} /></td>
                     <td className="py-4 text-center"><CellValue value={starter} /></td>
                     <td className="py-4 text-center"><CellValue value={pro} pro /></td>
                     <td className="py-4 text-center"><CellValue value={custom} /></td>
@@ -169,7 +175,15 @@ export default function PlanesPage() {
           </div>
 
           {/* CTAs */}
-          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <a
+              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-2xl border border-dashed border-neutral-300 px-5 py-3.5 text-[14px] font-semibold text-neutral-500 transition-colors hover:border-neutral-400 hover:bg-neutral-50"
+            >
+              Empezar gratis
+            </a>
             <a
               href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
               target="_blank"

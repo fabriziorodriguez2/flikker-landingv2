@@ -42,7 +42,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: "¿Cuánto tarda en configurarse?",
-    a: "Entre 24 y 48 horas. Vos nos pasás el número de WhatsApp Business, la ficha de Google y una primera lista o fuente de clientes. El resto lo hacemos nosotros.",
+    a: "Entre 24 y 48 horas. Vos nos pasás una primera lista o fuente de clientes. El resto lo hacemos nosotros.",
   },
   {
     q: "¿Puedo cancelar cuando quiera?",

@@ -25,7 +25,7 @@ function HeroText() {
   return (
     <div className="max-w-xl">
       <span className="inline-flex items-center rounded-full border border-neutral-200 px-3.5 py-1 text-xs font-medium text-neutral-500">
-        Fidelización digital sin app ni cartón
+        Dejá de pedir reseñas a mano
       </span>
 
       <h1 className="mt-6 font-display text-[44px] font-black leading-[1.05] tracking-[-0.03em] text-neutral-900 md:text-[54px] lg:text-[60px]">

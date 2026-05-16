@@ -204,7 +204,7 @@ export function Solution() {
             Flikker se conecta a tu negocio y le pide una reseña a cada cliente
             por WhatsApp, en el momento justo.{" "}
             <strong className="font-semibold text-neutral-800">
-              Sin app, sin cartón, sin que vos tengas que recordarlo.
+              Vos no pedís nada. Flikker se encarga.
             </strong>{" "}
             Funciona para cafeterías, restaurantes, peluquerías, clínicas,
             talleres — cualquier negocio local que quiera crecer en Google.
