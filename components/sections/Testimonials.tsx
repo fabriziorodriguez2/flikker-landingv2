@@ -27,7 +27,7 @@ const CASES: CaseStudy[] = [
     statUnit: "reseñas",
     statDetail: "en Google · +37% conversión",
     description:
-      "Pasaron de 8 a 55 reseñas en menos de 60 días y su tasa de conversión subió un 37%. Todo automatizado: sin pedir nada a mano.",
+      "Pasaron de 8 a 55 reseñas en menos de 30 días y su tasa de conversión subió un 37%. Todo automatizado: sin pedir nada a mano.",
     imageSrc: "/gains-logo.png",
     imageBg: "#0a0a0a",
     accentColor: "#9188f5",

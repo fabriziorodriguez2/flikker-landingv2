@@ -39,7 +39,7 @@ export default function GainsCasePage() {
 
               <p className="mt-5 text-lg leading-[1.7] text-neutral-500">
                 Gains es una tienda de ropa deportiva en Montevideo. Antes de Flikker, sus clientes
-                salían satisfechos pero nadie dejaba reseña. En menos de 60 días, eso cambió por completo.
+                salían satisfechos pero nadie dejaba reseña. En menos de 30 días, eso cambió por completo.
               </p>
             </div>
 
@@ -48,8 +48,8 @@ export default function GainsCasePage() {
               {[
                 { icon: Star, value: "8 → 55", label: "Reseñas en Google", highlight: false },
                 { icon: TrendingUp, value: "+37%", label: "Tasa de conversión", highlight: false },
-                { icon: DollarSign, value: "3.5x", label: "ROI en 60 días", highlight: true },
-                { icon: MessageCircle, value: "60 días", label: "Para ver resultados", highlight: false },
+                { icon: DollarSign, value: "3.5x", label: "ROI en 30 días", highlight: true },
+                { icon: MessageCircle, value: "30 días", label: "Para ver resultados", highlight: false },
               ].map(({ icon: Icon, value, label, highlight }) => (
                 <div
                   key={label}
@@ -150,7 +150,7 @@ export default function GainsCasePage() {
                 Los resultados
               </h2>
               <p className="mt-4">
-                En los primeros 60 días, Gains pasó de 8 a 55 reseñas en Google. Pero el número
+                En los primeros 30 días, Gains pasó de 8 a 55 reseñas en Google. Pero el número
                 más importante fue otro: la tasa de conversión de visitantes del perfil de Google
                 a clientes reales subió un <strong className="text-neutral-900">37%</strong>.
               </p>
@@ -169,7 +169,7 @@ export default function GainsCasePage() {
                   <p className="text-[15px] font-bold text-neutral-900">Retorno sobre la inversión</p>
                   <p className="mt-1 text-[13px] leading-[1.6] text-neutral-500">
                     Por cada peso invertido en Flikker, Gains recuperó 3.5x en ingresos directamente
-                    atribuibles a clientes que llegaron a través de Google, en los primeros 60 días.
+                    atribuibles a clientes que llegaron a través de Google, en los primeros 30 días.
                   </p>
                 </div>
               </div>

@@ -212,7 +212,7 @@ export default function PlanesPage() {
 
           {/* Guarantee */}
           <p className="mt-10 text-center text-sm leading-[1.6] text-neutral-400">
-            <span className="font-semibold text-neutral-600">Garantía:</span> si en 60 días no tenés al menos 20 reseñas nuevas, te devolvemos el setup. Sin drama.
+            <span className="font-semibold text-neutral-600">Garantía:</span> si en 30 días no tenés al menos 20 reseñas nuevas, te devolvemos el setup. Sin drama.
           </p>
 
         </div>

@@ -25,7 +25,7 @@ const STAT_CARDS = (reviews: number, reactivations: number) => [
     icon: Star,
     value: <><span className="text-[11px] mr-0.5 opacity-60">~</span><CountUp value={reviews} /></>,
     label: "reseñas nuevas en Google",
-    sub: "en 60 días",
+    sub: "en 30 días",
     color: "#7c3aed",
     glow: "rgba(124,58,237,0.25)",
   },
@@ -108,7 +108,7 @@ export function ImpactCalculator() {
           <h2 className="font-display mt-4 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-white md:text-[48px]">
             ¿Cuántas reseñas podrías
             <br />
-            tener en 60 días?
+            tener en 30 días?
           </h2>
           <p className="mt-4 text-base text-white/45">
             Mové el slider y mirá tu potencial en tiempo real.

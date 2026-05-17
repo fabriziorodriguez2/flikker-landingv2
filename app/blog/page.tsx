@@ -21,7 +21,7 @@ const FEATURED: Post = {
   category: "Casos de Éxito",
   readMin: 4,
   date: "16 May 2026",
-  title: "Gains: de 8 a 55 reseñas, +37% de conversión y 3.5x ROI en 60 días",
+  title: "Gains: de 8 a 55 reseñas, +37% de conversión y 3.5x ROI en 30 días",
   excerpt:
     "Cómo una tienda de ropa deportiva de Montevideo automatizó su reputación en Google sin cambiar nada de su operación diaria.",
   imageSrc: "/gains-logo.png",

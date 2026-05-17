@@ -85,7 +85,7 @@ export function Pricing() {
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-periwinkle" strokeWidth={1.75} />
               <div>
                 <p className="text-[14px] font-bold text-neutral-900">
-                  Garantía Flikker: 20 reseñas nuevas en 60 días o no pagás el primer mes.
+                  Garantía Flikker: 20 reseñas nuevas en 30 días o no pagás el primer mes.
                 </p>
                 <p className="mt-2 text-[13px] leading-[1.65] text-neutral-500">
                   Lo único que necesitamos de tu lado es que cargues a los pacientes que atendés
