@@ -1,7 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { Check, ShieldCheck } from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+
+const PROMO_MONTHLY = 2900;
+const REGULAR_MONTHLY = 3500;
+
+function fmt(n: number) {
+  return n.toLocaleString("es-UY");
+}
 
 const FEATURES = [
   "Reseñas automáticas en Google por WhatsApp",
@@ -14,6 +23,12 @@ const FEATURES = [
 ];
 
 export function Pricing() {
+  const [annual, setAnnual] = useState(false);
+
+  const promoPrice = annual ? PROMO_MONTHLY * 10 : PROMO_MONTHLY;
+  const regularPrice = annual ? REGULAR_MONTHLY * 10 : REGULAR_MONTHLY;
+  const period = annual ? "/ año" : "/ mes";
+
   return (
     <section id="precios" className="scroll-mt-20 bg-white px-6 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-5xl">
@@ -31,6 +46,34 @@ export function Pricing() {
           <p className="mt-4 text-base text-neutral-500">
             Un solo plan. Todo incluido. Sin letra chica.
           </p>
+
+          {/* Toggle */}
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <span className={cn("text-sm font-medium transition-colors", !annual ? "text-neutral-900" : "text-neutral-400")}>
+              Mensual
+            </span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={annual}
+              onClick={() => setAnnual(!annual)}
+              className={cn(
+                "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
+                annual ? "bg-periwinkle" : "bg-neutral-200"
+              )}
+            >
+              <span className={cn(
+                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200",
+                annual ? "translate-x-5" : "translate-x-0"
+              )} />
+            </button>
+            <span className={cn("text-sm font-medium transition-colors", annual ? "text-neutral-900" : "text-neutral-400")}>
+              Anual
+              <span className="ml-1.5 inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                2 meses gratis
+              </span>
+            </span>
+          </div>
         </div>
 
         {/* Plan card */}
@@ -43,7 +86,9 @@ export function Pricing() {
                 <p className="text-sm font-semibold text-neutral-400">Plan Flikker</p>
                 {/* Crossed-out original price */}
                 <div className="mt-3 flex items-baseline gap-1.5">
-                  <span className="text-[18px] font-black leading-none text-neutral-300 line-through">$3.500</span>
+                  <span className="text-[18px] font-black leading-none text-neutral-300 line-through">
+                    ${fmt(regularPrice)}
+                  </span>
                   <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
                     Primeros 10 clientes
                   </span>
@@ -52,9 +97,9 @@ export function Pricing() {
                 <div className="mt-1 flex items-baseline gap-1">
                   <span className="text-[24px] font-black leading-none text-neutral-300">$</span>
                   <span className="font-display text-[64px] font-black leading-none tracking-tight text-neutral-900">
-                    2.900
+                    {fmt(promoPrice)}
                   </span>
-                  <span className="text-sm text-neutral-400">/mes</span>
+                  <span className="text-sm text-neutral-400">{period}</span>
                 </div>
               </div>
               <span className="mt-1 shrink-0 inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-semibold text-emerald-700">
