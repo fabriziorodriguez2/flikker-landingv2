@@ -90,7 +90,7 @@ export function Pricing() {
                     ${fmt(regularPrice)}
                   </span>
                   <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
-                    Primeros 10 clientes
+                    Últimos lugares
                   </span>
                 </div>
                 {/* Promo price */}
