@@ -41,10 +41,18 @@ export function Pricing() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-neutral-400">Plan Flikker</p>
-                <div className="mt-3 flex items-baseline gap-1">
+                {/* Crossed-out original price */}
+                <div className="mt-3 flex items-baseline gap-1.5">
+                  <span className="text-[18px] font-black leading-none text-neutral-300 line-through">$3.500</span>
+                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
+                    Primeros 10 clientes
+                  </span>
+                </div>
+                {/* Promo price */}
+                <div className="mt-1 flex items-baseline gap-1">
                   <span className="text-[24px] font-black leading-none text-neutral-300">$</span>
                   <span className="font-display text-[64px] font-black leading-none tracking-tight text-neutral-900">
-                    3.500
+                    2.900
                   </span>
                   <span className="text-sm text-neutral-400">/mes</span>
                 </div>
