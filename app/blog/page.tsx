@@ -14,7 +14,84 @@ type Post = {
   imageSrc?: string;
   imageBg?: string;
   href: string;
+  visual?: React.ReactNode;
 };
+
+/* ── Ilustraciones para los 3 posts ── */
+
+function VisualNegativeReview() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center p-5">
+      <div className="w-full max-w-[210px] space-y-2">
+        {/* Reseña negativa */}
+        <div className="rounded-xl bg-white/10 px-4 py-3">
+          <div className="flex gap-0.5 text-[15px] leading-none">
+            <span className="text-yellow-400">★</span>
+            <span className="text-white/20">★★★★</span>
+          </div>
+          <p className="mt-1.5 text-[10px] leading-[1.5] text-white/50">
+            "El servicio tardó más de lo esperado..."
+          </p>
+        </div>
+        {/* Respuesta */}
+        <div className="ml-4 rounded-xl border border-white/10 bg-white/6 px-4 py-3">
+          <p className="text-[9px] font-bold uppercase tracking-wider text-periwinkle">
+            Tu respuesta
+          </p>
+          <p className="mt-1 text-[10px] leading-[1.5] text-white/55">
+            "Gracias por el feedback. Ya tomamos nota y te contactamos para resolverlo."
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VisualRecurrence() {
+  const bars = [38, 52, 61, 74, 90];
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-end px-8 pb-7">
+      <div className="flex w-full items-end justify-center gap-2.5">
+        {bars.map((h, i) => (
+          <div
+            key={i}
+            className="flex-1 rounded-t-lg transition-all"
+            style={{
+              height: h,
+              background:
+                i === bars.length - 1
+                  ? "#4ade80"
+                  : `rgba(255,255,255,${0.1 + i * 0.05})`,
+            }}
+          />
+        ))}
+      </div>
+      <p className="mt-3 text-[10px] font-semibold uppercase tracking-widest text-white/30">
+        Recurrencia mensual
+      </p>
+    </div>
+  );
+}
+
+function VisualGoogleReviews() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="text-center">
+        <p className="font-display text-[64px] font-black leading-none tracking-tight text-white">
+          4.9
+        </p>
+        <div className="mt-1 flex justify-center gap-0.5 text-[20px] leading-none text-yellow-400">
+          ★★★★★
+        </div>
+        <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35">
+          Google Reviews
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Datos ── */
 
 const FEATURED: Post = {
   slug: "gains",
@@ -36,9 +113,10 @@ const POSTS: Post[] = [
     date: "10 May 2026",
     title: "Cómo responder reseñas negativas sin perder clientes",
     excerpt:
-      "Una mala reseña no es el fin. Con la respuesta correcta, podés convertirla en prueba de que tu negocio sabe escuchar.",
+      "Una mala reseña no es el fin. Con la respuesta correcta, podés convertirla en prueba de que tu negocio sabe escuchar y mejorar.",
     imageBg: "#1a1a2e",
     href: "#",
+    visual: <VisualNegativeReview />,
   },
   {
     category: "Guía",
@@ -47,8 +125,9 @@ const POSTS: Post[] = [
     title: "5 formas de aumentar la recurrencia en tu local sin descuentos",
     excerpt:
       "La fidelización no siempre pasa por bajar precios. Acá van cinco tácticas que funcionan en negocios físicos de Latinoamérica.",
-    imageBg: "#0f1f0f",
+    imageBg: "#0a1f0a",
     href: "#",
+    visual: <VisualRecurrence />,
   },
   {
     category: "Estrategia",
@@ -57,10 +136,13 @@ const POSTS: Post[] = [
     title: "Por qué Google Reviews es el activo más subestimado de tu negocio",
     excerpt:
       "El 87% de los consumidores lee reseñas antes de visitar un local. Acá te explicamos cómo sacarle el máximo partido.",
-    imageBg: "#1f1000",
+    imageBg: "#1c0f00",
     href: "#",
+    visual: <VisualGoogleReviews />,
   },
 ];
+
+/* ── Sub-componentes ── */
 
 function CategoryPill({ label }: { label: string }) {
   return (
@@ -70,9 +152,9 @@ function CategoryPill({ label }: { label: string }) {
   );
 }
 
-function PostMeta({ readMin, date }: { readMin: number; date: string }) {
+function PostMeta({ readMin, date, center }: { readMin: number; date: string; center?: boolean }) {
   return (
-    <div className="flex items-center gap-1.5 text-[12px] text-neutral-400">
+    <div className={`flex items-center gap-1.5 text-[12px] text-neutral-400 ${center ? "justify-center sm:justify-start" : ""}`}>
       <Clock className="h-3 w-3" strokeWidth={2} />
       <span>{readMin} min</span>
       <span>·</span>
@@ -106,14 +188,12 @@ function FeaturedPost({ post }: { post: Post }) {
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col justify-center">
+      {/* Content — centered on mobile, left on desktop */}
+      <div className="flex flex-col items-center text-center md:items-start md:justify-center md:text-left">
         <PostMeta readMin={post.readMin} date={post.date} />
         <h2 className="font-display mt-3 text-[26px] font-black leading-[1.1] tracking-[-0.02em] text-neutral-900 transition-colors group-hover:text-periwinkle md:text-[30px]">
           {post.title}
         </h2>
-
-        {/* ROI stat — solo en el featured de Gains */}
         {post.slug === "gains" && (
           <div className="mt-4 flex items-baseline gap-2">
             <span className="font-display text-[52px] font-black leading-none tracking-tight text-periwinkle">
@@ -136,15 +216,16 @@ function FeaturedPost({ post }: { post: Post }) {
 
 function SmallPost({ post }: { post: Post }) {
   return (
-    <Link href={post.href} className="group flex flex-col">
+    <Link href={post.href} className="group flex flex-col items-center text-center sm:items-start sm:text-left">
       {/* Image */}
       <div
-        className="relative overflow-hidden rounded-2xl"
+        className="relative w-full overflow-hidden rounded-2xl"
         style={{ background: post.imageBg ?? "#111", height: 180 }}
       >
         <div className="absolute left-3 top-3 z-10">
           <CategoryPill label={post.category} />
         </div>
+        {post.visual}
         {post.imageSrc && (
           <div className="absolute inset-0 flex items-center justify-center">
             <Image
@@ -160,8 +241,8 @@ function SmallPost({ post }: { post: Post }) {
       </div>
 
       {/* Content */}
-      <div className="mt-4">
-        <PostMeta readMin={post.readMin} date={post.date} />
+      <div className="mt-4 w-full">
+        <PostMeta readMin={post.readMin} date={post.date} center />
         <h3 className="mt-2 text-[15px] font-bold leading-[1.3] text-neutral-900 transition-colors group-hover:text-periwinkle">
           {post.title}
         </h3>
@@ -177,6 +258,8 @@ function SmallPost({ post }: { post: Post }) {
   );
 }
 
+/* ── Página ── */
+
 export default function BlogPage() {
   return (
     <>
@@ -184,8 +267,8 @@ export default function BlogPage() {
       <main className="min-h-screen bg-white px-6 pt-32 pb-24 md:px-8">
         <div className="mx-auto max-w-5xl">
 
-          {/* Header */}
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          {/* Header — centered on mobile */}
+          <div className="flex flex-col items-center text-center gap-2 md:flex-row md:items-end md:justify-between md:text-left">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
                 Recursos
@@ -194,7 +277,7 @@ export default function BlogPage() {
                 Últimas novedades
               </h1>
             </div>
-            <p className="max-w-xs text-right text-[14px] leading-[1.6] text-neutral-400">
+            <p className="max-w-xs text-[14px] leading-[1.6] text-neutral-400 md:text-right">
               Recursos, guías y estrategias para hacer crecer tu negocio con fidelización.
             </p>
           </div>
@@ -208,7 +291,7 @@ export default function BlogPage() {
           <hr className="my-14 border-neutral-100" />
 
           {/* Grid */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {POSTS.map((post) => (
               <SmallPost key={post.title} post={post} />
             ))}
