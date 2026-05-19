@@ -115,7 +115,7 @@ const POSTS: Post[] = [
     excerpt:
       "Una mala reseña no es el fin. Con la respuesta correcta, podés convertirla en prueba de que tu negocio sabe escuchar y mejorar.",
     imageBg: "#1a1a2e",
-    href: "#",
+    href: "/blog/resenas-negativas",
     visual: <VisualNegativeReview />,
   },
   {
@@ -126,7 +126,7 @@ const POSTS: Post[] = [
     excerpt:
       "La fidelización no siempre pasa por bajar precios. Acá van cinco tácticas que funcionan en negocios físicos de Latinoamérica.",
     imageBg: "#0a1f0a",
-    href: "#",
+    href: "/blog/recurrencia",
     visual: <VisualRecurrence />,
   },
   {
@@ -137,7 +137,7 @@ const POSTS: Post[] = [
     excerpt:
       "El 87% de los consumidores lee reseñas antes de visitar un local. Acá te explicamos cómo sacarle el máximo partido.",
     imageBg: "#1c0f00",
-    href: "#",
+    href: "/blog/google-reviews",
     visual: <VisualGoogleReviews />,
   },
 ];
