@@ -214,6 +214,35 @@ export default function BlogPage() {
             ))}
           </div>
 
+          {/* Pricing teaser */}
+          <section id="precios" className="mt-20 scroll-mt-24">
+            <div className="rounded-3xl border border-neutral-100 bg-neutral-50 px-8 py-10 text-center">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
+                Precios
+              </span>
+              <h2 className="font-display mt-3 text-[28px] font-black leading-[1.1] tracking-[-0.02em] text-neutral-900">
+                Un solo plan. Todo incluido.
+              </h2>
+              <p className="mt-2 text-base text-neutral-500">
+                Desde <span className="font-bold text-neutral-900">$2.900/mes</span> · Sin instalación · Sin letra chica.
+              </p>
+              <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <Link
+                  href="/planes"
+                  className="inline-flex items-center justify-center rounded-2xl border border-neutral-200 px-6 py-3 text-[14px] font-semibold text-neutral-700 transition-colors hover:bg-white"
+                >
+                  Ver planes completos
+                </Link>
+                <Link
+                  href="/#precios"
+                  className="inline-flex items-center justify-center rounded-2xl bg-periwinkle px-6 py-3 text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
+                >
+                  Quiero empezar
+                </Link>
+              </div>
+            </div>
+          </section>
+
         </div>
       </main>
       <Footer />
