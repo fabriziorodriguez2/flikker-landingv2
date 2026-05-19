@@ -23,17 +23,6 @@ export default function TerminosPage() {
 
           <div className="prose-flikker mt-10 space-y-10 text-[15px] leading-[1.8] text-neutral-600">
 
-            <p>
-              Estos Términos y Condiciones (los "Términos") regulan el uso del servicio Flikker (el "Servicio"),
-              operado por <span className="font-semibold text-neutral-800">[RAZÓN SOCIAL / NOMBRE]</span>,
-              RUT <span className="font-semibold text-neutral-800">[NÚMERO DE RUT]</span>, con domicilio en{" "}
-              <span className="font-semibold text-neutral-800">[DOMICILIO, Montevideo, Uruguay]</span> ("Flikker", "nosotros").
-            </p>
-            <p>
-              Al contratar, acceder o utilizar el Servicio, el cliente (el "Cliente", "vos") acepta estos Términos
-              en su totalidad. Si no estás de acuerdo, no utilices el Servicio.
-            </p>
-
             <hr className="border-neutral-100" />
 
             <Section title="1. Qué es Flikker">

@@ -60,19 +60,19 @@ function NotifCard({ notif, delay }: { notif: Notif; delay: number }) {
 
 const NOTIFS: Notif[] = [
   {
-    business: "Peluquería Nova",
+    business: "Flikker",
     message: "Hola Sofía 👋 Hace un tiempo que no te vemos. ¿Volvés esta semana? Tenemos turno disponible 💜",
     time: "ahora",
     color: "#25D366",
   },
   {
-    business: "Café Mística",
+    business: "Flikker",
     message: "Hola Martín! Extrañamos verte por aquí ☕ Esta semana tenés un 10% off solo por volver.",
     time: "1 min",
     color: "#25D366",
   },
   {
-    business: "Gains",
+    business: "Flikker",
     message: "Hola Laura 💪 Hace 45 días que no venís. ¿Retomamos? Agendá tu clase gratuita de reactivación.",
     time: "3 min",
     color: "#25D366",

@@ -23,17 +23,6 @@ export default function PrivacidadPage() {
 
           <div className="mt-10 space-y-10 text-[15px] leading-[1.8] text-neutral-600">
 
-            <p>
-              Esta Política de Privacidad describe cómo{" "}
-              <span className="font-semibold text-neutral-800">[RAZÓN SOCIAL / NOMBRE]</span>,
-              RUT <span className="font-semibold text-neutral-800">[NÚMERO DE RUT]</span>, con domicilio en{" "}
-              <span className="font-semibold text-neutral-800">[DOMICILIO, Montevideo, Uruguay]</span>{" "}
-              ("Flikker", "nosotros") trata los datos personales en el marco del servicio Flikker (el "Servicio"),
-              de conformidad con la <strong className="font-semibold text-neutral-800">Ley N° 18.331 de Protección
-              de Datos Personales y Acción de Habeas Data</strong>, su decreto reglamentario y normas concordantes
-              de la República Oriental del Uruguay.
-            </p>
-
             <hr className="border-neutral-100" />
 
             <Section title="1. Dos tipos de personas, dos roles">
