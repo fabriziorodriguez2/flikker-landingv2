@@ -5,7 +5,19 @@ import { Footer } from "@/components/sections/Footer";
 import { buildWhatsAppUrl } from "@/lib/constants";
 
 export const metadata = {
-  title: "Cómo responder reseñas negativas sin perder clientes · Flikker",
+  title: "Cómo responder reseñas negativas sin perder clientes",
+  description:
+    "Una mala reseña no tiene que arruinar tu reputación. Aprendé cómo responder críticas en Google para convertirlas en prueba de que tu negocio escucha, mejora y cuida a sus clientes.",
+  alternates: { canonical: "https://flikker.uy/blog/resenas-negativas" },
+  openGraph: {
+    type: "article",
+    url: "https://flikker.uy/blog/resenas-negativas",
+    title: "Cómo responder reseñas negativas sin perder clientes",
+    description:
+      "Aprendé cómo responder críticas en Google para convertirlas en prueba de que tu negocio escucha y mejora.",
+    locale: "es_UY",
+    publishedTime: "2026-05-10",
+  },
 };
 
 const WA = "Hola! Leí el artículo sobre reseñas negativas en Flikker y quiero saber cómo aplicarlo en mi negocio.";

@@ -5,7 +5,19 @@ import { Footer } from "@/components/sections/Footer";
 import { buildWhatsAppUrl } from "@/lib/constants";
 
 export const metadata = {
-  title: "Por qué Google Reviews es el activo más subestimado de tu negocio · Flikker",
+  title: "Por qué Google Reviews es el activo más subestimado de tu negocio",
+  description:
+    "El 87% de los consumidores lee reseñas antes de visitar un local. Descubrí cómo Google Reviews impacta tu visibilidad en Google Maps, tu conversión y cómo automatizarlas con WhatsApp.",
+  alternates: { canonical: "https://flikker.uy/blog/google-reviews" },
+  openGraph: {
+    type: "article",
+    url: "https://flikker.uy/blog/google-reviews",
+    title: "Por qué Google Reviews es el activo más subestimado de tu negocio",
+    description:
+      "El 87% de los consumidores lee reseñas antes de visitar un local. Descubrí cómo Google Reviews impacta tu visibilidad y conversión.",
+    locale: "es_UY",
+    publishedTime: "2026-04-28",
+  },
 };
 
 const WA = "Hola! Leí el artículo sobre Google Reviews en Flikker y quiero saber cómo conseguir más reseñas para mi negocio.";

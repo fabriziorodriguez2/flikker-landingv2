@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, TrendingUp, Star, MessageCircle, DollarSign } from "lucide-react";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { buildWhatsAppUrl } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Caso Gains: de 8 a 58 reseñas en Google y 6.7x ROI en 30 días",
+  description:
+    "Cómo Gains, tienda de ropa deportiva en Montevideo, pasó de 8 a 58 reseñas en menos de 30 días, subió su conversión un 37% y logró 6.7x de retorno usando Flikker. Todo automatizado.",
+  alternates: { canonical: "https://flikker.uy/casos/gains" },
+  openGraph: {
+    type: "article",
+    url: "https://flikker.uy/casos/gains",
+    title: "Caso Gains: de 8 a 58 reseñas en Google y 6.7x ROI en 30 días",
+    description:
+      "Cómo Gains pasó de 8 a 58 reseñas, subió su conversión un 37% y logró 6.7x de retorno usando Flikker en 30 días.",
+    locale: "es_UY",
+    publishedTime: "2026-05-16",
+  },
+};
 
 const WA_MESSAGE = "Hola! Leí el caso de Gains en Flikker y quiero resultados similares para mi negocio.";
 

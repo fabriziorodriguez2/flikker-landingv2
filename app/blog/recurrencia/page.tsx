@@ -5,7 +5,19 @@ import { Footer } from "@/components/sections/Footer";
 import { buildWhatsAppUrl } from "@/lib/constants";
 
 export const metadata = {
-  title: "5 formas de aumentar la recurrencia en tu local sin descuentos · Flikker",
+  title: "5 formas de aumentar la recurrencia en tu local sin descuentos",
+  description:
+    "La fidelización no pasa por bajar precios. 5 tácticas probadas para que tus clientes vuelvan a tu negocio local, sin depender de descuentos ni promociones agresivas.",
+  alternates: { canonical: "https://flikker.uy/blog/recurrencia" },
+  openGraph: {
+    type: "article",
+    url: "https://flikker.uy/blog/recurrencia",
+    title: "5 formas de aumentar la recurrencia en tu local sin descuentos",
+    description:
+      "5 tácticas probadas para que tus clientes vuelvan a tu negocio local, sin depender de descuentos ni promociones.",
+    locale: "es_UY",
+    publishedTime: "2026-05-02",
+  },
 };
 
 const WA = "Hola! Leí el artículo sobre recurrencia en Flikker y quiero aplicarlo en mi negocio.";
