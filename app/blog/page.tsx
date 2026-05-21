@@ -98,7 +98,7 @@ const FEATURED: Post = {
   category: "Casos de Éxito",
   readMin: 4,
   date: "16 May 2026",
-  title: "Gains: de 8 a 55 reseñas, +37% de conversión y 3.5x ROI en 30 días",
+  title: "Gains: de 8 a 58 reseñas, +37% de conversión y 6.7x ROI en 30 días",
   excerpt:
     "Cómo una tienda de ropa deportiva de Montevideo automatizó su reputación en Google sin cambiar nada de su operación diaria.",
   imageSrc: "/gains-logo.png",
@@ -197,7 +197,7 @@ function FeaturedPost({ post }: { post: Post }) {
         {post.slug === "gains" && (
           <div className="mt-4 flex items-baseline gap-2">
             <span className="font-display text-[52px] font-black leading-none tracking-tight text-periwinkle">
-              3.5x
+              6.7x
             </span>
             <span className="text-[14px] font-semibold text-neutral-500">retorno sobre la inversión</span>
           </div>

@@ -34,7 +34,7 @@ export default function GainsCasePage() {
               </div>
 
               <h1 className="font-display mt-5 text-[36px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[54px]">
-                Cómo Gains pasó de 8 a 55 reseñas y subió un 37% su conversión
+                Cómo Gains pasó de 8 a 58 reseñas y subió un 37% su conversión
               </h1>
 
               <p className="mt-5 text-lg leading-[1.7] text-neutral-500">
@@ -46,9 +46,9 @@ export default function GainsCasePage() {
             {/* Stats bar */}
             <div className="mt-10 grid grid-cols-2 divide-neutral-100 rounded-3xl border border-neutral-200 bg-neutral-50 md:grid-cols-4">
               {[
-                { icon: Star, value: "8 → 55", label: "Reseñas en Google", highlight: false },
+                { icon: Star, value: "8 → 58", label: "Reseñas en Google", highlight: false },
                 { icon: TrendingUp, value: "+37%", label: "Tasa de conversión", highlight: false },
-                { icon: DollarSign, value: "3.5x", label: "ROI en 30 días", highlight: true },
+                { icon: DollarSign, value: "6.7x", label: "ROI en 30 días", highlight: true },
                 { icon: MessageCircle, value: "30 días", label: "Para ver resultados", highlight: false },
               ].map(({ icon: Icon, value, label, highlight }) => (
                 <div
@@ -150,7 +150,7 @@ export default function GainsCasePage() {
                 Los resultados
               </h2>
               <p className="mt-4">
-                En los primeros 30 días, Gains pasó de 8 a 55 reseñas en Google. Pero el número
+                En los primeros 30 días, Gains pasó de 8 a 58 reseñas en Google. Pero el número
                 más importante fue otro: la tasa de conversión de visitantes del perfil de Google
                 a clientes reales subió un <strong className="text-neutral-900">37%</strong>.
               </p>
@@ -163,12 +163,12 @@ export default function GainsCasePage() {
               {/* ROI highlight */}
               <div className="mt-6 rounded-2xl bg-periwinkle/8 border border-periwinkle/20 px-6 py-5 flex items-center gap-5">
                 <p className="font-display text-[64px] font-black leading-none tracking-tight text-periwinkle shrink-0">
-                  3.5x
+                  6.7x
                 </p>
                 <div>
                   <p className="text-[15px] font-bold text-neutral-900">Retorno sobre la inversión</p>
                   <p className="mt-1 text-[13px] leading-[1.6] text-neutral-500">
-                    Por cada peso invertido en Flikker, Gains recuperó 3.5x en ingresos directamente
+                    Por cada peso invertido en Flikker, Gains recuperó 6.7x en ingresos directamente
                     atribuibles a clientes que llegaron a través de Google, en los primeros 30 días.
                   </p>
                 </div>

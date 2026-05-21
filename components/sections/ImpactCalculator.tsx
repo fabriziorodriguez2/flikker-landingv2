@@ -124,7 +124,7 @@ export function ImpactCalculator() {
             <span className="text-sm font-medium text-white/50">
               Atiendo o vendo a
             </span>
-            <div className="mt-2 flex items-baseline gap-3">
+            <div className="mt-2 flex flex-wrap items-baseline gap-3">
               <motion.span
                 key={customers}
                 className="font-display text-[64px] font-black leading-none tracking-tight text-white"

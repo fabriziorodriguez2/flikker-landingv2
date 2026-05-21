@@ -81,7 +81,7 @@ export function Pricing() {
           <div className="flex flex-col rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
 
             {/* Price row */}
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div>
                 <p className="text-sm font-semibold text-neutral-400">Plan Flikker</p>
                 {/* Crossed-out original price */}
@@ -96,7 +96,7 @@ export function Pricing() {
                 {/* Promo price */}
                 <div className="mt-1 flex items-baseline gap-1">
                   <span className="text-[24px] font-black leading-none text-neutral-300">$</span>
-                  <span className="font-display text-[64px] font-black leading-none tracking-tight text-neutral-900">
+                  <span className="font-display text-[44px] font-black leading-none tracking-tight text-neutral-900 sm:text-[64px]">
                     {fmt(promoPrice)}
                   </span>
                   <span className="text-sm text-neutral-400">{period}</span>

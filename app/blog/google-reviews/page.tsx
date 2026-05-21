@@ -98,7 +98,7 @@ export default function GoogleReviewsPage() {
                 Las reseñas no son lineales. Pasás de 10 a 20 reseñas y tu visibilidad sube un poco. Pero cuando pasás de 20 a 50, algo cambia: Google empieza a mostrarte en posiciones donde antes no aparecías, llegan más visitas a tu perfil, y esas visitas ven más reseñas recientes, lo que convierte mejor.
               </p>
               <p className="mt-4">
-                Uno de nuestros clientes pasó de 8 a 55 reseñas en 30 días con Flikker. El resultado no fue solo "más reseñas" — fue un aumento del 37% en la tasa de conversión de visitantes a clientes reales. El volumen de reseñas cambia cómo te perciben antes de que lleguen a tu puerta.
+                Uno de nuestros clientes pasó de 8 a 58 reseñas en 30 días con Flikker. El resultado no fue solo "más reseñas" — fue un aumento del 37% en la tasa de conversión de visitantes a clientes reales. El volumen de reseñas cambia cómo te perciben antes de que lleguen a tu puerta.
               </p>
             </section>
 
@@ -210,7 +210,7 @@ export default function GoogleReviewsPage() {
                 <Link href="/casos/gains" className="group rounded-2xl border border-neutral-100 p-5 transition-colors hover:border-periwinkle/30 hover:bg-neutral-50">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-periwinkle">Caso de Éxito</p>
                   <p className="mt-2 text-[14px] font-bold leading-[1.3] text-neutral-900 group-hover:text-periwinkle">
-                    Gains: de 8 a 55 reseñas y 3.5x ROI en 30 días
+                    Gains: de 8 a 58 reseñas y 6.7x ROI en 30 días
                   </p>
                 </Link>
               </div>

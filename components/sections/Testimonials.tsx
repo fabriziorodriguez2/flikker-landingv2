@@ -23,11 +23,11 @@ const CASES: CaseStudy[] = [
     category: "Tienda de ropa deportiva",
     location: "Montevideo",
     name: "Gains",
-    statValue: "55",
+    statValue: "58",
     statUnit: "reseñas",
     statDetail: "en Google · +37% conversión",
     description:
-      "Pasaron de 8 a 55 reseñas en menos de 30 días y su tasa de conversión subió un 37%. Todo automatizado: sin pedir nada a mano.",
+      "Pasaron de 8 a 58 reseñas en menos de 30 días y su tasa de conversión subió un 37%. Todo automatizado: sin pedir nada a mano.",
     imageSrc: "/gains-logo.png",
     imageBg: "#0a0a0a",
     accentColor: "#9188f5",
