@@ -8,10 +8,10 @@ export const metadata = {
   title: "Cómo responder reseñas negativas sin perder clientes",
   description:
     "Una mala reseña no tiene que arruinar tu reputación. Aprendé cómo responder críticas en Google para convertirlas en prueba de que tu negocio escucha, mejora y cuida a sus clientes.",
-  alternates: { canonical: "https://flikker.uy/blog/resenas-negativas" },
+  alternates: { canonical: "https://flikker.website/blog/resenas-negativas" },
   openGraph: {
     type: "article",
-    url: "https://flikker.uy/blog/resenas-negativas",
+    url: "https://flikker.website/blog/resenas-negativas",
     title: "Cómo responder reseñas negativas sin perder clientes",
     description:
       "Aprendé cómo responder críticas en Google para convertirlas en prueba de que tu negocio escucha y mejora.",

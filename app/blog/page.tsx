@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   title: "Blog · Reseñas, Reputación y Marketing Local",
   description:
     "Guías, estrategias y casos de éxito sobre cómo conseguir más reseñas en Google, mejorar tu reputación online y hacer crecer tu negocio local con WhatsApp.",
-  alternates: { canonical: "https://flikker.uy/blog" },
+  alternates: { canonical: "https://flikker.website/blog" },
   openGraph: {
     type: "website",
-    url: "https://flikker.uy/blog",
+    url: "https://flikker.website/blog",
     title: "Blog · Reseñas, Reputación y Marketing Local | Flikker",
     description:
       "Guías, estrategias y casos de éxito sobre cómo conseguir más reseñas en Google y hacer crecer tu negocio local.",

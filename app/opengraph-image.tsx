@@ -83,7 +83,7 @@ export default async function Image() {
             color: "rgba(220, 226, 240, 0.55)",
           }}
         >
-          <span style={{ display: "flex" }}>flikker.uy</span>
+          <span style={{ display: "flex" }}>flikker.website</span>
           <span style={{ display: "flex" }}>
             Para negocios y marcas locales · Uruguay
           </span>

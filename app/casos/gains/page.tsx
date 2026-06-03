@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   title: "Caso Gains: de 8 a 58 reseñas en Google y 6.7x ROI en 30 días",
   description:
     "Cómo Gains, tienda de ropa deportiva en Montevideo, pasó de 8 a 58 reseñas en menos de 30 días, subió su conversión un 37% y logró 6.7x de retorno usando Flikker. Todo automatizado.",
-  alternates: { canonical: "https://flikker.uy/casos/gains" },
+  alternates: { canonical: "https://flikker.website/casos/gains" },
   openGraph: {
     type: "article",
-    url: "https://flikker.uy/casos/gains",
+    url: "https://flikker.website/casos/gains",
     title: "Caso Gains: de 8 a 58 reseñas en Google y 6.7x ROI en 30 días",
     description:
       "Cómo Gains pasó de 8 a 58 reseñas, subió su conversión un 37% y logró 6.7x de retorno usando Flikker en 30 días.",

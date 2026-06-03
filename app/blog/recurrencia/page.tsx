@@ -8,10 +8,10 @@ export const metadata = {
   title: "5 formas de aumentar la recurrencia en tu local sin descuentos",
   description:
     "La fidelización no pasa por bajar precios. 5 tácticas probadas para que tus clientes vuelvan a tu negocio local, sin depender de descuentos ni promociones agresivas.",
-  alternates: { canonical: "https://flikker.uy/blog/recurrencia" },
+  alternates: { canonical: "https://flikker.website/blog/recurrencia" },
   openGraph: {
     type: "article",
-    url: "https://flikker.uy/blog/recurrencia",
+    url: "https://flikker.website/blog/recurrencia",
     title: "5 formas de aumentar la recurrencia en tu local sin descuentos",
     description:
       "5 tácticas probadas para que tus clientes vuelvan a tu negocio local, sin depender de descuentos ni promociones.",

@@ -60,7 +60,7 @@ export function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/flikker-wordmark-white.svg" alt="Flikker" className="h-7 w-auto" />
           <p className="mt-4 max-w-[22ch] text-sm leading-relaxed text-white/65">
-            Sistema de reseñas automático para negocios locales.
+            La plataforma de reputación local para negocios.
           </p>
           <ul className="mt-6 space-y-3">
             <li>

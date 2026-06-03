@@ -8,10 +8,10 @@ export const metadata = {
   title: "Por qué Google Reviews es el activo más subestimado de tu negocio",
   description:
     "El 87% de los consumidores lee reseñas antes de visitar un local. Descubrí cómo Google Reviews impacta tu visibilidad en Google Maps, tu conversión y cómo automatizarlas con WhatsApp.",
-  alternates: { canonical: "https://flikker.uy/blog/google-reviews" },
+  alternates: { canonical: "https://flikker.website/blog/google-reviews" },
   openGraph: {
     type: "article",
-    url: "https://flikker.uy/blog/google-reviews",
+    url: "https://flikker.website/blog/google-reviews",
     title: "Por qué Google Reviews es el activo más subestimado de tu negocio",
     description:
       "El 87% de los consumidores lee reseñas antes de visitar un local. Descubrí cómo Google Reviews impacta tu visibilidad y conversión.",

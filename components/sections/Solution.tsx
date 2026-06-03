@@ -10,6 +10,8 @@ import {
   RefreshCw,
   Clock,
   TrendingUp,
+  QrCode,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 
@@ -65,7 +67,17 @@ const features: { icon: LucideIcon; title: string; body: string }[] = [
   {
     icon: BarChart3,
     title: "Panel de control en tiempo real",
-    body: "Ves todas tus reseñas, la evolución de tu calificación y qué clientes respondieron — todo desde un solo lugar.",
+    body: "Ves todas tus reseñas, la evolución de tu calificación y qué clientes respondieron, todo desde un solo lugar.",
+  },
+  {
+    icon: QrCode,
+    title: "QR de captación en tu local",
+    body: "Poné el QR en tu sala de espera o mostrador. Cada cliente que lo escanea deja su contacto y queda en tu base, listo para recibir reseñas y campañas.",
+  },
+  {
+    icon: Users,
+    title: "Base de contactos propia",
+    body: "Cada cliente que pasa por Flikker queda guardado con nombre y teléfono. Es tuyo para siempre, para promociones, recordatorios o lo que necesites.",
   },
 ];
 
@@ -198,16 +210,18 @@ export function Solution() {
             Qué es Flikker
           </span>
           <h2 className="font-display mt-4 text-[36px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[52px]">
-            Tu sistema de reseñas automático para Google.
+            La plataforma de reputación local para negocios.
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-[1.7] text-neutral-500 md:text-lg">
-            Flikker se conecta a tu negocio y le pide una reseña a cada cliente
-            por WhatsApp, en el momento justo.{" "}
+            Flikker automatiza la captación de reseñas en Google, la
+            reactivación de clientes inactivos y la prueba social en tu sitio
+            web.{" "}
             <strong className="font-semibold text-neutral-800">
-              Vos no pedís nada. Flikker se encarga.
+              Convertimos cada venta en una reseña, y cada reseña en clientes
+              nuevos.
             </strong>{" "}
-            Funciona para cafeterías, restaurantes, peluquerías, clínicas,
-            talleres — cualquier negocio local que quiera crecer en Google.
+            Llevamos infraestructura de nivel enterprise a negocios que recién
+            están construyendo su marca.
           </p>
         </motion.div>
 
@@ -220,7 +234,7 @@ export function Solution() {
             hidden: {},
             show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
           }}
-          className="mt-16 grid gap-x-10 gap-y-12 md:grid-cols-4"
+          className="mt-16 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
         >
           {features.map(({ icon: Icon, title, body }) => (
             <motion.div

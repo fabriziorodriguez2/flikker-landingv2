@@ -25,17 +25,17 @@ function HeroText() {
   return (
     <div className="max-w-xl">
       <span className="inline-flex items-center rounded-full border border-neutral-200 px-3.5 py-1 text-xs font-medium text-neutral-500">
-        Dejá de pedir reseñas a mano
+        La plataforma de reputación local para negocios
       </span>
 
       <h1 className="mt-6 font-display text-[44px] font-black leading-[1.05] tracking-[-0.03em] text-neutral-900 md:text-[54px] lg:text-[60px]">
         Tenés clientes felices.{" "}
-        <span className="text-periwinkle">Google no lo está mostrando.</span>
+        <span className="text-periwinkle">No los estás aprovechando.</span>
       </h1>
 
       <p className="mt-5 text-lg leading-[1.6] text-neutral-500">
-        Flikker pide reseñas por WhatsApp después de cada compra, visita o
-        servicio. Las buenas llegan a Google. Las malas te avisan primero a vos.
+        Flikker convierte cada venta en una reseña, captura el contacto de cada
+        cliente y los reactiva solos. Sin que vos hagas nada.
       </p>
 
       <div className="mt-8 flex flex-wrap items-center gap-3">

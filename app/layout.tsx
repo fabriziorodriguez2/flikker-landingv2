@@ -11,11 +11,11 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://flikker.uy";
+const SITE_URL = "https://flikker.website";
 const SITE_NAME = "Flikker";
-const TITLE = "Flikker｜Más reseñas de Google para tu negocio, automático";
+const TITLE = "Flikker | La plataforma de reputación local para negocios";
 const DESCRIPTION =
-  "Automatizá las reseñas en Google de tu negocio con WhatsApp. Flikker envía mensajes automáticos a cada cliente tras su visita o compra. Las buenas van a Google; las malas te llegan primero a vos. Sin esfuerzo manual.";
+  "Flikker automatiza la captación de reseñas en Google, la reactivación de clientes inactivos y la prueba social en tu web. Convertimos cada venta en una reseña, y cada reseña en clientes nuevos.";
 
 const PLAUSIBLE_DOMAIN =
   process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "flikker.uy";
