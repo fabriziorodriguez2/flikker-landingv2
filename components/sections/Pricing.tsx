@@ -5,8 +5,8 @@ import { Check, ShieldCheck } from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const PROMO_MONTHLY = 2900;
-const REGULAR_MONTHLY = 3500;
+const PROMO_MONTHLY = 1000;
+const REGULAR_MONTHLY = 1700;
 
 function fmt(n: number) {
   return n.toLocaleString("es-UY");
