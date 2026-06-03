@@ -5,7 +5,7 @@ import { Check, ShieldCheck } from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const PROMO_MONTHLY = 1000;
+const PROMO_MONTHLY = 999;
 const REGULAR_MONTHLY = 1700;
 
 function fmt(n: number) {
