@@ -1,36 +1,134 @@
-"use client";
-
-import { useState } from "react";
-import { Check, ShieldCheck } from "lucide-react";
+import type { ReactNode } from "react";
+import {
+  Star,
+  QrCode,
+  Users,
+  Send,
+  MessageCircle,
+  Layers,
+  Globe,
+  Headphones,
+  type LucideIcon,
+} from "lucide-react";
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
-const PROMO_MONTHLY = 999;
-const REGULAR_MONTHLY = 1700;
+const BASE_PROMO = 1000;
+const BASE_REGULAR = 2000;
+const PRO_PROMO = 2000;
+const PRO_REGULAR = 3000;
 
 function fmt(n: number) {
   return n.toLocaleString("es-UY");
 }
 
-const FEATURES = [
-  "Reseñas automáticas en Google por WhatsApp",
-  "Las buenas van a Google, las malas te llegan a vos primero",
-  "Dashboard con los números de tu negocio",
-  "Widget de prueba social para tu sitio web",
-  "Hasta 400 clientes contactados por mes",
-  "Soporte por WhatsApp",
-  "Onboarding acompañado",
+type Feature = {
+  icon: LucideIcon;
+  label: ReactNode;
+  sub: string;
+  accent?: string;
+};
+
+const BASE_FEATURES: Feature[] = [
+  {
+    icon: Star,
+    label: "Reseñas automáticas en Google",
+    sub: "WhatsApp a cada cliente atendido",
+  },
+  {
+    icon: QrCode,
+    label: "QR de captación",
+    sub: "Para mostrador o sala de espera",
+  },
+  {
+    icon: Users,
+    label: "Base de contactos propia",
+    sub: "Tus clientes guardados para siempre",
+  },
+  {
+    icon: Send,
+    label: "Campañas manuales",
+    sub: "Promociones y recordatorios a tu base",
+  },
+  {
+    icon: MessageCircle,
+    label: (
+      <>
+        <strong className="font-semibold text-white">200 mensajes</strong>{" "}
+        de WhatsApp incluidos
+      </>
+    ),
+    sub: "$2,50 UYU por mensaje extra",
+  },
 ];
 
-export function Pricing() {
-  const [annual, setAnnual] = useState(false);
+const PRO_FEATURES: Feature[] = [
+  {
+    icon: Layers,
+    label: "Todo lo del plan Base",
+    sub: "Reseñas, QR, base de contactos y campañas",
+    accent: "#4ade80",
+  },
+  {
+    icon: Globe,
+    label: "Widget de prueba social para tu web",
+    sub: "Tus reseñas reales en tu sitio, automático",
+  },
+  {
+    icon: Headphones,
+    label: "Soporte prioritario",
+    sub: "Respuesta en menos de 24 horas",
+    accent: "#4ade80",
+  },
+  {
+    icon: MessageCircle,
+    label: (
+      <>
+        <strong className="font-semibold text-white">500 mensajes</strong>{" "}
+        de WhatsApp incluidos
+      </>
+    ),
+    sub: "$2,50 UYU por mensaje extra",
+  },
+];
 
-  const promoPrice = annual ? PROMO_MONTHLY * 10 : PROMO_MONTHLY;
-  const regularPrice = annual ? REGULAR_MONTHLY * 10 : REGULAR_MONTHLY;
-  const period = annual ? "/ año" : "/ mes";
-
+function FeatureList({ features }: { features: Feature[] }) {
   return (
-    <section id="precios" className="scroll-mt-20 bg-white px-6 py-24 md:px-8 md:py-32">
+    <ul className="flex-1 space-y-4">
+      {features.map((f, i) => {
+        const color = f.accent ?? "#9188f5";
+        return (
+          <li key={i} className="flex items-start gap-3">
+            <div
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
+              style={{ background: `${color}22` }}
+            >
+              <f.icon
+                className="h-4 w-4"
+                style={{ color }}
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            </div>
+            <div>
+              <p className="text-[13px] font-semibold leading-snug text-white/85">
+                {f.label}
+              </p>
+              <p className="text-[11px] text-white/40">{f.sub}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+export function Pricing() {
+  return (
+    <section
+      id="precios"
+      className="scroll-mt-20 px-6 py-24 md:px-8 md:py-32"
+      style={{ background: "#07060f" }}
+    >
       <div className="mx-auto max-w-5xl">
 
         {/* Header */}
@@ -38,117 +136,133 @@ export function Pricing() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
             Precios
           </span>
-          <h2 className="font-display mt-4 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[48px]">
+          <h2 className="font-display mt-4 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-white md:text-[48px]">
             Una inversión que se paga
             <br />
             sola desde el primer mes.
           </h2>
-          <p className="mt-4 text-base text-neutral-500">
-            Un solo plan. Todo incluido. Sin letra chica.
+          <p className="mt-4 text-base text-white/45">
+            Dos planes. Todo incluido. Sin letra chica.
           </p>
-
-          {/* Toggle */}
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <span className={cn("text-sm font-medium transition-colors", !annual ? "text-neutral-900" : "text-neutral-400")}>
-              Mensual
-            </span>
-            <button
-              type="button"
-              role="switch"
-              aria-checked={annual}
-              onClick={() => setAnnual(!annual)}
-              className={cn(
-                "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200",
-                annual ? "bg-periwinkle" : "bg-neutral-200"
-              )}
-            >
-              <span className={cn(
-                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200",
-                annual ? "translate-x-5" : "translate-x-0"
-              )} />
-            </button>
-            <span className={cn("text-sm font-medium transition-colors", annual ? "text-neutral-900" : "text-neutral-400")}>
-              Anual
-              <span className="ml-1.5 inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
-                2 meses gratis
-              </span>
-            </span>
-          </div>
         </div>
 
-        {/* Plan card */}
-        <div className="mx-auto mt-12 max-w-lg">
-          <div className="flex flex-col rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+        {/* Cards */}
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
 
-            {/* Price row */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-              <div>
-                <p className="text-sm font-semibold text-neutral-400">Plan Flikker</p>
-                {/* Crossed-out original price */}
-                <div className="mt-3 flex items-baseline gap-1.5">
-                  <span className="text-[18px] font-black leading-none text-neutral-300 line-through">
-                    ${fmt(regularPrice)}
-                  </span>
-                  <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
-                    Últimos lugares
-                  </span>
-                </div>
-                {/* Promo price */}
-                <div className="mt-1 flex items-baseline gap-1">
-                  <span className="text-[24px] font-black leading-none text-neutral-300">$</span>
-                  <span className="font-display text-[44px] font-black leading-none tracking-tight text-neutral-900 sm:text-[64px]">
-                    {fmt(promoPrice)}
-                  </span>
-                  <span className="text-sm text-neutral-400">{period}</span>
-                </div>
+          {/* ── Base ── */}
+          <div
+            className="flex flex-col rounded-3xl p-8"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <span className="inline-flex w-fit items-center rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-white/70">
+              Base
+            </span>
+
+            <h3 className="font-display mt-4 text-[20px] font-black text-white">
+              Flikker Base
+            </h3>
+
+            <div className="mt-4">
+              <div className="flex items-center gap-2">
+                <span className="text-[15px] font-semibold text-white/30 line-through">
+                  ${fmt(BASE_REGULAR)}
+                </span>
+                <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-400">
+                  Oferta lanzamiento
+                </span>
               </div>
-              <span className="mt-1 shrink-0 inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-semibold text-emerald-700">
-                Sin instalación
-              </span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="font-display text-[52px] font-black leading-none tracking-tight text-white">
+                  ${fmt(BASE_PROMO)}
+                </span>
+                <span className="text-sm text-white/40">UYU / mes</span>
+              </div>
             </div>
 
-            <p className="mt-2 text-sm font-medium text-periwinkle">
-              Arrancás sin pagar instalación.
+            <p className="mt-3 text-[13px] leading-[1.6] text-white/50">
+              Para negocios que quieren empezar a construir reputación y base
+              de clientes sin complicaciones.
             </p>
 
-            <hr className="my-6 border-neutral-100" />
+            <div className="my-6 h-px bg-white/8" />
 
-            <ul className="space-y-3">
-              {FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-periwinkle" strokeWidth={2.5} />
-                  <span className="text-[14px] text-neutral-700">{f}</span>
-                </li>
-              ))}
-            </ul>
+            <FeatureList features={BASE_FEATURES} />
+
+            <p className="mt-5 text-[12px] font-medium text-periwinkle">
+              Si usás más de 500 mensajes, te conviene el Pro.
+            </p>
+
+            <a
+              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              Empezar con Base
+            </a>
+
+            <p className="mt-3 text-center text-[11px] text-white/30">
+              Sin contrato · cancelás cuando querés
+            </p>
+          </div>
+
+          {/* ── Pro ── */}
+          <div
+            className="flex flex-col rounded-3xl p-8 ring-2 ring-periwinkle"
+            style={{ background: "rgba(145,136,245,0.07)" }}
+          >
+            <span className="inline-flex w-fit items-center rounded-full bg-periwinkle/25 px-3 py-1 text-[11px] font-semibold text-periwinkle">
+              Pro
+            </span>
+
+            <h3 className="font-display mt-4 text-[20px] font-black text-white">
+              Flikker Pro
+            </h3>
+
+            <div className="mt-4">
+              <div className="flex items-center gap-2">
+                <span className="text-[15px] font-semibold text-white/30 line-through">
+                  ${fmt(PRO_REGULAR)}
+                </span>
+                <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-400">
+                  Oferta lanzamiento
+                </span>
+              </div>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="font-display text-[52px] font-black leading-none tracking-tight text-white">
+                  ${fmt(PRO_PROMO)}
+                </span>
+                <span className="text-sm text-white/40">UYU / mes</span>
+              </div>
+            </div>
+
+            <p className="mt-3 text-[13px] leading-[1.6] text-white/50">
+              Para negocios que quieren aprovechar su reputación al máximo y
+              llegar a más clientes.
+            </p>
+
+            <div className="my-6 h-px bg-white/8" />
+
+            <FeatureList features={PRO_FEATURES} />
 
             <a
               href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_pro)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 flex w-full items-center justify-center rounded-2xl bg-periwinkle px-6 py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+              className="mt-6 flex w-full items-center justify-center rounded-2xl bg-periwinkle px-6 py-3.5 text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(145,136,245,0.4)] transition-all hover:opacity-90"
             >
-              Quiero empezar
+              Empezar con Pro
             </a>
+
+            <p className="mt-3 text-center text-[11px] text-white/30">
+              Sin contrato · cancelás cuando querés
+            </p>
           </div>
 
-          {/* Guarantee block */}
-          <div className="mt-4 rounded-3xl border border-neutral-100 bg-neutral-50 px-6 py-5">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-periwinkle" strokeWidth={1.75} />
-              <div>
-                <p className="text-[14px] font-bold text-neutral-900">
-                  Garantía Flikker: 20 reseñas nuevas en 30 días o no pagás el primer mes.
-                </p>
-                <p className="mt-2 text-[13px] leading-[1.65] text-neutral-500">
-                  Lo único que necesitamos de tu lado es que cargues a los pacientes que atendés
-                  — el sistema hace el resto.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-
       </div>
     </section>
   );
