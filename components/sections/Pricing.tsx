@@ -93,17 +93,17 @@ const PRO_FEATURES: Feature[] = [
 
 function FeatureList({ features }: { features: Feature[] }) {
   return (
-    <ul className="flex-1 space-y-4">
+    <ul className="flex-1 space-y-3.5">
       {features.map((f, i) => {
         const color = f.accent ?? "#9188f5";
         return (
           <li key={i} className="flex items-start gap-3">
             <div
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
               style={{ background: `${color}22` }}
             >
               <f.icon
-                className="h-4 w-4"
+                className="h-3.5 w-3.5"
                 style={{ color }}
                 strokeWidth={1.75}
                 aria-hidden="true"
@@ -145,52 +145,52 @@ export function Pricing() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+        {/* Cards — capped at 2xl so no se estiran demasiado */}
+        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
 
           {/* ── Base ── */}
           <div
-            className="flex flex-col rounded-3xl p-8"
+            className="flex flex-col rounded-2xl p-6"
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#07060f",
+              border: "1px solid rgba(255,255,255,0.09)",
             }}
           >
-            <span className="inline-flex w-fit items-center rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-white/70">
+            <span className="inline-flex w-fit items-center rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold text-white/65">
               Base
             </span>
 
-            <h3 className="font-display mt-4 text-[20px] font-black text-white">
+            <h3 className="font-display mt-3 text-[17px] font-black text-white">
               Flikker Base
             </h3>
 
-            <div className="mt-4">
+            <div className="mt-3">
               <div className="flex items-center gap-2">
-                <span className="text-[15px] font-semibold text-white/30 line-through">
+                <span className="text-[13px] font-semibold text-white/30 line-through">
                   ${fmt(BASE_REGULAR)}
                 </span>
                 <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-400">
                   Oferta lanzamiento
                 </span>
               </div>
-              <div className="mt-1 flex items-baseline gap-1.5">
-                <span className="font-display text-[52px] font-black leading-none tracking-tight text-white">
+              <div className="mt-0.5 flex items-baseline gap-1">
+                <span className="font-display text-[40px] font-black leading-none tracking-tight text-white">
                   ${fmt(BASE_PROMO)}
                 </span>
-                <span className="text-sm text-white/40">UYU / mes</span>
+                <span className="text-xs text-white/40">UYU / mes</span>
               </div>
             </div>
 
-            <p className="mt-3 text-[13px] leading-[1.6] text-white/50">
+            <p className="mt-2.5 text-[12px] leading-[1.6] text-white/50">
               Para negocios que quieren empezar a construir reputación y base
               de clientes sin complicaciones.
             </p>
 
-            <div className="my-6 h-px bg-white/8" />
+            <div className="my-4 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
 
             <FeatureList features={BASE_FEATURES} />
 
-            <p className="mt-5 text-[12px] font-medium text-periwinkle">
+            <p className="mt-4 text-[11px] font-medium text-periwinkle">
               Si usás más de 500 mensajes, te conviene el Pro.
             </p>
 
@@ -198,52 +198,52 @@ export function Pricing() {
               href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 flex w-full items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
+              className="mt-5 flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-white/10"
             >
               Empezar con Base
             </a>
 
-            <p className="mt-3 text-center text-[11px] text-white/30">
+            <p className="mt-2.5 text-center text-[11px] text-white/30">
               Sin contrato · cancelás cuando querés
             </p>
           </div>
 
           {/* ── Pro ── */}
           <div
-            className="flex flex-col rounded-3xl p-8 ring-2 ring-periwinkle"
-            style={{ background: "rgba(145,136,245,0.07)" }}
+            className="flex flex-col rounded-2xl p-6 ring-2 ring-periwinkle"
+            style={{ background: "#07060f" }}
           >
-            <span className="inline-flex w-fit items-center rounded-full bg-periwinkle/25 px-3 py-1 text-[11px] font-semibold text-periwinkle">
+            <span className="inline-flex w-fit items-center rounded-full bg-periwinkle/25 px-2.5 py-0.5 text-[11px] font-semibold text-periwinkle">
               Pro
             </span>
 
-            <h3 className="font-display mt-4 text-[20px] font-black text-white">
+            <h3 className="font-display mt-3 text-[17px] font-black text-white">
               Flikker Pro
             </h3>
 
-            <div className="mt-4">
+            <div className="mt-3">
               <div className="flex items-center gap-2">
-                <span className="text-[15px] font-semibold text-white/30 line-through">
+                <span className="text-[13px] font-semibold text-white/30 line-through">
                   ${fmt(PRO_REGULAR)}
                 </span>
                 <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-400">
                   Oferta lanzamiento
                 </span>
               </div>
-              <div className="mt-1 flex items-baseline gap-1.5">
-                <span className="font-display text-[52px] font-black leading-none tracking-tight text-white">
+              <div className="mt-0.5 flex items-baseline gap-1">
+                <span className="font-display text-[40px] font-black leading-none tracking-tight text-white">
                   ${fmt(PRO_PROMO)}
                 </span>
-                <span className="text-sm text-white/40">UYU / mes</span>
+                <span className="text-xs text-white/40">UYU / mes</span>
               </div>
             </div>
 
-            <p className="mt-3 text-[13px] leading-[1.6] text-white/50">
+            <p className="mt-2.5 text-[12px] leading-[1.6] text-white/50">
               Para negocios que quieren aprovechar su reputación al máximo y
               llegar a más clientes.
             </p>
 
-            <div className="my-6 h-px bg-white/8" />
+            <div className="my-4 h-px" style={{ background: "rgba(255,255,255,0.08)" }} />
 
             <FeatureList features={PRO_FEATURES} />
 
@@ -251,12 +251,12 @@ export function Pricing() {
               href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_pro)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 flex w-full items-center justify-center rounded-2xl bg-periwinkle px-6 py-3.5 text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(145,136,245,0.4)] transition-all hover:opacity-90"
+              className="mt-5 flex w-full items-center justify-center rounded-xl bg-periwinkle px-4 py-3 text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(145,136,245,0.4)] transition-all hover:opacity-90"
             >
               Empezar con Pro
             </a>
 
-            <p className="mt-3 text-center text-[11px] text-white/30">
+            <p className="mt-2.5 text-center text-[11px] text-white/30">
               Sin contrato · cancelás cuando querés
             </p>
           </div>
