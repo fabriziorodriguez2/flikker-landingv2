@@ -126,8 +126,7 @@ export function Pricing() {
   return (
     <section
       id="precios"
-      className="scroll-mt-20 px-6 py-24 md:px-8 md:py-32"
-      style={{ background: "#07060f" }}
+      className="scroll-mt-20 bg-white px-6 py-24 md:px-8 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
 
@@ -136,12 +135,12 @@ export function Pricing() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
             Precios
           </span>
-          <h2 className="font-display mt-4 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-white md:text-[48px]">
+          <h2 className="font-display mt-4 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[48px]">
             Una inversión que se paga
             <br />
             sola desde el primer mes.
           </h2>
-          <p className="mt-4 text-base text-white/45">
+          <p className="mt-4 text-base text-neutral-500">
             Dos planes. Todo incluido. Sin letra chica.
           </p>
         </div>
