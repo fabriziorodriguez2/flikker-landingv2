@@ -24,13 +24,14 @@ export function ClientCarousel() {
         Negocios que ya usan Flikker
       </p>
 
+      <div className="mx-auto max-w-3xl">
       <div
         className="relative overflow-hidden"
         style={{
           maskImage:
-            "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
         }}
       >
         <div className="animate-marquee flex w-max hover:[animation-play-state:paused]">
@@ -52,6 +53,7 @@ export function ClientCarousel() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
