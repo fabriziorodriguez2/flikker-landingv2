@@ -37,7 +37,7 @@ export function ClientCarousel() {
           {[...LOGOS, ...LOGOS].map((logo, i) => (
             <div
               key={i}
-              className="mx-10 flex shrink-0 items-center justify-center"
+              className="mx-3 flex shrink-0 items-center justify-center rounded-2xl border border-neutral-200 bg-white px-6 py-4 transition-shadow hover:shadow-md"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -45,7 +45,7 @@ export function ClientCarousel() {
                 alt={logo.alt}
                 width={88}
                 height={88}
-                className="h-[88px] w-[88px] select-none object-contain"
+                className="h-[88px] w-[88px] select-none object-contain grayscale transition-[filter] duration-300 hover:grayscale-0"
                 loading="lazy"
                 draggable={false}
               />
