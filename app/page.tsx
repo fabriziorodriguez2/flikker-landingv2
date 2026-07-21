@@ -12,6 +12,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Reactivation } from "@/components/sections/Reactivation";
 import { Comparison } from "@/components/sections/Comparison";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { ClientCarousel } from "@/components/sections/ClientCarousel";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { WHATSAPP_MESSAGES } from "@/lib/constants";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-1 flex-col">
         <Hero />
+        <ClientCarousel />
         <Problem />
         <Solution />
         <MidCTA />

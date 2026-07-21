@@ -323,7 +323,7 @@ export default function BlogPage() {
                 Un solo plan. Todo incluido.
               </h2>
               <p className="mt-2 text-base text-neutral-500">
-                Desde <span className="font-bold text-neutral-900">$2.900/mes</span> · Sin instalación · Sin letra chica.
+                Desde <span className="font-bold text-neutral-900">$1.000/mes</span> · Sin instalación · Sin letra chica.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Link
