@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Gift, Layers, MessageCircle } from "lucide-react";
+import { Gift, MessageCircle } from "lucide-react";
 
 const BENEFIT_TAGS = ["Café gratis", "Descuento", "2×1", "Regalo", "Personalizada"];
 
@@ -29,8 +29,8 @@ export function HowItWorks() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="mt-16 grid gap-5 lg:grid-cols-3">
+        {/* Cards — 2 pilares */}
+        <div className="mx-auto mt-16 grid max-w-[920px] gap-5 lg:grid-cols-2">
 
           {/* ── 1. Beneficios ── */}
           <div className="flex flex-col rounded-[24px] border border-[#eae5df] bg-[#f7f6f2] p-8">
@@ -60,7 +60,7 @@ export function HowItWorks() {
               <div className="w-[72%] overflow-hidden rounded-2xl">
                 <Image
                   src="/landing/reward-cappuccino.webp"
-                  alt="Recompensa: café gratis"
+                  alt="Taza de café como recompensa en programa de fidelización Flikker"
                   width={800}
                   height={500}
                   className="h-auto w-full object-cover"
@@ -69,42 +69,7 @@ export function HowItWorks() {
             </div>
           </div>
 
-          {/* ── 2. Sellos opcionales ── */}
-          <div className="relative flex flex-col rounded-[24px] border border-[#d8d4f5] bg-[#f2f0fb] p-8 shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
-            <span className="absolute right-5 top-5 rounded-full bg-amber-50 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.05em] text-amber-600/80">
-              Opcional
-            </span>
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#7767db]/10">
-              <Layers className="h-5 w-5 text-[#7767db]" strokeWidth={1.8} aria-hidden="true" />
-            </div>
-
-            <h3 className="mt-5 text-[22px] font-bold leading-[1.15] tracking-[-0.025em] text-[#17151d]">
-              ¿Querés usar sellos?
-            </h3>
-            <p className="mt-3 text-[15px] leading-[1.7] text-[#69636d]">
-              Cada visita puede acercarlos a una recompensa. Pero los sellos son
-              opcionales — no son un requisito para usar Flikker.
-            </p>
-
-            <div className="mt-auto flex justify-center pt-5">
-              <div className="relative w-full max-w-[320px]">
-                <Image
-                  src="/landing/stamps-la-stampa-7.png"
-                  alt="Tarjeta de sellos La Stampa con siete visitas registradas"
-                  width={826}
-                  height={493}
-                  sizes="260px"
-                  className="w-full rounded-xl shadow-[0_6px_24px_rgba(0,0,0,0.10)]"
-                />
-                <span className="absolute right-2 top-2 inline-flex min-w-12 items-center justify-center whitespace-nowrap rounded-lg bg-[#c56d1c] px-3 py-1.5 text-[12px] font-bold leading-none text-white">
-                  7/8
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* ── 3. Reactivación ── */}
+          {/* ── 2. Reactivación ── */}
           <div className="flex flex-col rounded-[24px] bg-[#0d0b1f] p-8 text-white">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
               <MessageCircle

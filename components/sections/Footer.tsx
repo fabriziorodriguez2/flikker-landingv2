@@ -85,7 +85,7 @@ export function Footer() {
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/company/flikker-uy"
+                href="https://www.linkedin.com/company/getflikker"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 text-sm text-white/65 transition-colors hover:text-white"
