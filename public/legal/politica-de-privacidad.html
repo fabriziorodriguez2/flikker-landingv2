@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es" data-doc="privacidad">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad · Flikker</title>
+<link rel="icon" href="/brand/flikker-isotype.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg:          #f8f7fa;
+    --surface:     #ffffff;
+    --border:      #e3e0ef;
+    --text:        #1c1828;
+    --text-muted:  #6a6278;
+    --accent:      #7767db;
+    --accent-soft: #f0eeff;
+    --warn-bg:     #fffbeb;
+    --warn-border: #fde68a;
+    --warn-text:   #78350f;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:          #0e0c1a;
+      --surface:     #16132a;
+      --border:      #2c2748;
+      --text:        #eae8f5;
+      --text-muted:  #9690b8;
+      --accent:      #9188f5;
+      --accent-soft: #1d1a36;
+      --warn-bg:     #2d1800;
+      --warn-border: #92400e;
+      --warn-text:   #fde68a;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:          #0e0c1a;
+    --surface:     #16132a;
+    --border:      #2c2748;
+    --text:        #eae8f5;
+    --text-muted:  #9690b8;
+    --accent:      #9188f5;
+    --accent-soft: #1d1a36;
+    --warn-bg:     #2d1800;
+    --warn-border: #92400e;
+    --warn-text:   #fde68a;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.78;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 44px;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 32px;
+  }
+
+  .brand-logo {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  .doc-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+
+  .doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ── Print button ── */
+  .print-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 28px 0 0;
+  }
+
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+
+  .print-btn:hover { background: var(--accent); color: #fff; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 36px 0 8px;
+  }
+
+  .toc-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: 18px;
+    list-style: decimal;
+  }
+
+  .toc li {
+    font-size: 14px;
+    margin: 5px 0;
+    color: var(--text-muted);
+  }
+
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* ── Content ── */
+  .content { padding-bottom: 20px; }
+
+  .section {
+    margin: 44px 0;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 14px;
+    padding-left: 14px;
+    border-left: 3px solid var(--accent);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 18px 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin: 0 0 14px;
+    color: var(--text);
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol.content-list {
+    margin: 8px 0 14px 20px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 7px;
+    color: var(--text);
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* Data table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 16px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .data-table th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  .data-table tr:first-child td { border-top: none; }
+
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  /* Warn callout */
+  .legal-note {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 44px 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--warn-text);
+  }
+
+  .legal-note strong {
+    color: var(--warn-text);
+    font-weight: 700;
+  }
+
+  /* Rights grid */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+
+  .right-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .right-card strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .right-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 44px 0;
+  }
+
+  /* Footer */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #000; font-size: 10.5pt; }
+    .print-actions { display: none !important; }
+    h1 { font-size: 26pt; }
+    h2 { font-size: 12pt; }
+    .page { padding: 0; }
+    .toc { border: 1px solid #ccc; background: #fafafa; }
+    .data-table th { background: #f0eeff; color: #5a4fa8; }
+    .data-table td, .data-table th { border: 1px solid #ddd; }
+    a { color: #000; text-decoration: none; }
+    .legal-note { background: #fffbeb; border: 1px solid #d97706; color: #78350f; }
+    .rights-grid { grid-template-columns: 1fr; }
+    .section { margin: 24px 0; }
+    .doc-footer { padding-bottom: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 0 20px; }
+    .rights-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="doc-header">
+    <div class="brand-row">
+      <img src="/brand/flikker-isotype.svg" alt="Flikker" class="brand-logo">
+      <span class="brand-name">Flikker</span>
+    </div>
+    <div class="doc-label">Documento legal</div>
+    <h1>Política de Privacidad</h1>
+    <div class="doc-meta">
+      <span>Versión 2.0</span>
+      <span>Última actualización: 27 de agosto de 2026</span>
+      <span>Aplicable a: flikker.uy · app.flikker.uy</span>
+    </div>
+    <div class="print-actions">
+      <button class="print-btn" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Guardar como PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Índice">
+    <p class="toc-title">Índice de contenido</p>
+    <ol>
+      <li><a href="#sec1">Quiénes somos</a></li>
+      <li><a href="#sec2">Dos roles: Responsable y Encargado del tratamiento</a></li>
+      <li><a href="#sec3">Qué información tratamos</a></li>
+      <li><a href="#sec4">Finalidad y base legal del tratamiento</a></li>
+      <li><a href="#sec5">Comunicaciones por WhatsApp</a></li>
+      <li><a href="#sec6">Integración con Google Business y reseñas</a></li>
+      <li><a href="#sec7">Proveedores y subprocesadores</a></li>
+      <li><a href="#sec8">Transferencias internacionales de datos</a></li>
+      <li><a href="#sec9">Cookies y analítica web</a></li>
+      <li><a href="#sec10">Plazos de conservación de datos</a></li>
+      <li><a href="#sec11">Seguridad de los datos</a></li>
+      <li><a href="#sec12">Derechos de los titulares</a></li>
+      <li><a href="#sec13">Cómo solicitar la baja o eliminación de datos</a></li>
+      <li><a href="#sec14">Qué ocurre cuando un negocio deja Flikker</a></li>
+      <li><a href="#sec15">No venta ni cesión de datos personales</a></li>
+      <li><a href="#sec16">Cambios a esta Política</a></li>
+      <li><a href="#sec17">Contacto y autoridad de control</a></li>
+    </ol>
+  </nav>
+
+  <!-- Content -->
+  <main class="content">
+
+    <div class="section" id="sec1">
+      <h2>1. Quiénes somos</h2>
+      <p>Flikker es un sistema de retención de clientes para negocios físicos, operado en la República Oriental del Uruguay. A través de su plataforma (<strong>flikker.uy</strong> y <strong>app.flikker.uy</strong>), Flikker ofrece a los negocios herramientas de check-in por QR/NFC, programas de sellos y recompensas, recolección de feedback, reactivación automática por WhatsApp y facilitación de reseñas en Google.</p>
+      <p>La presente Política de Privacidad describe cómo Flikker recoge, utiliza, almacena y protege los datos personales de quienes interactúan con el Servicio, tanto los negocios que contratan el Servicio (en adelante <strong>"Clientes"</strong>) como las personas que visitan esos negocios y utilizan el sistema de check-in (en adelante <strong>"Clientes finales"</strong>).</p>
+      <p>Esta Política se encuadra en la <strong>Ley N° 18.331 de Protección de Datos Personales</strong> de la República Oriental del Uruguay y su decreto reglamentario.</p>
+    </div>
+
+    <div class="section" id="sec2">
+      <h2>2. Dos roles: Responsable y Encargado del tratamiento</h2>
+      <p>El marco regulatorio de protección de datos distingue entre el <strong>Responsable del tratamiento</strong> (quien define los fines y medios del tratamiento) y el <strong>Encargado del tratamiento</strong> (quien trata datos por cuenta de aquel). Flikker puede actuar en ambos roles según el tipo de datos de que se trate:</p>
+      <ul>
+        <li><strong>Datos de Clientes (negocios):</strong> Flikker actúa como <strong>Responsable</strong>. Flikker recoge y trata los datos del negocio, su representante y sus datos de uso de la plataforma para prestar el Servicio, facturar y mejorar el producto.</li>
+        <li><strong>Datos de Clientes finales:</strong> Flikker actúa como <strong>Encargado</strong> del tratamiento por instrucción del negocio Cliente, quien es el Responsable frente a sus propios clientes. Flikker trata esos datos exclusivamente para prestar las funcionalidades contratadas por el negocio (check-in, sellos, feedback, reactivación, etc.).</li>
+      </ul>
+      <p>Esta distinción tiene consecuencias prácticas: si un Cliente final desea ejercer sus derechos respecto a los datos que un negocio específico registró de él, debe dirigirse en primer lugar a ese negocio. Flikker colaborará con el negocio en la atención de esas solicitudes.</p>
+    </div>
+
+    <div class="section" id="sec3">
+      <h2>3. Qué información tratamos</h2>
+      <h3>A. Datos de negocios Clientes</h3>
+      <ul>
+        <li>Nombre del negocio y del representante o contacto principal.</li>
+        <li>Dirección de correo electrónico y número de teléfono de contacto.</li>
+        <li>Información del plan contratado e historial de facturación.</li>
+        <li>Configuración del programa de beneficios (tipo de recompensa, número de sellos requeridos).</li>
+        <li>Comunicaciones mantenidas con el equipo de Flikker.</li>
+        <li>Métricas de uso del panel de gestión (visitas registradas, tasas de retención, canjes, etc.), tratadas de forma agregada.</li>
+      </ul>
+
+      <h3>B. Datos de Clientes finales (tratados por instrucción del negocio)</h3>
+      <ul>
+        <li><strong>Nombre:</strong> registrado en la primera visita al local.</li>
+        <li><strong>Número de teléfono:</strong> para el reconocimiento del cliente, el envío de comunicaciones por WhatsApp y la gestión del programa de beneficios.</li>
+        <li><strong>Fecha de nacimiento</strong> (opcional): si el negocio Cliente habilita esta funcionalidad, puede ser utilizada para enviar mensajes de reconocimiento o promociones de cumpleaños.</li>
+        <li><strong>Historial de visitas:</strong> fechas, frecuencia y número total de visitas registradas en ese negocio.</li>
+        <li><strong>Progreso en el programa de sellos:</strong> número de sellos acumulados hacia la próxima recompensa.</li>
+        <li><strong>Historial de recompensas desbloqueadas y canjeadas.</strong></li>
+        <li><strong>Feedback y valoración post-visita</strong> (cuando el Cliente final lo completa voluntariamente).</li>
+        <li><strong>Preferencias de comunicación:</strong> si el Cliente final ha solicitado no recibir mensajes de reactivación (opt-out de WhatsApp).</li>
+        <li><strong>Estado de derivación a Google:</strong> si el Cliente final fue invitado a dejar una reseña en Google y si optó por hacerlo (no se almacena el contenido de la reseña).</li>
+      </ul>
+
+      <p>Flikker <strong>no recoge</strong> datos especialmente protegidos (datos de salud, creencias religiosas, orientación sexual, datos biométricos o geneticos) en ninguna instancia del funcionamiento normal del Servicio.</p>
+    </div>
+
+    <div class="section" id="sec4">
+      <h2>4. Finalidad y base legal del tratamiento</h2>
+      <div class="table-wrap">
+        <table class="data-table" aria-label="Finalidades del tratamiento de datos">
+          <thead>
+            <tr>
+              <th>Finalidad</th>
+              <th>Datos involucrados</th>
+              <th>Base legal (Ley 18.331)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prestar el Servicio contratado por el negocio Cliente</td>
+              <td>Datos del Cliente y de Clientes finales</td>
+              <td>Ejecución del contrato</td>
+            </tr>
+            <tr>
+              <td>Facturación y gestión del plan</td>
+              <td>Datos del Cliente</td>
+              <td>Ejecución del contrato / obligación legal</td>
+            </tr>
+            <tr>
+              <td>Envío de comunicaciones por WhatsApp a Clientes finales (reactivación, cumpleaños, beneficios)</td>
+              <td>Nombre, teléfono de Clientes finales</td>
+              <td>Instrucción del negocio Responsable (consentimiento recabado por el negocio)</td>
+            </tr>
+            <tr>
+              <td>Responder consultas y brindar soporte técnico</td>
+              <td>Datos de contacto del Cliente</td>
+              <td>Interés legítimo / ejecución del contrato</td>
+            </tr>
+            <tr>
+              <td>Mejorar el Servicio y desarrollar nuevas funcionalidades</td>
+              <td>Datos de uso agregados y anonimizados</td>
+              <td>Interés legítimo</td>
+            </tr>
+            <tr>
+              <td>Analítica del sitio web flikker.uy</td>
+              <td>Datos de navegación agregados (sin identificación personal)</td>
+              <td>Interés legítimo (herramienta orientada a la privacidad)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" id="sec5">
+      <h2>5. Comunicaciones por WhatsApp</h2>
+      <p>El Servicio utiliza WhatsApp como canal para que los negocios clientes se comuniquen con sus Clientes finales (mensajes de reactivación, recordatorios de beneficios, mensajes de cumpleaños). Flikker envía estos mensajes <strong>por instrucción del negocio Cliente</strong>, que es el Responsable del tratamiento frente al Cliente final.</p>
+      <p>Cada negocio Cliente declara al suscribirse al Servicio que cuenta con la base legal necesaria para comunicarse con sus Clientes finales por WhatsApp, ya sea por consentimiento expreso o por otra base habilitante reconocida por la Ley N° 18.331.</p>
+      <p><strong>Derecho de opt-out:</strong> todos los mensajes de reactivación automática incluyen una opción de baja clara y visible. Cuando el Cliente final solicita no volver a ser contactado, esa preferencia es registrada en el sistema y respetada en comunicaciones posteriores. El opt-out puede solicitarse respondiendo directamente al mensaje de WhatsApp o contactando al negocio en cuestión.</p>
+      <p>Flikker no utiliza los números de teléfono de los Clientes finales para sus propias comunicaciones comerciales, ni los comparte con terceros con fines publicitarios.</p>
+    </div>
+
+    <div class="section" id="sec6">
+      <h2>6. Integración con Google Business y reseñas</h2>
+      <p>El Servicio (disponible en el Plan Pro) puede, después de una visita, invitar al Cliente final a compartir su experiencia en Google. Esta funcionalidad opera de la siguiente manera:</p>
+      <ul>
+        <li>Tras completar el feedback post-visita, el Cliente final puede optar, de forma completamente voluntaria, por dejar también una reseña en Google.</li>
+        <li>Si acepta, su navegador es redirigido al perfil de Google Business del negocio, donde puede publicar la reseña directamente en la plataforma de Google.</li>
+        <li>Flikker registra únicamente si el Cliente final fue invitado y si optó por continuar al perfil de Google; <strong>no almacena el contenido de la reseña</strong>.</li>
+        <li>Una vez en la plataforma de Google, el tratamiento de datos está regido por la Política de Privacidad de Google.</li>
+      </ul>
+      <p>Flikker no tiene ninguna capacidad para modificar, eliminar ni condicionar las reseñas publicadas en Google, y no se responsabiliza por las decisiones de moderación que Google adopte.</p>
+    </div>
+
+    <div class="section" id="sec7">
+      <h2>7. Proveedores y subprocesadores</h2>
+      <p>Para prestar el Servicio, Flikker puede apoyarse en proveedores externos que tratan datos por su cuenta. Todos están sujetos a obligaciones de confidencialidad y se seleccionan con criterios de idoneidad en materia de protección de datos. Las categorías de proveedores son:</p>
+      <ul>
+        <li><strong>Infraestructura y alojamiento:</strong> servicios de computación en la nube que alojan la base de datos y la aplicación.</li>
+        <li><strong>Mensajería (WhatsApp API):</strong> proveedor habilitado por Meta para el envío programático de mensajes de WhatsApp.</li>
+        <li><strong>Analítica web:</strong> <a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a>, una herramienta de analítica orientada a la privacidad que no utiliza cookies de seguimiento, no recoge datos personales identificables y agrega toda la información antes de procesarla.</li>
+        <li><strong>Procesamiento de pagos:</strong> si aplica, procesadores de pago que gestionan la facturación del Plan Pro.</li>
+      </ul>
+      <p>La lista de subprocesadores puede actualizarse. Ante cambios significativos, Flikker notificará a los negocios clientes con antelación razonable.</p>
+    </div>
+
+    <div class="section" id="sec8">
+      <h2>8. Transferencias internacionales de datos</h2>
+      <p>Algunos de los proveedores de Flikker pueden estar radicados fuera de la República Oriental del Uruguay. En esos casos, Flikker toma medidas razonables para asegurar que el tratamiento de datos se realice con un nivel de protección adecuado, conforme al artículo 23 de la Ley N° 18.331 y las directrices de la URCDP sobre transferencias internacionales.</p>
+      <p>Los datos no son transferidos a países que no ofrezcan un nivel de protección adecuado sin que medien garantías contractuales u otras salvaguardas reconocidas.</p>
+    </div>
+
+    <div class="section" id="sec9">
+      <h2>9. Cookies y analítica web</h2>
+      <p>El sitio web <strong>flikker.uy</strong> utiliza <strong>Plausible Analytics</strong> para entender cómo los visitantes interactúan con el sitio. Plausible no utiliza cookies de seguimiento, no almacena datos personales identificables y no comparte información con terceros con fines publicitarios. Solo produce estadísticas agregadas sobre el uso del sitio.</p>
+      <p>La aplicación <strong>app.flikker.uy</strong> puede utilizar cookies o almacenamiento local del navegador con fines exclusivamente funcionales (gestión de sesión de usuario autenticado, preferencias de idioma, etc.). Estas cookies son estrictamente necesarias para el funcionamiento del servicio y no requieren consentimiento separado bajo la normativa vigente.</p>
+      <p>Flikker <strong>no utiliza cookies de seguimiento publicitario</strong> ni comparte datos de comportamiento del usuario con plataformas de publicidad de terceros.</p>
+    </div>
+
+    <div class="section" id="sec10">
+      <h2>10. Plazos de conservación de datos</h2>
+      <ul>
+        <li><strong>Datos de negocios Clientes:</strong> se conservan durante la vigencia del contrato y durante el período adicional exigido por obligaciones legales (impositivas, contables, etc.).</li>
+        <li><strong>Datos de Clientes finales:</strong> se conservan durante el tiempo en que el negocio Cliente tiene cuenta activa en Flikker. Tras la cancelación de la cuenta, Flikker elimina o anonimiza los datos de Clientes finales en un plazo razonable, salvo que el negocio solicite exportación previa.</li>
+        <li><strong>Registros de opt-out (baja de WhatsApp):</strong> se conservan incluso después de la eliminación del resto de datos, para garantizar que no se restablezca el contacto con personas que lo han rechazado.</li>
+        <li><strong>Registros técnicos y de seguridad:</strong> se conservan por el período necesario para la detección y prevención de fraudes y vulneraciones de seguridad.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="sec11">
+      <h2>11. Seguridad de los datos</h2>
+      <p>Flikker implementa medidas técnicas y organizativas razonables para proteger los datos personales frente a accesos no autorizados, pérdida, alteración o divulgación indebida. Entre las medidas adoptadas se incluyen:</p>
+      <ul>
+        <li>Cifrado de las comunicaciones en tránsito mediante HTTPS.</li>
+        <li>Controles de acceso basados en el principio de mínimo privilegio.</li>
+        <li>Separación lógica de datos entre distintos negocios Clientes.</li>
+        <li>Monitorización de accesos y eventos de seguridad.</li>
+      </ul>
+      <p>Sin perjuicio de lo anterior, ningún sistema de seguridad es infalible. En caso de una brecha de seguridad que afecte a datos personales, Flikker actuará conforme a los procedimientos establecidos por la Ley N° 18.331 y notificará a los afectados y a la URCDP cuando corresponda.</p>
+    </div>
+
+    <div class="section" id="sec12">
+      <h2>12. Derechos de los titulares</h2>
+      <p>La Ley N° 18.331 reconoce a toda persona los siguientes derechos sobre sus datos personales:</p>
+      <div class="rights-grid">
+        <div class="right-card">
+          <strong>Acceso</strong>
+          <p>Conocer qué datos personales tuyos son tratados y cómo.</p>
+        </div>
+        <div class="right-card">
+          <strong>Rectificación</strong>
+          <p>Solicitar la corrección de datos inexactos o desactualizados.</p>
+        </div>
+        <div class="right-card">
+          <strong>Eliminación</strong>
+          <p>Pedir la supresión de tus datos cuando ya no sean necesarios o cuando retires el consentimiento.</p>
+        </div>
+        <div class="right-card">
+          <strong>Oposición</strong>
+          <p>Oponerte al tratamiento de tus datos para determinadas finalidades.</p>
+        </div>
+      </div>
+      <p><strong>Si sos un negocio Cliente de Flikker,</strong> ejercé tus derechos escribiendo directamente a los contactos indicados en la Sección 17.</p>
+      <p><strong>Si sos Cliente final de un negocio que usa Flikker,</strong> dirigite en primer lugar al negocio que registró tus datos. Flikker, en su calidad de Encargado, colaborará con la atención de tu solicitud cuando el negocio así lo requiera. También podés escribirnos directamente y te orientaremos.</p>
+    </div>
+
+    <div class="section" id="sec13">
+      <h2>13. Cómo solicitar la baja o eliminación de datos</h2>
+      <p>Para dejar de recibir mensajes de WhatsApp de un negocio que usa Flikker:</p>
+      <ul>
+        <li>Respondé al mensaje con la palabra <strong>"STOP"</strong>, <strong>"BAJA"</strong> o cualquier expresión equivalente que indique que no querés seguir siendo contactado.</li>
+        <li>Contactate directamente con el negocio en cuestión.</li>
+        <li>Escribinos a los datos de la Sección 17 indicando el nombre del negocio y tu número de teléfono.</li>
+      </ul>
+      <p>Para solicitar la eliminación de todos tus datos del sistema, escribí a los contactos de la Sección 17. Procesaremos tu solicitud en un plazo razonable. Algunos datos pueden conservarse más tiempo por obligaciones legales o para honrar recompensas ya desbloqueadas.</p>
+      <p>Para negocios Clientes que desean cancelar el Servicio y eliminar sus datos, las instrucciones están en los Términos y Condiciones (Sección 12 y 14).</p>
+    </div>
+
+    <div class="section" id="sec14">
+      <h2>14. Qué ocurre cuando un negocio deja Flikker</h2>
+      <p>Cuando un negocio cancela su cuenta en Flikker:</p>
+      <ul>
+        <li>Los datos de los Clientes finales (nombre, teléfono, historial de visitas, sellos, feedback, etc.) son <strong>eliminados o anonimizados</strong> en un plazo razonable tras la cancelación efectiva.</li>
+        <li>El negocio puede solicitar la exportación de sus datos antes de la cancelación, para mantener su propia base de información.</li>
+        <li>Flikker <strong>no conserva ni reutiliza</strong> los datos de los Clientes finales del negocio para sus propios fines comerciales una vez cancelada la cuenta.</li>
+        <li>Los registros de opt-out (personas que solicitaron no ser contactadas) se conservan para evitar el restablecimiento involuntario del contacto, incluso si los datos del negocio son eliminados.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="sec15">
+      <h2>15. No venta ni cesión de datos personales</h2>
+      <p>Flikker <strong>no vende, no alquila ni cede</strong> datos personales de sus Clientes ni de los Clientes finales a terceros con fines comerciales, publicitarios o de cualquier otra naturaleza ajena a la prestación del Servicio.</p>
+      <p>Los datos son tratados exclusivamente dentro del marco de lo necesario para prestar el Servicio contratado, conforme a lo descrito en esta Política.</p>
+    </div>
+
+    <div class="section" id="sec16">
+      <h2>16. Cambios a esta Política</h2>
+      <p>Flikker puede actualizar esta Política de Privacidad. Los cambios que afecten materialmente los derechos de los titulares o la forma en que se tratan los datos serán comunicados a los Clientes con antelación razonable (por correo electrónico, WhatsApp o notificación en el panel).</p>
+      <p>La versión vigente siempre estará disponible en <strong>flikker.uy/legal/politica-de-privacidad.html</strong>. El uso continuado del Servicio tras la notificación de cambios implica la aceptación de la Política actualizada.</p>
+    </div>
+
+    <div class="section" id="sec17">
+      <h2>17. Contacto y autoridad de control</h2>
+      <p>Para cualquier consulta, solicitud de ejercicio de derechos o reclamo relacionado con el tratamiento de datos personales:</p>
+      <ul>
+        <li><strong>Email:</strong> fabrizio.rodriguez7274@gmail.com</li>
+        <li><strong>WhatsApp:</strong> +598 91 624 988</li>
+        <li><strong>Sitio web:</strong> flikker.uy</li>
+      </ul>
+      <p>Si considerás que el tratamiento de tus datos no cumple con la normativa vigente y no recibís respuesta satisfactoria, podés presentar una reclamación ante la autoridad de control competente en Uruguay:</p>
+      <div class="highlight-box">
+        <strong>Unidad Reguladora y de Control de Datos Personales (URCDP)</strong><br>
+        Uruguay · <a href="https://www.gub.uy/unidad-reguladora-control-datos-personales" target="_blank" rel="noopener noreferrer">www.gub.uy/urcdp</a>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="legal-note">
+      <strong>⚠ Aviso importante</strong><br>
+      Este documento es un borrador elaborado para revisión profesional. Antes de su publicación definitiva, se recomienda la revisión por un abogado especializado en protección de datos personales en Uruguay. Algunas disposiciones pueden requerir adaptación según la estructura jurídica específica de Flikker, la inscripción de las bases de datos ante la URCDP, los acuerdos concretos con los proveedores de mensajería (API de WhatsApp) e infraestructura, y la dirección física de la empresa.
+    </div>
+
+  </main>
+
+  <footer class="doc-footer">
+    <span>© 2026 Flikker · flikker.uy</span>
+    <span>Versión 2.0 · 27/08/2026</span>
+  </footer>
+
+</div>
+</body>
+</html>

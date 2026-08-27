@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es" data-doc="terminos">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Condiciones · Flikker</title>
+<link rel="icon" href="/brand/flikker-isotype.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg:          #f8f7fa;
+    --surface:     #ffffff;
+    --border:      #e3e0ef;
+    --text:        #1c1828;
+    --text-muted:  #6a6278;
+    --accent:      #7767db;
+    --accent-soft: #f0eeff;
+    --warn-bg:     #fffbeb;
+    --warn-border: #fde68a;
+    --warn-text:   #78350f;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:          #0e0c1a;
+      --surface:     #16132a;
+      --border:      #2c2748;
+      --text:        #eae8f5;
+      --text-muted:  #9690b8;
+      --accent:      #9188f5;
+      --accent-soft: #1d1a36;
+      --warn-bg:     #2d1800;
+      --warn-border: #92400e;
+      --warn-text:   #fde68a;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:          #0e0c1a;
+    --surface:     #16132a;
+    --border:      #2c2748;
+    --text:        #eae8f5;
+    --text-muted:  #9690b8;
+    --accent:      #9188f5;
+    --accent-soft: #1d1a36;
+    --warn-bg:     #2d1800;
+    --warn-border: #92400e;
+    --warn-text:   #fde68a;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.78;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 44px;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 32px;
+  }
+
+  .brand-logo {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  .doc-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+
+  .doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .doc-meta span::before { content: ''; }
+
+  /* ── Print button ── */
+  .print-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 28px 0 0;
+  }
+
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+
+  .print-btn:hover { background: var(--accent); color: #fff; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 36px 0 8px;
+  }
+
+  .toc-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: 18px;
+    list-style: decimal;
+  }
+
+  .toc li {
+    font-size: 14px;
+    margin: 5px 0;
+    color: var(--text-muted);
+  }
+
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* ── Content ── */
+  .content { padding-bottom: 20px; }
+
+  .section {
+    margin: 44px 0;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-family: 'Lora', Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 14px;
+    padding-left: 14px;
+    border-left: 3px solid var(--accent);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0 0 14px;
+    color: var(--text);
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol.content-list {
+    margin: 8px 0 14px 20px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 7px;
+    color: var(--text);
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .highlight-box {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  /* ── Warn callout ── */
+  .legal-note {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 44px 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--warn-text);
+  }
+
+  .legal-note strong {
+    color: var(--warn-text);
+    font-weight: 700;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 44px 0;
+  }
+
+  /* ── Footer ── */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; color: #000; font-size: 10.5pt; }
+    .print-actions { display: none !important; }
+    h1 { font-size: 26pt; }
+    h2 { font-size: 12pt; }
+    .page { padding: 0; }
+    .toc { border: 1px solid #ccc; background: #fafafa; }
+    a { color: #000; text-decoration: none; }
+    .legal-note { background: #fffbeb; border: 1px solid #d97706; color: #78350f; }
+    .section { margin: 24px 0; }
+    .doc-footer { padding-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="doc-header">
+    <div class="brand-row">
+      <img src="/brand/flikker-isotype.svg" alt="Flikker" class="brand-logo">
+      <span class="brand-name">Flikker</span>
+    </div>
+    <div class="doc-label">Documento legal</div>
+    <h1>Términos y Condiciones</h1>
+    <div class="doc-meta">
+      <span>Versión 2.0</span>
+      <span>Última actualización: 27 de agosto de 2026</span>
+      <span>Aplicable a: flikker.uy · app.flikker.uy</span>
+    </div>
+    <div class="print-actions">
+      <button class="print-btn" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Guardar como PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Índice">
+    <p class="toc-title">Índice de contenido</p>
+    <ol>
+      <li><a href="#sec1">Qué es Flikker y cómo funciona</a></li>
+      <li><a href="#sec2">Definiciones</a></li>
+      <li><a href="#sec3">Creación y gestión de cuentas</a></li>
+      <li><a href="#sec4">Responsabilidades del negocio cliente</a></li>
+      <li><a href="#sec5">Mecanismo de check-in: QR y NFC</a></li>
+      <li><a href="#sec6">Sellos y recompensas</a></li>
+      <li><a href="#sec7">Feedback post-visita</a></li>
+      <li><a href="#sec8">Reactivación automática por WhatsApp</a></li>
+      <li><a href="#sec9">Integración con Google y reseñas</a></li>
+      <li><a href="#sec10">Plan Base y Plan Pro</a></li>
+      <li><a href="#sec11">Precios, facturación y renovación</a></li>
+      <li><a href="#sec12">Cancelación</a></li>
+      <li><a href="#sec13">Beneficios y recompensas ya emitidos</a></li>
+      <li><a href="#sec14">Disponibilidad del servicio</a></li>
+      <li><a href="#sec15">Propiedad intelectual</a></li>
+      <li><a href="#sec16">Usos aceptables y prohibidos</a></li>
+      <li><a href="#sec17">Suspensión y cancelación de cuenta</a></li>
+      <li><a href="#sec18">Servicios y plataformas de terceros</a></li>
+      <li><a href="#sec19">Limitación de responsabilidad</a></li>
+      <li><a href="#sec20">Modificaciones del Servicio y de estos Términos</a></li>
+      <li><a href="#sec21">Ley aplicable y jurisdicción</a></li>
+      <li><a href="#sec22">Contacto</a></li>
+    </ol>
+  </nav>
+
+  <!-- Content -->
+  <main class="content">
+
+    <div class="section" id="sec1">
+      <h2>1. Qué es Flikker y cómo funciona</h2>
+      <p>Flikker es un sistema de retención de clientes para negocios físicos. El Servicio permite a los negocios registrar las visitas de sus clientes, gestionar un programa de beneficios y recompensas, recoger feedback post-visita, facilitar —de forma opcional— la publicación de reseñas en Google, y reactivar automáticamente por WhatsApp a quienes dejan de visitar el local.</p>
+      <p>El funcionamiento central del Servicio es el siguiente: el negocio instala un código QR o un punto NFC en su local. El cliente final lo escanea o acerca su teléfono cuando visita el negocio; en la primera visita deja su nombre y número de teléfono (y, opcionalmente, su fecha de nacimiento). A partir de entonces, Flikker reconoce al cliente en sucesivas visitas desde ese dispositivo, sin necesidad de que descargue ninguna aplicación.</p>
+      <p>Flikker opera inicialmente en la República Oriental del Uruguay y presta el Servicio en español.</p>
+    </div>
+
+    <div class="section" id="sec2">
+      <h2>2. Definiciones</h2>
+      <p>A los efectos de estos Términos se entiende por:</p>
+      <ul>
+        <li><strong>Flikker:</strong> la empresa propietaria y operadora del Servicio.</li>
+        <li><strong>Servicio:</strong> la plataforma Flikker en su totalidad, incluyendo el sistema de check-in, el programa de beneficios, el panel de gestión, las comunicaciones automáticas y las integraciones con terceros.</li>
+        <li><strong>Cliente:</strong> la persona física mayor de 18 años o persona jurídica que contrata el Servicio para su negocio.</li>
+        <li><strong>Cliente final:</strong> la persona que visita el local del Cliente y utiliza el sistema de check-in de Flikker.</li>
+        <li><strong>Check-in:</strong> el escaneo del código QR o la interacción con el punto NFC que registra una visita del Cliente final.</li>
+        <li><strong>Sello:</strong> unidad de progreso dentro del programa de beneficios, de uso opcional.</li>
+        <li><strong>Recompensa:</strong> el beneficio que el Cliente define y ofrece a sus Clientes finales al alcanzar el umbral de sellos establecido.</li>
+        <li><strong>Canje:</strong> la confirmación y entrega efectiva de la Recompensa al Cliente final.</li>
+        <li><strong>Feedback:</strong> la valoración o comentario que el Cliente final puede dejar después de una visita.</li>
+        <li><strong>Reactivación:</strong> el mensaje automático de WhatsApp enviado a un Cliente final que ha dejado de visitar el local durante un período determinado.</li>
+        <li><strong>Términos:</strong> el presente documento, incluyendo todos sus anexos y políticas incorporadas por referencia.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="sec3">
+      <h2>3. Creación y gestión de cuentas</h2>
+      <p>Para utilizar el Servicio, el Cliente debe ser una persona física mayor de 18 años o una persona jurídica con un negocio legalmente constituido. El Cliente garantiza que los datos proporcionados al momento del alta son verídicos y se compromete a mantenerlos actualizados.</p>
+      <p>El Cliente es responsable de la confidencialidad de sus credenciales de acceso y de todas las acciones realizadas a través de su cuenta. Ante cualquier acceso no autorizado, debe notificar a Flikker de inmediato a través de los canales de contacto indicados en la Sección 22.</p>
+      <p>La configuración inicial del Servicio se realiza de forma asistida por el equipo de Flikker. El tiempo estimado de puesta en marcha es de entre 24 y 48 horas hábiles desde la confirmación de los datos necesarios por parte del Cliente.</p>
+    </div>
+
+    <div class="section" id="sec4">
+      <h2>4. Responsabilidades del negocio cliente</h2>
+      <p>El Cliente se obliga a utilizar el Servicio conforme a la legislación uruguaya vigente, en particular la <strong>Ley N° 18.331 de Protección de Datos Personales</strong> y su decreto reglamentario.</p>
+      <p>El Cliente declara y garantiza que:</p>
+      <ul>
+        <li>Cuenta con base legítima para comunicarse con sus Clientes finales por WhatsApp —ya sea consentimiento u otra base habilitante bajo la Ley N° 18.331— y que los ha informado adecuadamente sobre el tratamiento de sus datos.</li>
+        <li>Los datos de Clientes finales incorporados al Servicio corresponden exclusivamente a personas con quienes mantiene una relación comercial real (clientes, pacientes o usuarios que efectivamente visitaron o contrataron sus servicios).</li>
+        <li>No incorporará al Servicio datos sensibles —especialmente datos clínicos o de salud— más allá de los datos de contacto estrictamente necesarios para el funcionamiento del sistema.</li>
+        <li>Cuando corresponda, inscribirá su base de datos ante la <strong>Unidad Reguladora y de Control de Datos Personales (URCDP)</strong>.</li>
+        <li>Definirá las Recompensas de forma honesta, las hará efectivas una vez desbloqueadas por el Cliente final, y no modificará retroactivamente las condiciones ya vigentes de un programa activo sin notificación previa.</li>
+      </ul>
+      <p>El incumplimiento de estas obligaciones habilita a Flikker a suspender o cancelar el Servicio conforme a lo dispuesto en la Sección 17.</p>
+    </div>
+
+    <div class="section" id="sec5">
+      <h2>5. Mecanismo de check-in: QR y NFC</h2>
+      <p>El check-in se realiza exclusivamente a través del navegador web del dispositivo del Cliente final, sin necesidad de descargar ninguna aplicación. En la primera visita, el Cliente final registra su nombre y número de teléfono; la fecha de nacimiento es opcional. A partir de la segunda visita, el sistema reconoce al cliente desde el mismo dispositivo y el proceso toma segundos.</p>
+      <p>Flikker implementa controles técnicos para evitar que múltiples escaneos consecutivos en un período corto generen visitas o sellos adicionales de forma artificiosa. El umbral de tiempo entre registros válidos puede ser configurado en acuerdo con el Cliente durante el onboarding.</p>
+      <p>El Cliente es responsable de mantener el material QR/NFC en buen estado y en un lugar visible del local. La pérdida, daño o uso indebido del material por parte de terceros es responsabilidad del Cliente.</p>
+    </div>
+
+    <div class="section" id="sec6">
+      <h2>6. Sellos y recompensas</h2>
+      <p>El programa de sellos es una funcionalidad <strong>opcional</strong>: el Cliente puede activarlo o no independientemente de las demás funcionalidades del Servicio. Cuando está activo, el Cliente define el tipo de Recompensa y la cantidad de visitas necesarias para alcanzarla.</p>
+      <p>Las Recompensas pueden ser de cualquier tipo que el Cliente considere apropiado para su negocio (productos, descuentos, servicios, experiencias, etc.), con la única limitación de que no deben ser ilegales ni contrarias a las políticas de las plataformas integradas.</p>
+      <p>El Canje se realiza a través de un código QR que el Cliente final presenta al empleado del negocio. El empleado lo escanea con la cámara de su teléfono y confirma la entrega de la Recompensa. Una vez canjeada, la Recompensa se marca como utilizada en el sistema y no puede ser recuperada.</p>
+      <p>Flikker no tiene responsabilidad sobre la disponibilidad, calidad ni entrega efectiva de las Recompensas: esa obligación recae exclusivamente sobre el Cliente.</p>
+    </div>
+
+    <div class="section" id="sec7">
+      <h2>7. Feedback post-visita</h2>
+      <p>Después de un check-in, el Servicio puede invitar al Cliente final a compartir su experiencia con el negocio a través de un formulario de feedback. Esta funcionalidad es opcional para el Cliente final y no condiciona el registro de la visita ni el progreso en el programa de sellos.</p>
+      <p>Si el negocio tiene activado el incentivo de sello por feedback, el Cliente final puede recibir un sello adicional por completar la valoración. Este sello se otorga por el acto de compartir la experiencia, con independencia del contenido o puntuación del feedback.</p>
+      <p>El feedback recibido está disponible para el Cliente en su panel de gestión y no es publicado automáticamente en ninguna plataforma externa. La derivación hacia Google es un paso opcional, separado y bajo el control del Cliente final, como se describe en la Sección 9.</p>
+    </div>
+
+    <div class="section" id="sec8">
+      <h2>8. Reactivación automática por WhatsApp</h2>
+      <p>El Servicio (disponible en el Plan Pro) puede detectar cuando un Cliente final que visitaba el negocio con regularidad ha dejado de hacerlo durante un período de tiempo determinado. En ese caso, Flikker puede enviar automáticamente un mensaje de WhatsApp al Cliente final invitándolo a volver.</p>
+      <p>Cada mensaje de reactivación incluye una opción de baja visible (opt-out). Cuando el Cliente final solicita no volver a ser contactado, esa preferencia es registrada y respetada.</p>
+      <p>El umbral de inactividad que dispara la reactivación se adapta al comportamiento individual de cada Cliente final y puede configurarse en acuerdo con el Cliente durante el onboarding.</p>
+      <p>El Cliente es el responsable de contar con la base legal necesaria para el envío de estos mensajes. Flikker actúa como Encargado del tratamiento de datos a estos efectos, conforme a lo descrito en la Política de Privacidad.</p>
+    </div>
+
+    <div class="section" id="sec9">
+      <h2>9. Integración con Google y reseñas</h2>
+      <p>El Servicio (disponible en el Plan Pro) puede, tras una experiencia positiva del Cliente final, ofrecerle la posibilidad de compartir su experiencia también en Google. Esta derivación es siempre <strong>opcional</strong> para el Cliente final: nunca está condicionada al acceso a Recompensas, ni genera ningún sello adicional o beneficio. El Cliente final que desea dejar una reseña es redirigido directamente al perfil de Google Business del negocio; la reseña es publicada por el propio usuario en la plataforma de Google.</p>
+      <p>Flikker <strong>no permite ni tolera</strong> el uso del Servicio para solicitar, manipular o incentivar indebidamente reseñas de Google. Se prohíbe explícitamente:</p>
+      <ul>
+        <li>Ofrecer cualquier contraprestación (monetaria, en especie o en forma de descuentos) a cambio de dejar una reseña positiva.</li>
+        <li>Solicitar a Clientes finales que eliminen, modifiquen o suban la puntuación de reseñas ya publicadas.</li>
+        <li>Usar el Servicio para filtrar o impedir que clientes con experiencias negativas accedan al proceso de reseña, más allá del flujo de feedback interno descrito en la Sección 7.</li>
+      </ul>
+      <p>Flikker no controla la forma en que Google muestra, filtra, modera o elimina reseñas, y no es responsable por los resultados que el perfil de Google del Cliente obtenga como consecuencia del uso de esta funcionalidad.</p>
+    </div>
+
+    <div class="section" id="sec10">
+      <h2>10. Plan Base y Plan Pro</h2>
+      <p>El Servicio se ofrece en dos planes:</p>
+      <div class="highlight-box">
+        <strong>Plan Base — UYU 0/mes</strong>
+        <ul style="margin-top:8px;">
+          <li>Check-in por QR o NFC</li>
+          <li>Programa de sellos y recompensas (opcional)</li>
+          <li>Canje de recompensas por QR</li>
+          <li>Feedback post-visita</li>
+          <li>Métricas de recurrencia en panel</li>
+          <li>Hasta 50 clientes finales participantes activos</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <strong>Plan Pro — UYU 1.000/mes</strong>
+        <ul style="margin-top:8px;">
+          <li>Todo lo incluido en el Plan Base, sin límite de 50 clientes</li>
+          <li>Reactivación automática de clientes inactivos</li>
+          <li>Incentivos de recuperación personalizables</li>
+          <li>Gestión de reseñas de Google (derivación opcional post-feedback)</li>
+          <li>600 mensajes de WhatsApp incluidos por mes</li>
+        </ul>
+      </div>
+      <p>Los mensajes de WhatsApp excedentes del límite del Plan Pro serán informados al Cliente antes de incurrir en cargos adicionales. Las funcionalidades exactas de cada plan pueden actualizarse; los cambios que reduzcan funcionalidades serán notificados con al menos 30 días de anticipación y no afectarán períodos ya abonados.</p>
+    </div>
+
+    <div class="section" id="sec11">
+      <h2>11. Precios, facturación y renovación</h2>
+      <p>Los precios están expresados en pesos uruguayos (UYU) y corresponden a los publicados en <strong>flikker.uy</strong> al momento de la contratación, o a los acordados por escrito con el Cliente.</p>
+      <p>La facturación del Plan Pro es mensual y se renueva automáticamente al inicio de cada período. Flikker notificará al Cliente con al menos <strong>30 días</strong> de antelación ante cualquier modificación de precios; las actualizaciones no afectan períodos ya abonados.</p>
+      <p>La falta de pago habilita a Flikker a suspender el acceso al Servicio hasta la regularización. Flikker no se hace responsable de los efectos que la suspensión por mora pueda tener sobre el programa de beneficios activo del Cliente.</p>
+    </div>
+
+    <div class="section" id="sec12">
+      <h2>12. Cancelación</h2>
+      <p>El Cliente puede cancelar el Servicio en cualquier momento, sin penalidad, comunicándolo a través de los canales de contacto indicados en la Sección 22. La cancelación surte efecto al finalizar el período mensual ya facturado.</p>
+      <p>No se realizan reembolsos por fracciones de períodos en curso. Flikker puede cancelar el Servicio ante incumplimiento grave del Cliente, conforme a lo establecido en la Sección 17, o por discontinuación del Servicio, con notificación previa razonable.</p>
+    </div>
+
+    <div class="section" id="sec13">
+      <h2>13. Beneficios y recompensas ya emitidos</h2>
+      <p>Cuando un Cliente cancela el Servicio, las Recompensas ya desbloqueadas por Clientes finales (aquellas en las que se alcanzó el umbral de sellos y se generó el QR de canje) constituyen compromisos del negocio Cliente frente a sus propios clientes. El Cliente es el único responsable de honrarlas con independencia del estado de su cuenta en Flikker.</p>
+      <p>Los sellos acumulados pero que no hayan alcanzado el umbral de canje no generan obligación alguna de Recompensa para el Cliente.</p>
+      <p>Flikker no garantiza el acceso a los datos de canjes pendientes después de transcurrido un plazo razonable desde la cancelación. Se recomienda al Cliente exportar la información relevante antes de cancelar el Servicio.</p>
+    </div>
+
+    <div class="section" id="sec14">
+      <h2>14. Disponibilidad del servicio</h2>
+      <p>Flikker presta el Servicio con razonable diligencia pero no garantiza disponibilidad ininterrumpida. Pueden producirse interrupciones por mantenimiento planificado (con aviso previo cuando sea posible), fallas de infraestructura, o causas de fuerza mayor.</p>
+      <p>Flikker no es responsable por interrupciones del Servicio atribuibles a plataformas de terceros (WhatsApp, Google, proveedores de telecomunicaciones, etc.) ni por las consecuencias comerciales que esas interrupciones puedan tener sobre el negocio del Cliente.</p>
+    </div>
+
+    <div class="section" id="sec15">
+      <h2>15. Propiedad intelectual</h2>
+      <p>La marca Flikker, el software, el panel de gestión, los flujos de usuario, el diseño y cualquier otro material desarrollado por Flikker son de su exclusiva propiedad o están licenciados a su favor. El presente Servicio no transfiere ningún derecho de propiedad intelectual al Cliente.</p>
+      <p>El Cliente recibe una <strong>licencia de uso no exclusiva, intransferible y revocable</strong>, limitada a la vigencia del Servicio y a los fines comerciales del negocio del Cliente.</p>
+      <p>Los datos del negocio y los datos de los Clientes finales pertenecen al Cliente o, en el caso de los Clientes finales, a los propios titulares. Flikker los trata exclusivamente para prestar el Servicio y conforme a la Política de Privacidad.</p>
+    </div>
+
+    <div class="section" id="sec16">
+      <h2>16. Usos aceptables y prohibidos</h2>
+      <p>El Cliente se compromete a no utilizar el Servicio para:</p>
+      <ul>
+        <li>Enviar comunicaciones no solicitadas (spam) o contactar a personas que hayan pedido no ser contactadas.</li>
+        <li>Difundir contenido ilícito, engañoso, discriminatorio, violento o contrario a la normativa uruguaya vigente.</li>
+        <li>Solicitar, fabricar o manipular reseñas de Google en violación de las políticas de Google o de la Sección 9 de estos Términos.</li>
+        <li>Suplantar la identidad de otra persona o negocio.</li>
+        <li>Extraer datos del Servicio mediante técnicas de scraping u otros medios automatizados no autorizados.</li>
+        <li>Intentar vulnerar la seguridad, integridad o disponibilidad del Servicio.</li>
+        <li>Revender, sublicenciar o ceder el acceso al Servicio a terceros sin autorización expresa de Flikker.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="sec17">
+      <h2>17. Suspensión y cancelación de cuenta</h2>
+      <p>Flikker puede suspender o cancelar el acceso al Servicio en los siguientes casos:</p>
+      <ul>
+        <li>Incumplimiento de las obligaciones establecidas en estos Términos.</li>
+        <li>Mora en el pago de facturación pendiente.</li>
+        <li>Uso del Servicio para actividades ilegales o contrarias a las políticas de terceros integrados.</li>
+        <li>Orden de autoridad competente.</li>
+      </ul>
+      <p>Siempre que las circunstancias lo permitan, Flikker notificará al Cliente antes de proceder a la suspensión, otorgando un plazo razonable para subsanar el incumplimiento. En casos de gravedad inmediata (fraude, vulneración de seguridad, violación flagrante de normas), la suspensión puede ser inmediata.</p>
+      <p>La cancelación de la cuenta no exime al Cliente de las obligaciones económicas devengadas hasta esa fecha.</p>
+    </div>
+
+    <div class="section" id="sec18">
+      <h2>18. Servicios y plataformas de terceros</h2>
+      <p>El Servicio se apoya en plataformas de terceros, incluyendo WhatsApp, Google y proveedores de mensajería e infraestructura tecnológica. Flikker no controla dichas plataformas y no es responsable por cambios en sus políticas, interrupciones, suspensión de cuentas del Cliente por parte de esas plataformas, ni por las decisiones que Google adopte respecto de las reseñas del negocio del Cliente.</p>
+      <p>El Cliente acepta cumplir también con los términos de uso y políticas de las plataformas de terceros aplicables al uso que hace del Servicio.</p>
+    </div>
+
+    <div class="section" id="sec19">
+      <h2>19. Limitación de responsabilidad</h2>
+      <p>El Servicio se presta <strong>"tal cual"</strong> y <strong>"según disponibilidad"</strong>. En la máxima medida permitida por la legislación uruguaya aplicable, Flikker no será responsable por:</p>
+      <ul>
+        <li>Lucro cesante o pérdida de ingresos del negocio del Cliente.</li>
+        <li>Pérdida de oportunidades comerciales derivadas de interrupciones del Servicio.</li>
+        <li>Daños indirectos, consecuentes o punitivos.</li>
+        <li>Acciones u omisiones de plataformas de terceros integradas al Servicio.</li>
+      </ul>
+      <p>La responsabilidad total de Flikker frente al Cliente, por cualquier concepto y en cualquier período, no excederá el monto efectivamente abonado por el Cliente en los <strong>tres (3) meses anteriores</strong> al hecho que origina el reclamo.</p>
+      <p>Nada en estos Términos limita responsabilidades que no puedan excluirse legalmente, incluyendo aquellas derivadas de dolo o culpa grave de Flikker.</p>
+    </div>
+
+    <div class="section" id="sec20">
+      <h2>20. Modificaciones del Servicio y de estos Términos</h2>
+      <p>Flikker puede modificar, agregar o discontinuar funcionalidades del Servicio. Los cambios que reduzcan materialmente las funcionalidades disponibles serán notificados al Cliente con al menos 30 días de antelación y no afectarán períodos ya abonados.</p>
+      <p>Flikker puede actualizar estos Términos. Los cambios sustanciales serán comunicados al Cliente por los medios disponibles (email, WhatsApp o notificación en el panel). El uso continuado del Servicio tras la notificación implica la aceptación de los Términos actualizados. Si el Cliente no acepta los cambios, puede cancelar el Servicio conforme a la Sección 12.</p>
+    </div>
+
+    <div class="section" id="sec21">
+      <h2>21. Ley aplicable y jurisdicción</h2>
+      <p>Estos Términos se rigen por las leyes de la República Oriental del Uruguay. Para cualquier controversia derivada o relacionada con el Servicio, las partes se someten a la jurisdicción de los Juzgados competentes de la ciudad de Montevideo, sin perjuicio de los derechos del Cliente en su carácter de consumidor cuando corresponda conforme a la Ley N° 17.250 de Relaciones de Consumo.</p>
+    </div>
+
+    <div class="section" id="sec22">
+      <h2>22. Contacto</h2>
+      <p>Para cualquier consulta, reclamo o comunicación relacionada con estos Términos:</p>
+      <ul>
+        <li><strong>Email:</strong> fabrizio.rodriguez7274@gmail.com</li>
+        <li><strong>WhatsApp:</strong> +598 91 624 988</li>
+        <li><strong>Sitio web:</strong> flikker.uy</li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <div class="legal-note">
+      <strong>⚠ Aviso importante</strong><br>
+      Este documento es un borrador elaborado para revisión profesional. Antes de su publicación definitiva, se recomienda la revisión por un abogado especializado en protección de datos personales y derecho de las telecomunicaciones en Uruguay. Algunas cláusulas pueden requerir adaptación según la estructura jurídica específica de Flikker, la inscripción de bases de datos ante la URCDP, y los acuerdos específicos con proveedores de mensajería y plataformas de terceros.
+    </div>
+
+  </main>
+
+  <footer class="doc-footer">
+    <span>© 2026 Flikker · flikker.uy</span>
+    <span>Versión 2.0 · 27/08/2026</span>
+  </footer>
+
+</div>
+</body>
+</html>

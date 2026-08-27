@@ -148,7 +148,9 @@ export function Footer() {
           <ul className="mt-4 space-y-3">
             <li>
               <a
-                href="/legal/terminos"
+                href="/legal/terminos-y-condiciones.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-white/65 transition-colors hover:text-white"
               >
                 Términos y condiciones
@@ -156,7 +158,9 @@ export function Footer() {
             </li>
             <li>
               <a
-                href="/legal/privacidad"
+                href="/legal/politica-de-privacidad.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-white/65 transition-colors hover:text-white"
               >
                 Política de privacidad
