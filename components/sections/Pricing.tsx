@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
+import { APP_REGISTER_URL } from "@/lib/constants";
 
 type PlanFeature = {
   icon: LucideIcon;
@@ -174,13 +174,11 @@ export function Pricing() {
             </p>
 
             <a
-              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_pro)}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={APP_REGISTER_URL}
               className="relative mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
             >
               <Check className="h-4 w-4 text-[#6a55d2]" strokeWidth={2.5} aria-hidden="true" />
-              Suscribirme
+              Empezar con Pro
             </a>
           </article>
         </div>

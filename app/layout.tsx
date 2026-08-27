@@ -11,11 +11,11 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://flikker.website";
+const SITE_URL = "https://flikker.uy";
 const SITE_NAME = "Flikker";
-const TITLE = "Flikker | La plataforma de reputación local para negocios";
+const TITLE = "Flikker | Retención, reseñas y clientes que vuelven";
 const DESCRIPTION =
-  "Flikker automatiza la captación de reseñas en Google, la reactivación de clientes inactivos y la prueba social en tu web. Convertimos cada venta en una reseña, y cada reseña en clientes nuevos.";
+  "Flikker ayuda a negocios físicos a registrar visitas, retener clientes, conseguir más reseñas en Google y recuperar por WhatsApp a quienes dejaron de venir.";
 
 const PLAUSIBLE_DOMAIN =
   process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "flikker.uy";
@@ -30,19 +30,21 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   authors: [{ name: "Flikker" }],
   keywords: [
-    "reseñas Google negocio",
-    "automatizar reseñas Google",
-    "pedir reseñas WhatsApp",
-    "más reseñas Google Maps",
+    "retención de clientes",
+    "programa de retención",
+    "retener clientes negocios físicos",
+    "programa de beneficios para negocios",
+    "tarjeta de sellos digital",
+    "tarjeta de fidelización digital",
+    "recuperar clientes por WhatsApp",
+    "reactivación de clientes por WhatsApp",
+    "reseñas de Google para negocios",
+    "más reseñas en Google Maps",
+    "QR para negocios locales",
+    "NFC retención clientes",
+    "software retención negocios físicos Uruguay",
+    "programa fidelización negocios Uruguay",
     "reputación online negocio local",
-    "Google Business Profile reseñas",
-    "reseñas automáticas WhatsApp",
-    "SEO local negocios",
-    "mejorar calificación Google",
-    "reseñas para restaurantes",
-    "reseñas para negocios Uruguay",
-    "software reseñas negocios locales",
-    "conseguir reseñas Google automático",
   ],
   alternates: {
     canonical: "/",
@@ -88,9 +90,15 @@ const jsonLdApp = {
   offers: [
     {
       "@type": "Offer",
-      name: "Plan Flikker",
+      name: "Plan Base",
       priceCurrency: "UYU",
-      price: "2900",
+      price: "0",
+    },
+    {
+      "@type": "Offer",
+      name: "Plan Pro",
+      priceCurrency: "UYU",
+      price: "1000",
     },
   ],
 };
@@ -112,64 +120,81 @@ const jsonLdOrg = {
   },
 };
 
+/** FAQ schema — espejo exacto de las PRIMARY_FAQS de FAQ.tsx */
 const jsonLdFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "¿Cómo sabe Flikker cuándo mandar el mensaje?",
+      name: "¿Qué es Flikker?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Podemos conectarlo a tu operación o darte un panel simple para marcar ventas, visitas o servicios completados. El mensaje sale después, cuando el cliente ya terminó su experiencia.",
+        text: "Flikker ayuda a que los clientes de tu negocio vuelvan más seguido. Cada visita puede sumar un sello hacia una recompensa y, si un cliente deja de venir, Flikker puede intentar recuperarlo automáticamente.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Y si me dejan una reseña mala?",
+      name: "¿Cómo funciona?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ese es el punto clave. Flikker filtra: si la experiencia fue buena, llevamos al cliente a Google. Si fue mala, te llega a vos primero en privado para que puedas resolverlo antes de que se vuelva público.",
+        text: "Ponés un QR o NFC de Flikker en tu local. El cliente lo escanea cuando visita el negocio, registra su visita y ve su progreso hacia la próxima recompensa.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Necesito tener web o Instagram?",
+      name: "¿Mis clientes tienen que descargar una app?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Si no tenés web o Instagram, te lo diseñamos y creamos. Y si tampoco tenés tu ficha de Google Business Profile, también te ayudamos a dejarla pronta durante el setup.",
+        text: "No. Todo funciona desde el navegador del teléfono. El cliente escanea el QR o acerca su teléfono al NFC y continúa desde ahí.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Es legal pedir reseñas por WhatsApp?",
+      name: "¿Cómo funcionan las recompensas?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sí. Siempre que la persona haya dejado su número para contacto comercial o de atención, podés escribirle. Flikker además suma un opt-out visible en cada mensaje.",
+        text: "Vos definís la recompensa y cuántos sellos hacen falta para alcanzarla. Puede ser un café, un producto, un descuento, un 2×1 o cualquier beneficio que tenga sentido para tu negocio.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Qué pasa con los datos de mis clientes?",
+      name: "¿Cómo se canjea una recompensa?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Están en servidores seguros, cifrados, y nunca se comparten con terceros. Cumplimos con la Ley 18.331 de Protección de Datos Personales de Uruguay.",
+        text: "Cuando el cliente completa sus sellos, la recompensa se desbloquea y recibe un QR de canje. El empleado lo escanea con la cámara de su teléfono y confirma el beneficio.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Cuánto tarda en configurarse?",
+      name: "¿Qué pasa si un cliente deja de venir?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Entre 24 y 48 horas. Vos nos pasás una primera lista o fuente de clientes. El resto lo hacemos nosotros.",
+        text: "Flikker puede detectar que un cliente que antes visitaba el negocio dejó de aparecer y contactarlo por WhatsApp para intentar traerlo de vuelta.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Puedo cancelar cuando quiera?",
+      name: "¿Cuál es la diferencia con una tarjeta de sellos tradicional?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sí. No hay contratos mínimos ni cláusulas raras. Si querés pausar o cancelar, mandás un WhatsApp y listo.",
+        text: "Una tarjeta de papel solo muestra cuántos sellos tiene alguien. Flikker además registra visitas, muestra quién vuelve, gestiona el canje y puede actuar cuando un cliente deja de venir.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Para qué tipo de negocios funciona mejor?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Especialmente para negocios donde un mismo cliente puede volver varias veces al mes: cafeterías, panaderías, heladerías, peluquerías, comida rápida y otros comercios de alta recurrencia.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Flikker también ayuda a conseguir reseñas de Google?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sí. Después de una buena experiencia, Flikker puede ofrecerle al cliente la posibilidad de compartirla también en Google. Las reseñas acompañan al sistema de recurrencia, pero no son el centro del producto.",
       },
     },
   ],

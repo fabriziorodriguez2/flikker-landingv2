@@ -13,10 +13,7 @@ import {
 } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
-import { buildWhatsAppUrl } from "@/lib/constants";
-
-const HERO_MESSAGE =
-  "Hola! Quiero probar Flikker para aumentar la recurrencia de clientes en mi negocio.";
+import { APP_REGISTER_URL } from "@/lib/constants";
 
 const COPY_REVEAL: Variants = {
   hidden: {},
@@ -121,9 +118,7 @@ export function Hero() {
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
             <a
-              href={buildWhatsAppUrl(HERO_MESSAGE)}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={APP_REGISTER_URL}
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#2f176e] px-6 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(47,23,110,0.18)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#3b2084] hover:shadow-[0_14px_36px_rgba(47,23,110,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db] focus-visible:ring-offset-2"
             >
               Quiero probar Flikker

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/ui/Logo";
-import { NAV_LINKS, WHATSAPP_MESSAGES, buildWhatsAppUrl, CALENDLY_URL } from "@/lib/constants";
+import { NAV_LINKS, CALENDLY_URL, APP_LOGIN_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const PAGES_WITH_LOCAL_ANCHORS = ["/"];
@@ -52,14 +52,22 @@ export function Navbar() {
             ))}
           </ul>
 
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[38px] items-center justify-center rounded-full bg-periwinkle px-5 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(145,136,245,0.5)] transition-all hover:bg-periwinkle/85 hover:shadow-[0_4px_18px_rgba(145,136,245,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-periwinkle focus-visible:ring-offset-2"
-          >
-            Agendar Demo
-          </a>
+          <div className="hidden items-center gap-4 md:flex">
+            <a
+              href={APP_LOGIN_URL}
+              className="text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-periwinkle rounded-sm"
+            >
+              Iniciar sesión
+            </a>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[38px] items-center justify-center rounded-full bg-periwinkle px-5 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(145,136,245,0.5)] transition-all hover:bg-periwinkle/85 hover:shadow-[0_4px_18px_rgba(145,136,245,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-periwinkle focus-visible:ring-offset-2"
+            >
+              Agendar Demo
+            </a>
+          </div>
         </div>
       </nav>
     </div>
