@@ -1,110 +1,192 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
+const CUSTOMERS = [
+  { x: 72, y: 92 },
+  { x: 166, y: 76 },
+  { x: 258, y: 95 },
+  { x: 352, y: 73 },
+  { x: 450, y: 89 },
+  { x: 548, y: 70 },
+  { x: 646, y: 91 },
+  { x: 740, y: 74 },
+  { x: 834, y: 94 },
+  { x: 928, y: 78 },
+  { x: 91, y: 183 },
+  { x: 186, y: 167 },
+  { x: 280, y: 188 },
+  { x: 376, y: 169 },
+  { x: 472, y: 185 },
+  { x: 568, y: 166 },
+  { x: 664, y: 188 },
+  { x: 758, y: 168 },
+  { x: 850, y: 186 },
+  { x: 930, y: 168 },
+] as const;
+
+const RETURNING_CUSTOMERS = new Set([1, 4, 7, 11, 15, 18]);
 
 export function Problem() {
-  const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : "hidden";
+  const sectionRef = useRef<HTMLElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    let animationFrame = 0;
+
+    function updateProgress() {
+      animationFrame = 0;
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const scrollableDistance = Math.max(
+        section.offsetHeight - window.innerHeight,
+        1,
+      );
+      const nextProgress = Math.min(
+        Math.max(-rect.top / scrollableDistance, 0),
+        1,
+      );
+
+      setScrollProgress((currentProgress) =>
+        Math.abs(currentProgress - nextProgress) < 0.001
+          ? currentProgress
+          : nextProgress,
+      );
+    }
+
+    function scheduleUpdate() {
+      if (!animationFrame) {
+        animationFrame = window.requestAnimationFrame(updateProgress);
+      }
+    }
+
+    updateProgress();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("load", scheduleUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      window.removeEventListener("load", scheduleUpdate);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  const showFinalLabel = scrollProgress >= 0.72;
+  const showQuestion = scrollProgress >= 0.94;
 
   return (
-    <section className="bg-white px-6 py-24 text-midnight md:px-8 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <section
+      ref={sectionRef}
+      id="problema"
+      aria-labelledby="problem-title"
+      className="relative min-h-[190vh] bg-[#f2eee7] text-[#1d1a21]"
+    >
+      <div className="sticky top-0 mx-auto flex min-h-screen max-w-[1200px] flex-col justify-center px-5 py-24 sm:px-8 lg:px-6 xl:px-0">
+        <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#7767db] sm:text-[11px]">
+          El costo invisible
+        </p>
 
-          {/* Left — photo + floating stat */}
-          <motion.div
-            initial={initial}
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="relative"
-          >
-            {/* Photo */}
-            <div
-              className="relative overflow-hidden rounded-3xl"
-              style={{ aspectRatio: "1 / 1" }}
+        <h2
+          id="problem-title"
+          className="mx-auto mt-5 max-w-[1040px] text-center font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.05em] sm:text-[58px] lg:text-[76px]"
+        >
+          Conseguir un cliente cuesta. Perderlo después de una compra cuesta
+          más.
+        </h2>
+
+        <div className="mx-auto mt-14 w-full max-w-[970px] sm:mt-20">
+          <div className="relative h-7 text-center sm:h-8">
+            <p
+              aria-live="polite"
+              className={`absolute inset-x-0 text-sm font-semibold tracking-[-0.01em] transition-colors duration-300 sm:text-base ${
+                showFinalLabel ? "text-[#38236f]" : "text-[#5f5963]"
+              }`}
             >
-              <img
-                src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&q=80"
-                alt="Negocio local"
-                className="h-full w-full object-cover grayscale"
-              />
-              {/* dark overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-            </div>
-
-            {/* Floating stat — bottom left */}
-            <div
-              className="absolute bottom-5 left-5 rounded-2xl px-5 py-4 text-white"
-              style={{ background: "rgba(10,8,40,0.85)", backdropFilter: "blur(12px)" }}
-            >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/60">
-                Clientes felices sin reseña
-              </p>
-              <p className="mt-1 font-display text-[2.75rem] font-black leading-none tracking-tight">
-                94%
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right — copy + stat cards */}
-          <motion.div
-            initial={initial}
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeUp}
-            transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
-          >
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
-              El problema
-            </span>
-
-            <h2 className="font-display mt-4 text-[32px] font-black leading-[1.1] tracking-[-0.02em] md:text-[44px]">
-              El 94% de tus clientes felices no deja reseña.
-            </h2>
-
-            <p className="mt-5 text-base leading-[1.65] text-midnight/65 md:text-lg">
-              <span className="text-periwinkle font-medium">Nadie pide reseñas, la gente no las deja sola.</span>{" "}
-              Mientras tanto, tu competencia acumula opiniones y aparece primero en Google — aunque atienda peor que vos.
+              {showFinalLabel ? "6 volvieron" : "20 clientes entraron"}
             </p>
+          </div>
 
-            {/* Stat cards */}
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {/* Light card */}
-              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 px-5 py-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-neutral-400">
-                  Sin reseñas
-                </p>
-                <p className="font-display mt-2 text-[2rem] font-black leading-none tracking-tight text-midnight">
-                  −63%
-                </p>
-                <p className="mt-2 text-[13px] leading-snug text-midnight/55">
-                  menos clics en Google frente a negocios con más de 50 reseñas.
-                </p>
-              </div>
+          <svg
+            viewBox="0 0 1000 260"
+            role="img"
+            aria-label="De veinte clientes iniciales, solamente seis regresaron"
+            className="mt-2 h-auto w-full overflow-visible"
+          >
+            <path
+              d="M46 130 C220 116 318 139 500 128 C682 117 790 140 954 126"
+              fill="none"
+              stroke="rgba(66, 54, 72, 0.09)"
+              strokeWidth="1.5"
+            />
+            {CUSTOMERS.map((customer, index) => (
+              <CustomerDot
+                key={`${customer.x}-${customer.y}`}
+                x={customer.x}
+                y={customer.y}
+                returning={RETURNING_CUSTOMERS.has(index)}
+                index={index}
+                progress={scrollProgress}
+              />
+            ))}
+          </svg>
 
-              {/* Dark card */}
-              <div className="rounded-2xl px-5 py-5 text-white" style={{ background: "#07060f" }}>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/45">
-                  Con reseñas
-                </p>
-                <p className="font-display mt-2 text-[2rem] font-black leading-none tracking-tight">
-                  +28%
-                </p>
-                <p className="mt-2 text-[13px] leading-snug text-white/55">
-                  de ingresos con solo mejorar media estrella en tu calificación.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          <p
+            aria-hidden={!showQuestion}
+            className="mt-4 text-center font-display text-2xl font-semibold tracking-[-0.035em] text-[#242028] sm:mt-7 sm:text-3xl lg:text-[38px]"
+            style={{
+              opacity: showQuestion ? 1 : 0,
+              transform: showQuestion ? "translateY(0)" : "translateY(14px)",
+              visibility: showQuestion ? "visible" : "hidden",
+              transition:
+                "opacity 320ms ease, transform 320ms ease, visibility 320ms",
+            }}
+          >
+            ¿Qué pasó con los otros 14?
+          </p>
         </div>
       </div>
     </section>
+  );
+}
+
+function CustomerDot({
+  x,
+  y,
+  returning,
+  index,
+  progress,
+}: {
+  x: number;
+  y: number;
+  returning: boolean;
+  index: number;
+  progress: number;
+}) {
+  const fadeStart = 0.18 + (index % 7) * 0.025;
+  const fadeEnd = fadeStart + 0.32;
+  const fadeAmount = returning
+    ? 0
+    : Math.min(Math.max((progress - fadeStart) / (fadeEnd - fadeStart), 0), 1);
+
+  return (
+    <circle
+      cx={x}
+      cy={y}
+      r={returning ? 12 : 10}
+      fill={returning ? "#6048bd" : "#77707a"}
+      style={{
+        opacity: 1 - fadeAmount,
+        transform: `scale(${1 - fadeAmount * 0.45})`,
+        transformBox: "fill-box",
+        transformOrigin: "center",
+        transitionProperty: "opacity, transform",
+        transitionDuration: "80ms",
+        transitionTimingFunction: "linear",
+      }}
+    />
   );
 }

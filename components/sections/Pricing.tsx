@@ -1,349 +1,189 @@
-"use client";
-
-import { useState } from "react";
-import type { ReactNode } from "react";
 import {
-  Star,
-  QrCode,
-  Users,
-  Send,
-  MessageCircle,
-  Layers,
-  Globe,
-  Headphones,
+  BarChart3,
   Check,
-  Minus,
-  ChevronDown,
+  Gift,
+  Globe,
+  Layers,
+  MessageCircle,
+  QrCode,
+  ScanLine,
+  Send,
+  Users,
   type LucideIcon,
 } from "lucide-react";
+
 import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
-const BASE_PROMO = 1000;
-const BASE_REGULAR = 2000;
-const PRO_PROMO = 2000;
-const PRO_REGULAR = 3000;
-
-function fmt(n: number) {
-  return n.toLocaleString("es-UY");
-}
-
-/* ── Feature types ── */
-
-type Feature = {
+type PlanFeature = {
   icon: LucideIcon;
-  label: ReactNode;
-  sub: string;
-  green?: boolean;
+  label: string;
 };
 
-const BASE_FEATURES: Feature[] = [
-  {
-    icon: Star,
-    label: "Reseñas automáticas en Google",
-    sub: "WhatsApp a cada cliente atendido",
-  },
-  {
-    icon: QrCode,
-    label: "QR de captación",
-    sub: "Para mostrador o sala de espera",
-  },
-  {
-    icon: Users,
-    label: "Base de contactos propia",
-    sub: "Tus clientes guardados para siempre",
-  },
-  {
-    icon: Send,
-    label: "Campañas manuales",
-    sub: "Promociones y recordatorios a tu base",
-  },
-  {
-    icon: MessageCircle,
-    label: (
-      <>
-        <strong className="font-semibold text-neutral-900">200 mensajes</strong>{" "}
-        de WhatsApp incluidos
-      </>
-    ),
-    sub: "$2,50 UYU por mensaje extra",
-  },
+const BASE_FEATURES: PlanFeature[] = [
+  { icon: QrCode, label: "Check-in por QR o NFC" },
+  { icon: Gift, label: "Sellos y recompensas" },
+  { icon: ScanLine, label: "Canje por QR" },
+  { icon: Send, label: "Feedback post-visita" },
+  { icon: BarChart3, label: "Métricas de recurrencia" },
+  { icon: Users, label: "Hasta 50 clientes participantes" },
 ];
 
-const PRO_FEATURES: Feature[] = [
-  {
-    icon: Layers,
-    label: "Todo lo del plan Base",
-    sub: "Reseñas, QR, base de contactos y campañas",
-    green: true,
-  },
-  {
-    icon: Globe,
-    label: "Widget de prueba social para tu web",
-    sub: "Tus reseñas reales en tu sitio, automático",
-  },
-  {
-    icon: Headphones,
-    label: "Soporte prioritario",
-    sub: "Respuesta en menos de 24 horas",
-    green: true,
-  },
-  {
-    icon: MessageCircle,
-    label: (
-      <>
-        <strong className="font-semibold text-neutral-900">500 mensajes</strong>{" "}
-        de WhatsApp incluidos
-      </>
-    ),
-    sub: "$2,50 UYU por mensaje extra",
-  },
+const PRO_FEATURES: PlanFeature[] = [
+  { icon: Layers, label: "Todo lo del Plan Base" },
+  { icon: Users, label: "Reactivación automática" },
+  { icon: Send, label: "Incentivos de recuperación" },
+  { icon: Globe, label: "Reseñas de Google" },
+  { icon: MessageCircle, label: "600 mensajes de WhatsApp incluidos" },
 ];
 
-/* ── Comparison table data ── */
+function FeatureList({
+  features,
+  variant,
+}: {
+  features: PlanFeature[];
+  variant: "base" | "pro";
+}) {
+  const isPro = variant === "pro";
 
-type CompRow = {
-  feature: string;
-  base: boolean | string;
-  pro: boolean | string;
-};
-
-const COMPARISON: CompRow[] = [
-  { feature: "Reseñas automáticas en Google por WhatsApp", base: true, pro: true },
-  { feature: "QR de captación en el local", base: true, pro: true },
-  { feature: "Base de contactos propia", base: true, pro: true },
-  { feature: "Campañas manuales por WhatsApp", base: true, pro: true },
-  { feature: "Mensajes de WhatsApp incluidos", base: "200 / mes", pro: "500 / mes" },
-  { feature: "Widget de prueba social para tu web", base: false, pro: true },
-  { feature: "Soporte prioritario (respuesta en 24 hs)", base: false, pro: true },
-  { feature: "Precio por mensaje extra", base: "$2,50 UYU", pro: "$2,50 UYU" },
-];
-
-function Cell({ value }: { value: boolean | string }) {
-  if (value === true)
-    return <Check className="mx-auto h-4 w-4 text-emerald-500" strokeWidth={2.5} />;
-  if (value === false)
-    return <Minus className="mx-auto h-4 w-4 text-neutral-300" strokeWidth={2} />;
-  return <span className="font-medium text-neutral-700">{value}</span>;
-}
-
-function FeatureList({ features }: { features: Feature[] }) {
   return (
-    <ul className="flex-1 space-y-3.5">
-      {features.map((f, i) => {
-        const iconBg = f.green ? "bg-emerald-50" : "bg-periwinkle/10";
-        const iconColor = f.green ? "#16a34a" : "#9188f5";
-        return (
-          <li key={i} className="flex items-start gap-3">
-            <div className={cn("flex h-7 w-7 shrink-0 items-center justify-center rounded-lg", iconBg)}>
-              <f.icon className="h-3.5 w-3.5" style={{ color: iconColor }} strokeWidth={1.75} aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-[13px] font-semibold leading-snug text-neutral-800">
-                {f.label}
-              </p>
-              <p className="text-[11px] text-neutral-400">{f.sub}</p>
-            </div>
-          </li>
-        );
-      })}
+    <ul className="space-y-3.5" aria-label="Incluye">
+      {features.map(({ icon: Icon, label }) => (
+        <li key={label} className="flex items-center gap-3.5">
+          <span
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+              isPro
+                ? "bg-[#ebe9ff] text-[#5d46c7]"
+                : "bg-[#f0edff] text-[#6a55d2]"
+            }`}
+          >
+            <Icon className="h-[17px] w-[17px]" strokeWidth={1.8} aria-hidden="true" />
+          </span>
+          <span
+            className={`text-[15px] font-semibold leading-[1.35] ${
+              isPro ? "text-white" : "text-[#27232c]"
+            }`}
+          >
+            {label}
+          </span>
+        </li>
+      ))}
     </ul>
   );
 }
 
-/* ── Main component ── */
-
 export function Pricing() {
-  const [showTable, setShowTable] = useState(false);
-
   return (
     <section
       id="precios"
-      className="scroll-mt-20 bg-white px-6 py-24 md:px-8 md:py-32"
+      aria-labelledby="pricing-title"
+      className="scroll-mt-20 bg-[#f7f6f2] px-5 py-24 sm:px-8 sm:py-32"
     >
-      <div className="mx-auto max-w-5xl">
-
-        {/* Header */}
-        <div className="text-center">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
+      <div className="mx-auto max-w-[1200px]">
+        <header className="mx-auto max-w-[820px] text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#7767db] sm:text-[11px]">
             Precios
-          </span>
-          <h2 className="font-display mt-4 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[48px]">
-            Una inversión que se paga
-            <br />
-            sola desde el primer mes.
-          </h2>
-          <p className="mt-4 text-base text-neutral-500">
-            Dos planes. Todo incluido. Sin letra chica.
           </p>
-        </div>
+          <h2
+            id="pricing-title"
+            className="mt-5 font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.05em] text-[#17151d] sm:text-[58px] lg:text-[70px]"
+          >
+            Elegí cómo querés cuidar cada regreso.
+          </h2>
+          <p className="mx-auto mt-6 max-w-[650px] text-[17px] leading-[1.65] text-[#68626d] sm:text-lg">
+            Base fideliza a quienes ya vienen. Pro suma seguimiento automático
+            para recuperar a quienes cortan el hábito.
+          </p>
+        </header>
 
-        {/* Cards */}
-        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mx-auto mt-14 grid max-w-[1100px] items-stretch gap-5 sm:mt-16 lg:grid-cols-2 lg:gap-6">
+          <article className="flex min-h-[650px] flex-col rounded-[30px] border border-black/[0.09] bg-white p-7 shadow-[0_18px_55px_rgba(40,31,53,0.06)] sm:p-9 lg:p-10">
+            <div className="flex items-center justify-between gap-4">
+              <span className="inline-flex rounded-full bg-[#f1eff5] px-3 py-1 text-[11px] font-bold text-[#706a76]">
+                Base
+              </span>
+            </div>
 
-          {/* ── Base ── */}
-          <div className="flex flex-col rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-            <span className="inline-flex w-fit items-center rounded-full bg-neutral-100 px-2.5 py-0.5 text-[11px] font-semibold text-neutral-500">
-              Base
-            </span>
-
-            <h3 className="font-display mt-3 text-[17px] font-black text-neutral-900">
+            <h3 className="mt-5 font-display text-[27px] font-bold tracking-[-0.035em] text-[#17151d]">
               Flikker Base
             </h3>
+            <p className="mt-3 inline-flex w-fit rounded-full bg-[#fff0cc] px-3 py-1.5 text-[12px] font-bold text-[#9a6100]">
+              Para hacer que vuelvan
+            </p>
 
-            <div className="mt-3">
-              <div className="flex items-center gap-2">
-                <span className="text-[13px] font-semibold text-neutral-400 line-through">
-                  ${fmt(BASE_REGULAR)}
-                </span>
-                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
-                  Oferta lanzamiento
-                </span>
-              </div>
-              <div className="mt-0.5 flex items-baseline gap-1">
-                <span className="font-display text-[40px] font-black leading-none tracking-tight text-neutral-900">
-                  ${fmt(BASE_PROMO)}
-                </span>
-                <span className="text-xs text-neutral-400">UYU / mes</span>
-              </div>
+            <div className="mt-5 flex items-end gap-2 text-[#17151d]">
+              <span className="font-display text-[48px] font-bold leading-none tracking-[-0.045em]">
+                UYU 0
+              </span>
             </div>
 
-            <p className="mt-2.5 text-[12px] leading-[1.6] text-neutral-500">
-              Para negocios que quieren empezar a construir reputación y base
-              de clientes sin complicaciones.
+            <p className="mt-5 max-w-[470px] text-[15px] leading-[1.65] text-[#6e6872]">
+              Para convertir cada visita en un motivo concreto para regresar.
             </p>
 
-            <hr className="my-4 border-neutral-100" />
+            <div className="my-7 h-px bg-black/[0.07]" aria-hidden="true" />
 
-            <FeatureList features={BASE_FEATURES} />
+            <FeatureList features={BASE_FEATURES} variant="base" />
 
-            <p className="mt-4 text-[11px] font-medium text-periwinkle">
-              Si usás más de 500 mensajes, te conviene el Pro.
+            <p className="mt-auto pt-10 text-[14px] font-semibold text-[#6854d0]">
+              Base = hacer que vuelvan.
             </p>
+          </article>
 
-            <a
-              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 flex w-full items-center justify-center rounded-xl border border-neutral-200 bg-white px-4 py-3 text-[14px] font-semibold text-neutral-900 transition-colors hover:bg-neutral-50"
-            >
-              Empezar con Base
-            </a>
+          <article className="relative flex min-h-[680px] flex-col overflow-hidden rounded-[30px] bg-[#0b0916] p-7 text-white shadow-[0_28px_80px_rgba(34,21,79,0.28)] ring-1 ring-[#7767db]/35 sm:p-9 lg:-translate-y-3 lg:p-10">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full bg-[#7157dc]/20 blur-3xl"
+            />
 
-            <p className="mt-2.5 text-center text-[11px] text-neutral-400">
-              Sin contrato · cancelás cuando querés
-            </p>
-          </div>
+            <div className="relative flex items-center justify-between gap-4">
+              <span className="inline-flex rounded-full bg-[#30225f] px-3 py-1 text-[11px] font-bold text-[#bcb3ff]">
+                Pro
+              </span>
+              <span className="inline-flex rounded-full bg-[#8a78f5] px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-white shadow-[0_8px_22px_rgba(119,103,219,0.3)]">
+                Recomendado
+              </span>
+            </div>
 
-          {/* ── Pro ── */}
-          <div className="flex flex-col rounded-2xl bg-white p-6 shadow-md ring-2 ring-periwinkle">
-            <span className="inline-flex w-fit items-center rounded-full bg-periwinkle/10 px-2.5 py-0.5 text-[11px] font-semibold text-periwinkle">
-              Pro
-            </span>
-
-            <h3 className="font-display mt-3 text-[17px] font-black text-neutral-900">
+            <h3 className="relative mt-5 font-display text-[29px] font-bold tracking-[-0.035em]">
               Flikker Pro
             </h3>
-
-            <div className="mt-3">
-              <div className="flex items-center gap-2">
-                <span className="text-[13px] font-semibold text-neutral-400 line-through">
-                  ${fmt(PRO_REGULAR)}
-                </span>
-                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-700">
-                  Oferta lanzamiento
-                </span>
-              </div>
-              <div className="mt-0.5 flex items-baseline gap-1">
-                <span className="font-display text-[40px] font-black leading-none tracking-tight text-neutral-900">
-                  ${fmt(PRO_PROMO)}
-                </span>
-                <span className="text-xs text-neutral-400">UYU / mes</span>
-              </div>
-            </div>
-
-            <p className="mt-2.5 text-[12px] leading-[1.6] text-neutral-500">
-              Para negocios que quieren aprovechar su reputación al máximo y
-              llegar a más clientes.
+            <p className="relative mt-3 inline-flex w-fit rounded-full bg-[#fff0cc] px-3 py-1.5 text-[12px] font-bold text-[#9a6100]">
+              Para recuperarlos también
             </p>
 
-            <hr className="my-4 border-neutral-100" />
+            <div className="relative mt-5 flex items-end gap-2">
+              <span className="font-display text-[48px] font-bold leading-none tracking-[-0.045em]">
+                UYU 1.000
+              </span>
+              <span className="pb-1 text-[15px] text-white/60">/ mes</span>
+            </div>
 
-            <FeatureList features={PRO_FEATURES} />
+            <p className="relative mt-5 max-w-[470px] text-[15px] leading-[1.65] text-white/65">
+              Para hacer que vuelvan y recuperar también a quienes corten el
+              hábito.
+            </p>
+
+            <div className="relative my-7 h-px bg-white/10" aria-hidden="true" />
+
+            <div className="relative">
+              <FeatureList features={PRO_FEATURES} variant="pro" />
+            </div>
+
+            <p className="relative mt-auto pt-10 text-[14px] font-semibold text-[#a99cff]">
+              Pro = recuperar también a los que dejan de venir.
+            </p>
 
             <a
               href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_pro)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 flex w-full items-center justify-center rounded-xl bg-periwinkle px-4 py-3 text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(145,136,245,0.35)] transition-all hover:opacity-90"
+              className="relative mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
             >
-              Empezar con Pro
+              <Check className="h-4 w-4 text-[#6a55d2]" strokeWidth={2.5} aria-hidden="true" />
+              Suscribirme
             </a>
-
-            <p className="mt-2.5 text-center text-[11px] text-neutral-400">
-              Sin contrato · cancelás cuando querés
-            </p>
-          </div>
-
+          </article>
         </div>
-
-        {/* Compare button */}
-        <div className="mt-8 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setShowTable((v) => !v)}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition-colors hover:text-neutral-800"
-          >
-            {showTable ? "Ocultar comparación" : "Comparar planes"}
-            <ChevronDown
-              className={cn(
-                "h-4 w-4 transition-transform duration-200",
-                showTable && "rotate-180"
-              )}
-            />
-          </button>
-        </div>
-
-        {/* Comparison table */}
-        {showTable && (
-          <div className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-2xl border border-neutral-200">
-            <table className="w-full text-[13px]">
-              <thead>
-                <tr className="border-b border-neutral-200 bg-neutral-50">
-                  <th className="px-5 py-3 text-left font-semibold text-neutral-500">
-                    Característica
-                  </th>
-                  <th className="px-4 py-3 text-center font-semibold text-neutral-500">
-                    Base
-                  </th>
-                  <th className="px-4 py-3 text-center font-semibold text-periwinkle">
-                    Pro
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON.map((row, i) => (
-                  <tr
-                    key={row.feature}
-                    className={cn(
-                      "border-b border-neutral-100 last:border-b-0",
-                      i % 2 === 1 && "bg-neutral-50/60"
-                    )}
-                  >
-                    <td className="px-5 py-3 text-neutral-700">{row.feature}</td>
-                    <td className="px-4 py-3 text-center">
-                      <Cell value={row.base} />
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      <Cell value={row.pro} />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
       </div>
     </section>
   );

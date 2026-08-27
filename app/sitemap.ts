@@ -23,30 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE}/blog/google-reviews`,
-      lastModified: new Date("2026-04-28"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE}/blog/resenas-negativas`,
-      lastModified: new Date("2026-05-10"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE}/blog/recurrencia`,
-      lastModified: new Date("2026-05-02"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
       url: `${BASE}/legal/terminos`,
       lastModified: new Date(),
       changeFrequency: "yearly",

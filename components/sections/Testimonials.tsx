@@ -106,7 +106,7 @@ export function Testimonials({ hasTestimonials = false }: TestimonialsProps) {
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
             Casos de Éxito
           </span>
-          <h2 className="font-display mt-3 text-[32px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[48px]">
+          <h2 className="mt-5 font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.05em] text-neutral-900 sm:text-[58px] lg:text-[70px]">
             Negocios reales.
             <br />
             Resultados reales.

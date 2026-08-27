@@ -28,7 +28,8 @@ export const WHATSAPP_MESSAGES: Record<WhatsAppMessageKey, string> = {
   pricing_pro: "Hola! Me interesa el plan Pro de Flikker.",
   testimonials_beta:
     "Hola! Quiero ser de los primeros negocios en probar Flikker en beta.",
-  ctaFinal: "Hola! Hablemos 15 minutos sobre reseñas para mi negocio.",
+  ctaFinal:
+    "Hola! Quiero probar Flikker para que más clientes vuelvan a mi negocio.",
   floating: "Hola! Me quedé con dudas mirando Flikker, ¿podemos hablar?",
 };
 

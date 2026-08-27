@@ -1,215 +1,256 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { RefreshCw } from "lucide-react";
+import { useRef, useState } from "react";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "framer-motion";
+import { Check, Clock3, MessageCircle } from "lucide-react";
 
-/* ── WhatsApp icon ── */
-function WhatsAppIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" aria-hidden="true" className={className}>
-      <circle cx="24" cy="24" r="24" fill="#25D366" />
-      <path
-        fill="#fff"
-        d="M24 8C15.2 8 8 15.2 8 24c0 2.8.7 5.5 2.1 7.9L8 40l8.3-2.1C18.5 39.3 21.2 40 24 40c8.8 0 16-7.2 16-16S32.8 8 24 8zm7.9 21.9c-.3.9-1.8 1.7-2.5 1.8-.6.1-1.4.1-2.3-.1-.5-.2-1.2-.4-2-.8-3.6-1.5-5.9-5.1-6.1-5.3-.2-.3-1.5-2-1.5-3.8 0-1.8.9-2.7 1.3-3.1.3-.3.7-.5 1.1-.5.1 0 .3 0 .4.01.4.01.6.02.9.7.3.7 1 2.4 1.1 2.6.1.2.2.4.01.7-.1.3-.2.4-.4.6-.2.2-.4.4-.5.5-.2.2-.4.4-.2.7.2.3 1 1.7 2.2 2.7 1.5 1.3 2.7 1.7 3.1 1.9.3.1.7.1.9-.1.3-.3.6-.8.9-1.2.2-.3.5-.3.8-.2.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.4-.1 1.5-.4 2.3z"
-      />
-    </svg>
-  );
-}
+type ReactivationPhase = 0 | 1 | 2 | 3;
 
-/* ── Notification card ── */
-type Notif = {
-  business: string;
-  message: string;
-  time: string;
-  color: string;
-};
-
-function NotifCard({ notif, delay }: { notif: Notif; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="flex items-start gap-3 rounded-2xl px-4 py-3.5"
-      style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(20px)" }}
-    >
-      {/* App icon */}
-      <div
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-white text-[11px] font-black"
-        style={{ background: notif.color }}
-      >
-        <WhatsAppIcon className="h-9 w-9 rounded-xl" />
-      </div>
-
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-[11px] font-semibold text-white/70">WhatsApp</span>
-          <span className="shrink-0 text-[10px] text-white/40">{notif.time}</span>
-        </div>
-        <p className="mt-0.5 text-[13px] font-semibold leading-snug text-white">
-          {notif.business}
-        </p>
-        <p className="mt-0.5 line-clamp-2 text-[12px] leading-snug text-white/65">
-          {notif.message}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-const NOTIFS: Notif[] = [
-  {
-    business: "Flikker",
-    message: "Hola Sofía 👋 Hace un tiempo que no te vemos. ¿Volvés esta semana? Tenemos turno disponible 💜",
-    time: "ahora",
-    color: "#25D366",
-  },
-  {
-    business: "Flikker",
-    message: "Hola Martín! Extrañamos verte por aquí ☕ Esta semana tenés un 10% off solo por volver.",
-    time: "1 min",
-    color: "#25D366",
-  },
-  {
-    business: "Flikker",
-    message: "Hola Laura 💪 Hace 45 días que no venís. ¿Retomamos? Agendá tu clase gratuita de reactivación.",
-    time: "3 min",
-    color: "#25D366",
-  },
-];
-
-/* ── Lock screen ── */
-function LockScreen() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const id = window.setTimeout(() => setShow(true), 300);
-    return () => window.clearTimeout(id);
-  }, []);
-
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, "0");
-  const mins = String(now.getMinutes()).padStart(2, "0");
-  const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-  const months = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-  const dateStr = `${days[now.getDay()]}, ${now.getDate()} de ${months[now.getMonth()]}`;
-
-  return (
-    <div
-      className="flex h-full flex-col px-4 pb-6 pt-10"
-      style={{
-        background: "linear-gradient(160deg, #1a0f3c 0%, #0d0828 40%, #07060f 100%)",
-      }}
-    >
-      {/* Status bar */}
-      <div className="flex items-center justify-between px-1 text-[10px] font-semibold text-white">
-        <span>{hours}:{mins}</span>
-        <div className="flex items-center gap-1">
-          <svg viewBox="0 0 24 24" className="h-3 w-3 fill-white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-          <svg viewBox="0 0 24 24" className="h-3 w-3 fill-white"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-        </div>
-      </div>
-
-      {/* Time */}
-      <div className="mt-4 text-center">
-        <p className="font-display text-[52px] font-black leading-none tracking-tight text-white">
-          {hours}:{mins}
-        </p>
-        <p className="mt-1 text-[12px] text-white/55">{dateStr}</p>
-      </div>
-
-      {/* Notifications */}
-      <div className="mt-6 space-y-2.5">
-        <AnimatePresence>
-          {show &&
-            NOTIFS.map((n, i) => (
-              <NotifCard key={n.business} notif={n} delay={i * 0.22} />
-            ))}
-        </AnimatePresence>
-      </div>
-
-      {/* Home indicator */}
-      <div className="mt-auto flex justify-center pt-4">
-        <div className="h-1 w-24 rounded-full bg-white/30" />
-      </div>
-    </div>
-  );
-}
-
-/* ── Phone frame (same as Hero) ── */
-function PhoneFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="relative rounded-[38px] bg-[#1c1c1e]"
-      style={{
-        padding: "9px",
-        boxShadow:
-          "inset 0 0 0 1px rgba(255,255,255,0.08), 0 32px 64px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.3)",
-      }}
-    >
-      <div className="absolute left-1/2 top-[11px] z-10 h-[18px] w-[56px] -translate-x-1/2 rounded-full bg-[#1c1c1e]" />
-      <div className="absolute -left-[3px] top-[78px] h-[30px] w-[3px] rounded-l-sm bg-[#2a2a2c]" />
-      <div className="absolute -left-[3px] top-[118px] h-[52px] w-[3px] rounded-l-sm bg-[#2a2a2c]" />
-      <div className="absolute -right-[3px] top-[96px] h-[64px] w-[3px] rounded-r-sm bg-[#2a2a2c]" />
-      <div className="overflow-hidden rounded-[30px]" style={{ aspectRatio: "9 / 19.5" }}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-/* ── Section ── */
 export function Reactivation() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion() === true;
+  const [phase, setPhase] = useState<ReactivationPhase>(0);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (progress) => {
+    const nextPhase: ReactivationPhase =
+      progress >= 0.75 ? 3 : progress >= 0.5 ? 2 : progress >= 0.25 ? 1 : 0;
+    setPhase((currentPhase) =>
+      currentPhase === nextPhase ? currentPhase : nextPhase,
+    );
+  });
+
+  const visiblePhase: ReactivationPhase = shouldReduceMotion ? 3 : phase;
+
   return (
-    <section className="px-6 py-24 md:px-8 md:py-32" style={{ background: "#07060f" }}>
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
-
-        {/* Left — copy */}
-        <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
-            Campanas de reactivación
-          </span>
-          <h2 className="font-display mt-4 text-[36px] font-black leading-[1.05] tracking-[-0.03em] text-white md:text-[52px]">
-            Recuperá clientes que{" "}
-            <span className="text-periwinkle">ya no vuelven.</span>
-          </h2>
-          <p className="mt-5 max-w-lg text-base leading-[1.65] text-white/55 md:text-lg">
-            Sin llamadas. Sin recordatorios manuales. Flikker detecta cuando un
-            cliente no regresa y le escribe por WhatsApp en el momento justo —
-            con tu nombre, tu tono, tu oferta.
+    <section
+      ref={sectionRef}
+      id="reactivacion"
+      aria-labelledby="reactivation-title"
+      className={`relative bg-[#f4f1eb] text-[#211e24] ${
+        shouldReduceMotion ? "py-24 sm:py-32" : "min-h-[220vh]"
+      }`}
+    >
+      <div
+        className={
+          shouldReduceMotion
+            ? "mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-6 xl:px-0"
+            : "sticky top-0 mx-auto flex min-h-screen max-w-[1200px] flex-col justify-center px-5 py-16 sm:px-8 lg:px-6 xl:px-0"
+        }
+      >
+        <div className="mx-auto max-w-[900px] text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#7767db] sm:text-[11px]">
+            Seguimiento automático
           </p>
-
-          {/* Benefits */}
-          <div className="mt-10 space-y-4">
-            {[
-              { title: "Automático al 100%", body: "Definís el tiempo de inactividad (30, 60, 90 días) y Flikker hace el resto." },
-              { title: "Mensaje con tu voz", body: "No es un bot genérico. Es tu negocio escribiéndole a tu cliente." },
-              { title: "Sin lista manual", body: "Flikker identifica quién no volvió y a quién escribirle. Vos no hacés nada." },
-            ].map(({ title, body }) => (
-              <div key={title} className="flex items-start gap-4">
-                <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-periwinkle/20">
-                  <RefreshCw className="h-3 w-3 text-periwinkle" strokeWidth={2.5} />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-white">{title}</p>
-                  <p className="mt-0.5 text-[13px] leading-[1.6] text-white/50">{body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2
+            id="reactivation-title"
+            className="mt-5 font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.05em] sm:text-[58px] lg:text-[70px]"
+          >
+            Y si deja de venir, Flikker lo nota.
+          </h2>
+          <p className="mx-auto mt-6 max-w-[760px] text-[17px] leading-[1.65] text-[#69636d] sm:text-lg">
+            Flikker sigue el ritmo de visitas de cada cliente. Cuando detecta
+            una caída en su frecuencia habitual, puede reactivarlo
+            automáticamente por WhatsApp en el momento indicado.
+          </p>
         </div>
 
-        {/* Right — phone */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="w-[260px] md:w-[300px]">
-            <PhoneFrame>
-              <LockScreen />
-            </PhoneFrame>
-          </div>
+        <div className="mx-auto mt-12 w-full max-w-[1200px] sm:mt-16">
+          <DesktopTimeline phase={visiblePhase} reducedMotion={shouldReduceMotion} />
+          <MobileTimeline phase={visiblePhase} reducedMotion={shouldReduceMotion} />
         </div>
 
+        <div className="mx-auto mt-6 flex items-center gap-2" aria-hidden="true">
+          {[0, 1, 2, 3].map((step) => (
+            <span
+              key={step}
+              className={`h-1.5 rounded-full transition-[width,background-color] duration-300 ${
+                visiblePhase === step
+                  ? "w-8 bg-[#5e46bd]"
+                  : "w-1.5 bg-[#c5bec7]"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
+  );
+}
+
+function DesktopTimeline({
+  phase,
+  reducedMotion,
+}: {
+  phase: ReactivationPhase;
+  reducedMotion: boolean;
+}) {
+  return (
+    <div className="relative hidden h-[370px] origin-center scale-[1.06] lg:block">
+      <div className="absolute left-[5%] right-[5%] top-[114px] h-px bg-[#cfc8cf]" />
+      <div className="absolute left-[34%] top-[111px] h-[7px] w-[29%] bg-[#f4f1eb]" />
+      <div className="absolute left-[35%] top-[114px] w-[27%] border-t border-dashed border-[#bdb5bf]" />
+
+      <VisitNode left="8%" date="4 abr" label="Visita confirmada" />
+      <VisitNode left="20%" date="12 abr" label="Visita confirmada" />
+      <VisitNode left="32%" date="21 abr" label="Visita confirmada" />
+
+      <div className="absolute left-[48.5%] top-[57px] -translate-x-1/2 text-center">
+        <p className="text-xs font-semibold text-[#817984]">La frecuencia habitual cae</p>
+        <p className="mt-1 text-[11px] text-[#a19aa3]">Flikker detecta el cambio</p>
+      </div>
+
+      <motion.div
+        animate={{
+          opacity: phase >= 1 ? 1 : 0,
+          scale: phase >= 1 ? 1 : 0.94,
+        }}
+        transition={{ duration: reducedMotion ? 0 : 0.24 }}
+        className="absolute left-[63%] top-[84px] -translate-x-1/2 text-center"
+      >
+        <div className="mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-[#f4f1eb] bg-[#e6a84b] text-white shadow-[0_0_0_1px_rgba(112,86,50,0.2)]">
+          <Clock3 className="h-6 w-6" aria-hidden="true" />
+        </div>
+        <span className="mt-3 inline-flex rounded-full bg-[#fff2dc] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#8a591b]">
+          Frecuencia en caída
+        </span>
+      </motion.div>
+
+      <motion.div
+        animate={{
+          opacity: phase >= 2 ? 1 : 0,
+          y: phase >= 2 ? 0 : 8,
+        }}
+        transition={{ duration: reducedMotion ? 0 : 0.25 }}
+        className="absolute left-[57%] top-[218px] w-[340px] rounded-[20px] bg-white px-5 py-4 shadow-[0_14px_40px_rgba(38,29,45,0.09)] ring-1 ring-black/[0.05]"
+      >
+        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.13em] text-[#817984]">
+          <MessageCircle className="h-4 w-4 text-[#25a95a]" aria-hidden="true" />
+          La Stampa · WhatsApp automático
+        </div>
+        <p className="mt-2.5 text-[13px] leading-[1.55] text-[#4e4851]">
+          Hola, María. Hace un tiempo que no te vemos. Cuando quieras, tenemos
+          algo especial para vos.
+        </p>
+      </motion.div>
+
+      <motion.div
+        animate={{
+          opacity: phase >= 3 ? 1 : 0,
+          scale: phase >= 3 ? 1 : 0.94,
+        }}
+        transition={{ duration: reducedMotion ? 0 : 0.25 }}
+        className="absolute left-[92%] top-[84px] -translate-x-1/2 text-center"
+      >
+        <div className="mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-[#f4f1eb] bg-[#397d55] text-white shadow-[0_0_0_1px_rgba(49,100,70,0.2)]">
+          <Check className="h-6 w-6" strokeWidth={2.5} aria-hidden="true" />
+        </div>
+        <p className="mt-3 whitespace-nowrap text-[13px] font-bold text-[#2c6845]">Volvió hoy</p>
+        <p className="mt-1 whitespace-nowrap text-[11px] text-[#8d8690]">Visita confirmada</p>
+      </motion.div>
+    </div>
+  );
+}
+
+function VisitNode({
+  left,
+  date,
+  label,
+}: {
+  left: string;
+  date: string;
+  label: string;
+}) {
+  return (
+    <div className="absolute top-[90px] -translate-x-1/2 text-center" style={{ left }}>
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border-[5px] border-[#f4f1eb] bg-[#5f49b9] text-white shadow-[0_0_0_1px_rgba(75,58,137,0.18)]">
+        <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
+      </div>
+      <p className="mt-3 text-xs font-bold text-[#4e4852]">{date}</p>
+      <p className="mt-1 whitespace-nowrap text-[10px] text-[#918a94]">{label}</p>
+    </div>
+  );
+}
+
+function MobileTimeline({
+  phase,
+  reducedMotion,
+}: {
+  phase: ReactivationPhase;
+  reducedMotion: boolean;
+}) {
+  return (
+    <div className="relative mx-auto max-w-[390px] pl-12 lg:hidden">
+      <div className="absolute bottom-5 left-[18px] top-5 w-px bg-[#cbc4cc]" />
+
+      <MobileVisit date="4 abr" />
+      <MobileVisit date="12 abr" />
+      <MobileVisit date="21 abr" />
+
+      <div className="relative py-7">
+        <div className="absolute -left-[30px] top-0 h-full border-l border-dashed border-[#b9b1bb]" />
+        <p className="text-xs font-semibold text-[#6f6873]">La frecuencia habitual cae</p>
+        <p className="mt-1 text-[10px] text-[#99929c]">Flikker detecta el cambio</p>
+      </div>
+
+      <motion.div
+        animate={{ opacity: phase >= 1 ? 1 : 0, x: phase >= 1 ? 0 : -6 }}
+        transition={{ duration: reducedMotion ? 0 : 0.22 }}
+        className="relative py-3"
+      >
+        <div className="absolute -left-[43px] top-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#e6a84b] text-white ring-4 ring-[#f4f1eb]">
+          <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
+        </div>
+        <span className="inline-flex rounded-full bg-[#fff2dc] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#8a591b]">
+          Frecuencia en caída
+        </span>
+      </motion.div>
+
+      <motion.div
+        animate={{ opacity: phase >= 2 ? 1 : 0, y: phase >= 2 ? 0 : 7 }}
+        transition={{ duration: reducedMotion ? 0 : 0.24 }}
+        className="my-3 rounded-[17px] bg-white px-4 py-3 shadow-[0_10px_28px_rgba(38,29,45,0.08)] ring-1 ring-black/[0.05]"
+      >
+        <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-[0.12em] text-[#817984]">
+          <MessageCircle className="h-3 w-3 text-[#25a95a]" aria-hidden="true" />
+          La Stampa · WhatsApp automático
+        </div>
+        <p className="mt-2 text-[11px] leading-[1.5] text-[#4e4851]">
+          Hola, María. Hace un tiempo que no te vemos. Cuando quieras, tenemos
+          algo especial para vos.
+        </p>
+      </motion.div>
+
+      <motion.div
+        animate={{ opacity: phase >= 3 ? 1 : 0, x: phase >= 3 ? 0 : -6 }}
+        transition={{ duration: reducedMotion ? 0 : 0.24 }}
+        className="relative mt-4 py-3"
+      >
+        <div className="absolute -left-[43px] top-3 flex h-7 w-7 items-center justify-center rounded-full bg-[#397d55] text-white ring-4 ring-[#f4f1eb]">
+          <Check className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
+        </div>
+        <p className="text-sm font-bold text-[#2c6845]">Volvió hoy</p>
+        <p className="mt-1 text-[10px] text-[#8d8690]">Visita confirmada</p>
+      </motion.div>
+    </div>
+  );
+}
+
+function MobileVisit({ date }: { date: string }) {
+  return (
+    <div className="relative py-2.5">
+      <div className="absolute -left-[41px] top-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#5f49b9] text-white ring-4 ring-[#f4f1eb]">
+        <Check className="h-3 w-3" strokeWidth={2.5} aria-hidden="true" />
+      </div>
+      <p className="text-xs font-bold text-[#4e4852]">{date}</p>
+      <p className="mt-0.5 text-[9px] text-[#918a94]">Visita confirmada</p>
+    </div>
   );
 }

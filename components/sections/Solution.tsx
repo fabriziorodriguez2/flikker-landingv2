@@ -1,347 +1,228 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import {
-  MessageCircle,
-  ShieldCheck,
-  Star,
-  BarChart3,
-  LayoutGrid,
-  RefreshCw,
-  Clock,
-  TrendingUp,
-  QrCode,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
+import Image from "next/image";
+import { Check, Footprints, Gift, LockKeyhole } from "lucide-react";
 
-function FlikkerIsotype({ className }: { className?: string }) {
-  return (
-    <svg viewBox="197.18 0 516.34 402.57" aria-hidden="true" className={className}>
-      <polygon fill="#9188f5" points="366.82 200.96 411.51 149.16 370.5 101.62 197.18 302.58 283.4 402.57 370.5 301.6 457.6 402.57 543.88 302.58 497.76 249.13 453.05 300.95 366.82 200.96" />
-      <polygon fill="#9188f5" points="627.29 300.95 713.52 200.96 540.17 0 411.51 149.16 497.76 249.13 540.17 199.96 627.29 300.95" />
-    </svg>
-  );
-}
-
-function UserIcon({ bg, color }: { bg: string; color: string }) {
-  return (
-    <div
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-      style={{ background: bg }}
-    >
-      <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
-        <circle cx="12" cy="8.5" r="3.2" fill={color} />
-        <path d="M4.5 20c0-3.6 3.36-6.5 7.5-6.5s7.5 2.9 7.5 6.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    </div>
-  );
-}
-
-function StarRow({ count = 5 }: { count?: number }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="h-3.5 w-3.5 fill-[#fbbc04] text-[#fbbc04]" strokeWidth={1.5} />
-      ))}
-    </div>
-  );
-}
-
-const features: { icon: LucideIcon; title: string; body: string }[] = [
-  {
-    icon: MessageCircle,
-    title: "Mensajes automáticos por WhatsApp",
-    body: "Después de cada compra o visita, Flikker le escribe al cliente con tu marca. Sin que vos hagas nada.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Filtro inteligente de reseñas",
-    body: "Las experiencias buenas van directo a Google. Las malas te llegan a vos primero, en privado, para que puedas resolverlo.",
-  },
-  {
-    icon: Star,
-    title: "Más estrellas, más visibilidad",
-    body: "Más reseñas reales mejoran tu posición en Google Maps y en búsquedas locales. Tus clientes te encuentran antes que a la competencia.",
-  },
-  {
-    icon: BarChart3,
-    title: "Panel de control en tiempo real",
-    body: "Ves todas tus reseñas, la evolución de tu calificación y qué clientes respondieron, todo desde un solo lugar.",
-  },
-  {
-    icon: QrCode,
-    title: "QR de captación en tu local",
-    body: "Poné el QR en tu sala de espera o mostrador. Cada cliente que lo escanea deja su contacto y queda en tu base, listo para recibir reseñas y campañas.",
-  },
-  {
-    icon: Users,
-    title: "Base de contactos propia",
-    body: "Cada cliente que pasa por Flikker queda guardado con nombre y teléfono. Es tuyo para siempre, para promociones, recordatorios o lo que necesites.",
-  },
-];
-
-const reactivationBenefits: { icon: LucideIcon; title: string; body: string }[] = [
-  {
-    icon: Clock,
-    title: "Detecta clientes inactivos",
-    body: "Flikker identifica automáticamente quiénes no volvieron en 30, 60 o 90 días.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Les escribe por WhatsApp",
-    body: "Les manda un mensaje con tu marca en el momento justo. Sin que vos hagas nada.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Más visitas, más ingresos",
-    body: "Recuperar un cliente existente cuesta hasta 5× menos que conseguir uno nuevo.",
-  },
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
-
-function ReviewEmbedWidget() {
-  const reviews = [
-    { bg: "#ede9fe", color: "#7c3aed", name: "María G.", text: "Excelente atención, vuelvo siempre." },
-    { bg: "#ddd6fe", color: "#5b21b6", name: "Carlos R.", text: "Muy profesionales y rápidos." },
-    { bg: "#ede9fe", color: "#7c3aed", name: "Ana P.", text: "Todo perfecto, lo recomiendo." },
-  ];
-
-  return (
-    <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
-      <div className="flex items-center justify-between border-b border-neutral-100 px-4 py-3">
-        <div className="flex items-center gap-2">
-          <svg viewBox="0 0 48 48" className="h-4 w-4 shrink-0" aria-hidden="true">
-            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8a12 12 0 1 1 7.9-21l5.7-5.7A20 20 0 1 0 44 24c0-1.2-.1-2.4-.4-3.5Z" />
-            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8A12 12 0 0 1 24 12c3 0 5.8 1.2 7.9 3L37.6 9A20 20 0 0 0 6.3 14.7Z" />
-            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2A12 12 0 0 1 12.7 28l-6.6 5C9.5 39.6 16.2 44 24 44Z" />
-            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.1 5.6l6.2 5.2C37 40.3 44 35 44 24c0-1.2-.1-2.4-.4-3.5Z" />
-          </svg>
-          <span className="text-[12px] font-semibold text-neutral-800">Reseñas de Google</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-[12px] font-bold text-neutral-800">4.9</span>
-          <StarRow />
-        </div>
-      </div>
-
-      <div className="divide-y divide-neutral-100">
-        {reviews.map(({ bg, color, name, text }) => (
-          <div key={name} className="flex items-start gap-3 px-4 py-3">
-            <UserIcon bg={bg} color={color} />
-            <div className="min-w-0">
-              <p className="text-[12px] font-semibold text-neutral-800">{name}</p>
-              <StarRow />
-              <p className="mt-0.5 truncate text-[11px] text-neutral-500">{text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="flex items-center justify-end gap-1.5 border-t border-neutral-100 px-4 py-2">
-        <FlikkerIsotype className="h-3 w-auto" />
-        <span className="text-[10px] text-neutral-400">Powered by Flikker</span>
-      </div>
-    </div>
-  );
-}
-
-function NotificationToasts() {
-  const toasts = [
-    { name: "Florencia M.", stars: 5, time: "hace 2 min" },
-    { name: "Diego R.", stars: 5, time: "hace 1 hora" },
-  ];
-
-  return (
-    <div className="space-y-3">
-      {toasts.map(({ name, stars, time }, i) => (
-        <motion.div
-          key={name}
-          initial={{ opacity: 0, x: 12 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: i * 0.15 }}
-          className="flex items-start gap-3 rounded-2xl border border-[#ede9fe] bg-[#f5f3ff] px-4 py-3.5 shadow-sm"
-        >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#7c3aed]">
-            <Star className="h-5 w-5 fill-white" strokeWidth={0} />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="text-[13px] font-semibold leading-[1.3] text-neutral-900">
-              {name} nos dejó {stars} estrellas
-            </p>
-            <StarRow count={stars} />
-            <div className="mt-1 flex items-center gap-1">
-              <FlikkerIsotype className="h-2.5 w-auto" />
-              <span className="text-[10px] text-neutral-400">{time} · Powered by Flikker</span>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
+import { Logo } from "@/components/ui/Logo";
 
 export function Solution() {
-  const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? false : "hidden";
-
   return (
     <section
       id="solucion"
-      className="scroll-mt-20 bg-[#f4f4f6] px-6 py-24 md:px-8 md:py-32"
+      aria-labelledby="checkin-title"
+      className="scroll-mt-20 overflow-hidden bg-[#f7f6f2] py-24 text-[#1d1a21] sm:py-32"
     >
-      <div className="mx-auto max-w-6xl">
-
-        {/* Header */}
-        <motion.div
-          initial={initial}
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="max-w-3xl"
-        >
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-periwinkle">
-            Qué es Flikker
-          </span>
-          <h2 className="font-display mt-4 text-[36px] font-black leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[52px]">
-            La plataforma de reputación local para negocios.
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-[1.7] text-neutral-500 md:text-lg">
-            Flikker automatiza la captación de reseñas en Google, la
-            reactivación de clientes inactivos y la prueba social en tu sitio
-            web.{" "}
-            <strong className="font-semibold text-neutral-800">
-              Convertimos cada venta en una reseña, y cada reseña en clientes
-              nuevos.
-            </strong>{" "}
-            Llevamos infraestructura de nivel enterprise a negocios que recién
-            están construyendo su marca.
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-6 xl:px-0">
+        <div className="mx-auto max-w-[820px] text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#7767db] sm:text-[11px]">
+            El primer check-in
           </p>
-        </motion.div>
-
-        {/* Feature cards */}
-        <motion.div
-          initial={initial}
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
-          }}
-          className="mt-16 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {features.map(({ icon: Icon, title, body }) => (
-            <motion.div
-              key={title}
-              variants={fadeUp}
-              transition={{ duration: 0.45, ease: "easeOut" }}
-              className="flex flex-col"
-            >
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-2xl"
-                style={{ background: "#ede9fe" }}
-              >
-                <Icon
-                  className="h-6 w-6"
-                  style={{ color: "#7c3aed" }}
-                  strokeWidth={1.75}
-                  aria-hidden="true"
-                />
-              </div>
-              <h3 className="mt-6 text-[15px] font-bold leading-snug text-neutral-900">
-                {title}
-              </h3>
-              <p className="mt-2 text-[13px] leading-[1.65] text-neutral-500">
-                {body}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Widget showcase */}
-        <motion.div
-          initial={initial}
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
-          }}
-          className="mt-20 grid gap-6 md:grid-cols-2"
-        >
-          {/* Social proof card — review embed + notification toasts */}
-          <motion.div
-            variants={fadeUp}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-neutral-200"
+          <h2
+            id="checkin-title"
+            className="mt-5 font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.05em] sm:text-[58px] lg:text-[70px]"
           >
-            <div
-              className="flex h-12 w-12 items-center justify-center rounded-2xl"
-              style={{ background: "#ede9fe" }}
-            >
-              <LayoutGrid className="h-6 w-6" style={{ color: "#7c3aed" }} strokeWidth={1.75} aria-hidden="true" />
-            </div>
-            <h3 className="mt-5 text-[17px] font-bold leading-snug text-neutral-900">
-              Widget de prueba social
-            </h3>
-            <p className="mt-2 text-[13px] leading-[1.65] text-neutral-500">
-              Mostrá tus reseñas de Google en tu web y notificá a cada visita en
-              tiempo real cuando alguien deja una nueva estrella.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <ReviewEmbedWidget />
-              <NotificationToasts />
-            </div>
-          </motion.div>
+            Todo empieza con un toque.
+          </h2>
+          <p className="mx-auto mt-6 max-w-[720px] text-[17px] leading-[1.65] text-[#68626d] sm:text-lg">
+            El cliente escanea el QR o acerca el teléfono al NFC. La primera
+            vez deja nombre y teléfono; después Flikker lo reconoce y el
+            check-in toma segundos.
+          </p>
+        </div>
 
-          {/* Reactivation card — one mini-card per benefit */}
-          <motion.div
-            variants={fadeUp}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="overflow-hidden rounded-3xl bg-white p-8 shadow-sm ring-1 ring-neutral-200"
-          >
-            <div
-              className="flex h-12 w-12 items-center justify-center rounded-2xl"
-              style={{ background: "#ede9fe" }}
-            >
-              <RefreshCw className="h-6 w-6" style={{ color: "#7c3aed" }} strokeWidth={1.75} aria-hidden="true" />
-            </div>
-            <h3 className="mt-5 text-[17px] font-bold leading-snug text-neutral-900">
-              Campanas de reactivación
-            </h3>
-            <p className="mt-2 text-[13px] leading-[1.65] text-neutral-500">
-              Recuperá clientes que no vuelven. Flikker les escribe solo, en el
-              momento justo, con tu marca.
-            </p>
-            <div className="mt-6 space-y-3">
-              {reactivationBenefits.map(({ icon: Icon, title, body }) => (
-                <div
-                  key={title}
-                  className="flex items-start gap-4 rounded-2xl border border-neutral-100 bg-[#f9f9fb] px-4 py-4"
-                >
-                  <div
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
-                    style={{ background: "#ede9fe" }}
-                  >
-                    <Icon className="h-4 w-4" style={{ color: "#7c3aed" }} strokeWidth={1.75} aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-[13px] font-semibold text-neutral-900">{title}</p>
-                    <p className="mt-0.5 text-[12px] leading-[1.6] text-neutral-500">{body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
+        <div className="mt-14 grid items-center gap-10 sm:mt-20 lg:grid-cols-12 lg:gap-14">
+          <div className="order-2 lg:order-1 lg:col-span-7">
+            <StandAsset />
+          </div>
 
+          <div className="order-1 flex justify-center lg:order-2 lg:col-span-5">
+            <div className="relative aspect-[908/1516] w-full max-w-[360px] overflow-visible">
+              <Image
+                src="/landing/checkin-phone.png"
+                alt="Celular con el registro de visitas de La Stampa"
+                width={2000}
+                height={2000}
+                sizes="(min-width: 1024px) 360px, 80vw"
+                className="absolute left-[-81.83%] top-[-19.26%] h-auto w-[220.27%] max-w-none object-contain"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function StandAsset() {
+  return (
+    <Image
+      src="/landing/qr-nfc-support-hq.png"
+      alt="Soporte acrílico Flikker con código QR y NFC"
+      width={447}
+      height={558}
+      className="mx-auto block h-auto w-full max-w-[360px] object-contain drop-shadow-[0_26px_34px_rgba(40,27,73,0.18)]"
+    />
+  );
+}
+
+function PhoneShell({
+  children,
+  light = false,
+}: {
+  children: React.ReactNode;
+  light?: boolean;
+}) {
+  return (
+    <div className="relative w-[300px] rounded-[42px] border-[7px] border-[#17151a] bg-[#17151a] p-[3px] shadow-[0_30px_75px_rgba(27,18,38,0.22)] sm:w-[320px]">
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-[12px] z-20 h-[20px] w-[72px] -translate-x-1/2 rounded-full bg-[#17151a]"
+      />
+      <div className={`relative aspect-[9/19.2] overflow-hidden rounded-[32px] ${light ? "bg-[#f4f7fb] text-[#101725]" : "bg-[#08070d] text-white"}`}>
+        <div className={`absolute inset-x-0 top-0 z-10 flex items-center justify-between px-6 pt-3 text-[9px] font-semibold ${light ? "text-[#27232c]" : "text-white/90"}`}>
+          <span>9:41</span>
+          <span className="tracking-[0.12em]">● ◒ ▰</span>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function BrandHeader() {
+  return (
+    <div className="text-center">
+      <p className="font-serif text-[18px] font-bold italic tracking-[-0.03em] text-white">
+        La Stampa
+      </p>
+      <span className="mx-auto mt-1 block h-0.5 w-8 rounded-full bg-[#e3a532]" />
+    </div>
+  );
+}
+
+function FirstVisitForm() {
+  return (
+    <div className="flex h-full flex-col bg-[#f4f7fb] px-4 pb-5 pt-[104px] text-[#101725] sm:px-5 sm:pt-[112px]">
+      <div className="mx-auto flex h-[58px] w-[58px] items-center justify-center rounded-[16px] bg-black shadow-[0_5px_12px_rgba(22,18,26,0.16)]">
+        <Image
+          src="/landing/la-stampa-logo.png"
+          alt="La Stampa 1996"
+          width={1200}
+          height={328}
+          sizes="46px"
+          className="h-auto w-[46px] object-contain"
+        />
+      </div>
+
+      <h3 className="mx-auto mt-5 max-w-[270px] text-center font-display text-[20px] font-semibold leading-[1.12] tracking-[-0.04em]">
+        Sumate a Panadería La Stampa Cassinoni
+      </h3>
+      <p className="mx-auto mt-3 max-w-[270px] text-center text-[10px] leading-[1.55] text-[#596273]">
+        Dejanos tu nombre y número y te avisamos cuando haya algo para vos.
+      </p>
+
+      <form aria-label="Registro de primera visita" className="mt-6 space-y-2.5">
+        <input
+          aria-label="Tu nombre"
+          readOnly
+          tabIndex={-1}
+          placeholder="Tu nombre"
+          className="h-12 w-full rounded-[14px] border border-[#d3d8e1] bg-white px-4 text-[11px] text-[#384052] outline-none placeholder:text-[#9ca4b7]"
+        />
+
+        <div className="flex h-12 overflow-hidden rounded-[14px] border border-[#d3d8e1] bg-white">
+          <span className="flex w-[58px] shrink-0 items-center border-r border-[#d3d8e1] px-3 text-[11px] text-[#334052]">+598</span>
+          <input
+            aria-label="Número de teléfono"
+            readOnly
+            tabIndex={-1}
+            placeholder="91624988"
+            className="min-w-0 flex-1 bg-transparent px-3 text-[11px] text-[#384052] outline-none placeholder:text-[#9ca4b7]"
+          />
+        </div>
+
+        <fieldset>
+          <legend className="mb-1.5 text-[9px] text-[#384052]">Fecha de nacimiento (opcional)</legend>
+          <div className="grid grid-cols-3 gap-2">
+            {["Día", "Mes", "Año"].map((label) => (
+              <select
+                key={label}
+                defaultValue=""
+                tabIndex={-1}
+                aria-label={label}
+                className="h-10 rounded-[12px] border border-[#d3d8e1] bg-white px-2 text-[10px] text-[#263044] outline-none"
+              >
+                <option value="" disabled>{label}</option>
+              </select>
+            ))}
+          </div>
+        </fieldset>
+
+        <button type="button" tabIndex={-1} className="h-11 w-full rounded-[13px] bg-[#9ca8dc] text-[11px] font-bold text-white">
+          Anotarme
+        </button>
+      </form>
+
+      <p className="mt-auto text-center text-[9px] text-[#a0a7b8]">
+        Powered by <span className="font-semibold text-[#777f91]">Flikker</span>
+      </p>
+    </div>
+  );
+}
+
+function SuccessScreen() {
+  return (
+    <div className="flex h-full flex-col px-4 pb-5 pt-12 sm:px-5">
+      <BrandHeader />
+
+      <div className="mt-6 text-center">
+        <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
+          <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
+        </div>
+        <h3 className="mt-4 text-[22px] font-bold tracking-[-0.04em]">¡Hola, María!</h3>
+        <p className="mx-auto mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-2 text-[10px] font-semibold text-white/85">
+          <Check className="h-3 w-3" aria-hidden="true" />
+          Tu visita quedó guardada
+        </p>
+      </div>
+
+      <div className="mt-6 rounded-[20px] bg-white p-4 text-[#211d29]">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#efedff] text-[#493694]">
+            <Footprints className="h-5 w-5" aria-hidden="true" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-bold">¡Seguís sumando!</p>
+            <p className="mt-0.5 text-[9px] text-[#817989]">Cada visita te acerca a algo lindo</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xl font-bold leading-none">1</p>
+            <p className="mt-1 text-[8px] text-[#817989]">visita</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-[20px] border border-white/15 p-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/15">
+            <Gift className="h-5 w-5" aria-hidden="true" />
+          </div>
+          <div>
+            <p className="text-[9px] text-white/60">Un regalo para vos</p>
+            <p className="mt-0.5 text-[15px] font-bold">3 medialunas</p>
+          </div>
+        </div>
+
+        <div className="mt-4 flex h-11 items-center justify-center gap-2 rounded-full border border-white/30 text-[10px] font-semibold text-white/75">
+          <LockKeyhole className="h-4 w-4" aria-hidden="true" />
+          2 visitas para desbloquear
+        </div>
+      </div>
+
+      <div className="mt-auto flex items-center justify-center gap-1.5 text-[9px] text-white/35">
+        <Logo variant="isotype" className="h-2.5 w-auto opacity-60" />
+        Powered by <span className="font-semibold text-white/55">Flikker</span>
+      </div>
+    </div>
   );
 }

@@ -8,7 +8,7 @@ import { Logo } from "@/components/ui/Logo";
 import { NAV_LINKS, WHATSAPP_MESSAGES, buildWhatsAppUrl, CALENDLY_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const PAGES_WITH_LOCAL_ANCHORS = ["/", "/blog"];
+const PAGES_WITH_LOCAL_ANCHORS = ["/"];
 
 export function Navbar() {
   const scrolled = useScrolled(20);
@@ -50,14 +50,6 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/blog"
-                className="inline-flex min-h-[44px] items-center px-1 text-sm font-semibold text-neutral-500 tracking-wide transition-colors hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-periwinkle rounded-sm"
-              >
-                Blog
-              </Link>
-            </li>
           </ul>
 
           <a
