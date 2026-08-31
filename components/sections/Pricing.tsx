@@ -21,7 +21,7 @@ type PlanFeature = {
 
 const BASE_FEATURES: PlanFeature[] = [
   { icon: QrCode, label: "Check-in por QR o NFC" },
-  { icon: Gift, label: "Sellos y recompensas" },
+  { icon: Gift, label: "Puntos y recompensas" },
   { icon: ScanLine, label: "Canje por QR" },
   { icon: Send, label: "Feedback post-visita" },
   { icon: BarChart3, label: "Métricas de recurrencia" },

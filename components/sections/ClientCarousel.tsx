@@ -51,7 +51,7 @@ export function ClientCarousel() {
 
           <p className="max-w-lg text-base leading-7 text-[#68626c] lg:col-span-4 lg:col-start-9 lg:text-lg lg:leading-8">
             Flikker funciona mejor cuando tus clientes pueden volver seguido y
-            alcanzar una recompensa en poco tiempo. Así, cada sello mantiene
+            alcanzar una recompensa en poco tiempo. Así, cada punto mantiene
             visible un próximo motivo para regresar.
           </p>
         </div>

@@ -24,8 +24,8 @@ export function HowItWorks() {
             Dales una razón para volver.
           </h2>
           <p className="mx-auto mt-5 max-w-[580px] text-[17px] leading-[1.65] text-[#5d5963]">
-            Flikker no es una tarjeta de sellos. Es un sistema de retención que
-            incluye sellos, entre otras herramientas.
+            Flikker no es un sistema de puntos. Es una plataforma de retención
+            que los incluye, entre otras herramientas.
           </p>
         </div>
 

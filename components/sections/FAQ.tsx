@@ -19,7 +19,7 @@ type FAQItem = {
 const PRIMARY_FAQS: FAQItem[] = [
   {
     q: "¿Qué es Flikker?",
-    a: "Flikker ayuda a que los clientes de tu negocio vuelvan más seguido. Cada visita puede sumar un sello hacia una recompensa y, si un cliente deja de venir, Flikker puede intentar recuperarlo automáticamente.",
+    a: "Flikker ayuda a que los clientes de tu negocio vuelvan más seguido. Cada visita puede sumar un punto hacia una recompensa y, si un cliente deja de venir, Flikker puede intentar recuperarlo automáticamente.",
   },
   {
     q: "¿Cómo funciona?",
@@ -31,19 +31,19 @@ const PRIMARY_FAQS: FAQItem[] = [
   },
   {
     q: "¿Cómo funcionan las recompensas?",
-    a: "Vos definís la recompensa y cuántos sellos hacen falta para alcanzarla. Puede ser un café, un producto, un descuento, un 2×1 o cualquier beneficio que tenga sentido para tu negocio.",
+    a: "Vos definís la recompensa y cuántos puntos hacen falta para alcanzarla. Puede ser un café, un producto, un descuento, un 2×1 o cualquier beneficio que tenga sentido para tu negocio.",
   },
   {
     q: "¿Cómo se canjea una recompensa?",
-    a: "Cuando el cliente completa sus sellos, la recompensa se desbloquea y recibe un QR de canje. El empleado lo escanea con la cámara de su teléfono y confirma el beneficio.",
+    a: "Cuando el cliente acumula sus puntos, la recompensa se desbloquea y recibe un QR de canje. El empleado lo escanea con la cámara de su teléfono y confirma el beneficio.",
   },
   {
     q: "¿Qué pasa si un cliente deja de venir?",
     a: "Flikker puede detectar que un cliente que antes visitaba el negocio dejó de aparecer y contactarlo por WhatsApp para intentar traerlo de vuelta.",
   },
   {
-    q: "¿Cuál es la diferencia con una tarjeta de sellos tradicional?",
-    a: "Una tarjeta de papel solo muestra cuántos sellos tiene alguien. Flikker además registra visitas, muestra quién vuelve, gestiona el canje y puede actuar cuando un cliente deja de venir.",
+    q: "¿Cuál es la diferencia con una tarjeta de puntos tradicional?",
+    a: "Una tarjeta de papel solo muestra cuántos puntos tiene alguien. Flikker además registra visitas, muestra quién vuelve, gestiona el canje y puede actuar cuando un cliente deja de venir.",
   },
   {
     q: "¿Para qué tipo de negocios funciona mejor?",
@@ -57,20 +57,20 @@ const ADDITIONAL_FAQS: FAQItem[] = [
     a: "No. La primera vez deja sus datos y Flikker puede reconocerlo en las siguientes visitas desde ese dispositivo.",
   },
   {
-    q: "¿Cada visita suma un sello?",
-    a: "Sí, cuando la visita cumple las reglas configuradas por el negocio. Flikker evita que varios escaneos seguidos generen visitas o sellos duplicados.",
+    q: "¿Cada visita suma un punto?",
+    a: "Sí, cuando la visita cumple las reglas configuradas por el negocio. Flikker evita que varios escaneos seguidos generen visitas o puntos duplicados.",
   },
   {
-    q: "¿Puedo elegir cuántos sellos necesita una recompensa?",
-    a: "Sí. Podés definir, por ejemplo, que cada cinco sellos se desbloquee una recompensa.",
+    q: "¿Puedo elegir cuántos puntos necesita una recompensa?",
+    a: "Sí. Podés definir, por ejemplo, que cada cinco puntos se desbloquee una recompensa.",
   },
   {
-    q: "¿Se pueden conseguir sellos extra?",
-    a: "Sí. El negocio puede activar un sello extra por completar el feedback después de una visita.",
+    q: "¿Se pueden conseguir puntos extra?",
+    a: "Sí. El negocio puede activar un punto extra por completar el feedback después de una visita.",
   },
   {
     q: "¿Tengo que regalar un premio por dejar una reseña positiva?",
-    a: "No. El sello extra se entrega por compartir la experiencia con el negocio, independientemente de la puntuación. Dejar una reseña en Google es opcional y nunca genera un sello adicional.",
+    a: "No. El punto extra se entrega por compartir la experiencia con el negocio, independientemente de la puntuación. Dejar una reseña en Google es opcional y nunca genera puntos adicionales.",
   },
   {
     q: "¿Flikker también ayuda a conseguir reseñas de Google?",
@@ -90,7 +90,7 @@ const ADDITIONAL_FAQS: FAQItem[] = [
   },
   {
     q: "¿Flikker es una tarjeta de fidelidad digital?",
-    a: "No exactamente. Los sellos son la parte que ve el cliente. Flikker además registra recurrencia, permite medir quién vuelve y puede actuar cuando un cliente deja de venir.",
+    a: "No exactamente. Los puntos son la parte que ve el cliente. Flikker además registra recurrencia, permite medir quién vuelve y puede actuar cuando un cliente deja de venir.",
   },
   {
     q: "¿Flikker es un CRM?",
