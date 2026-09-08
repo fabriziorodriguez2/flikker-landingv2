@@ -24,8 +24,8 @@ export function HowItWorks() {
             Dales una razón para volver.
           </h2>
           <p className="mx-auto mt-5 max-w-[580px] text-[17px] leading-[1.65] text-[#5d5963]">
-            Flikker no es un sistema de puntos. Es una plataforma de retención
-            que los incluye, entre otras herramientas.
+            Flikker combina beneficios con herramientas para recuperar clientes
+            y convertir cada visita en el comienzo de la siguiente.
           </p>
         </div>
 

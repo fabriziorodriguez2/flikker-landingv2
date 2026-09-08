@@ -121,7 +121,7 @@ function CustomerRewardCard({
           >
             <Image
               src={STAMP_CARDS[stampCount]}
-              alt={`Tarjeta de puntos La Stampa con ${stampCount} de 8 visitas completadas`}
+              alt={`Tarjeta de fidelidad La Stampa con ${stampCount} de 8 visitas completadas`}
               fill
               sizes="(min-width: 1024px) 900px, 92vw"
               className="object-cover"

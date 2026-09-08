@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "programa de retención",
     "retener clientes negocios físicos",
     "programa de beneficios para negocios",
-    "sistema de puntos digital",
+    "programa de recompensas digital",
     "tarjeta de fidelización digital",
     "recuperar clientes por WhatsApp",
     "reactivación de clientes por WhatsApp",
@@ -130,7 +130,7 @@ const jsonLdFaq = {
       name: "¿Qué es Flikker?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Flikker ayuda a que los clientes de tu negocio vuelvan más seguido. Cada visita puede sumar un punto hacia una recompensa y, si un cliente deja de venir, Flikker puede intentar recuperarlo automáticamente.",
+        text: "Flikker ayuda a que los clientes de tu negocio vuelvan más seguido. Cada visita puede acercarlos a una recompensa y, si un cliente deja de venir, Flikker puede intentar recuperarlo automáticamente.",
       },
     },
     {
@@ -154,7 +154,7 @@ const jsonLdFaq = {
       name: "¿Cómo funcionan las recompensas?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Vos definís la recompensa y cuántos puntos hacen falta para alcanzarla. Puede ser un café, un producto, un descuento, un 2×1 o cualquier beneficio que tenga sentido para tu negocio.",
+        text: "Vos definís la recompensa y cuántas visitas hacen falta para alcanzarla. Puede ser un café, un producto, un descuento, un 2×1 o cualquier beneficio que tenga sentido para tu negocio.",
       },
     },
     {
@@ -162,7 +162,7 @@ const jsonLdFaq = {
       name: "¿Cómo se canjea una recompensa?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Cuando el cliente acumula sus puntos, la recompensa se desbloquea y recibe un QR de canje. El empleado lo escanea con la cámara de su teléfono y confirma el beneficio.",
+        text: "Cuando el cliente completa las visitas necesarias, la recompensa se desbloquea y recibe un QR de canje. El empleado lo escanea con la cámara de su teléfono y confirma el beneficio.",
       },
     },
     {
@@ -175,10 +175,10 @@ const jsonLdFaq = {
     },
     {
       "@type": "Question",
-      name: "¿Cuál es la diferencia con una tarjeta de puntos tradicional?",
+      name: "¿Cuál es la diferencia con una tarjeta de fidelidad tradicional?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Una tarjeta de papel solo muestra cuántos puntos tiene alguien. Flikker además registra visitas, muestra quién vuelve, gestiona el canje y puede actuar cuando un cliente deja de venir.",
+        text: "Una tarjeta de papel solo muestra el progreso de alguien. Flikker además registra visitas, muestra quién vuelve, gestiona el canje y puede actuar cuando un cliente deja de venir.",
       },
     },
     {
