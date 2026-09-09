@@ -9,7 +9,7 @@ export const WHATSAPP_NUMBER = "59891624988";
 
 /** URLs de la aplicación */
 export const APP_URL = "https://app.flikker.uy";
-export const APP_REGISTER_URL = `${APP_URL}/register`;
+export const APP_REGISTER_URL = `${APP_URL}/signup`;
 export const APP_LOGIN_URL = `${APP_URL}/login`;
 
 export const CALENDLY_URL = "https://calendly.com/fabrizio-rodriguez7274/30min";
