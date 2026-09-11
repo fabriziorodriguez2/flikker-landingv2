@@ -55,31 +55,32 @@ function StickySecondaryNav() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 z-30 transition-all duration-300",
-        "top-[76px]",
+        "fixed inset-x-0 top-[68px] z-30 px-4 transition-all duration-300",
         visible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
       )}
     >
-      <div className="border-b border-neutral-200/80 bg-white/95 backdrop-blur-md">
-        <nav
-          aria-label="Navegación de sección"
-          className="mx-auto flex max-w-5xl items-center gap-1 overflow-x-auto px-6 py-2 scrollbar-none"
-        >
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={cn(
-                "shrink-0 rounded-full px-4 py-1.5 text-[13px] font-semibold transition-all",
-                active === item.id
-                  ? "bg-[#7767db]/10 text-[#7767db]"
-                  : "text-neutral-500 hover:text-neutral-700"
-              )}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+      <div className="mx-auto max-w-5xl">
+        <div className="w-fit max-w-full rounded-b-[26px] border-x border-b border-neutral-200/80 bg-white/95 px-4 pb-2 pt-4 shadow-[0_7px_12px_rgba(23,21,29,0.08)] backdrop-blur-md sm:px-6">
+          <nav
+            aria-label="Navegación de sección"
+            className="flex max-w-full items-center gap-1 overflow-x-auto scrollbar-none"
+          >
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={cn(
+                  "shrink-0 rounded-full px-4 py-1.5 text-[13px] font-semibold transition-all",
+                  active === item.id
+                    ? "bg-[#7767db]/10 text-[#7767db]"
+                    : "text-neutral-500 hover:text-neutral-700"
+                )}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </div>
   );

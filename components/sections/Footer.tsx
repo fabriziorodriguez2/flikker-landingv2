@@ -122,6 +122,14 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="/como-empezar"
+                className="text-sm text-white/65 transition-colors hover:text-white"
+              >
+                Cómo empezar
+              </a>
+            </li>
           </ul>
         </nav>
 
