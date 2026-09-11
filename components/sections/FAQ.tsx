@@ -101,7 +101,7 @@ const ADDITIONAL_FAQS: FAQItem[] = [
     a: "No es donde Flikker tiene más sentido hoy. El producto está pensado principalmente para negocios donde volver con frecuencia forma parte natural del comportamiento del cliente.",
   },
   {
-    q: "¿Necesito tener un programa de fidelización actualmente?",
+    q: "¿Necesito tener un programa de retención actualmente?",
     a: "No. Flikker puede convertirse en tu sistema de recurrencia desde cero.",
   },
   {

@@ -50,6 +50,14 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/como-empezar"
+                className="inline-flex min-h-[44px] items-center px-1 text-sm font-semibold text-neutral-500 tracking-wide transition-colors hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-periwinkle rounded-sm"
+              >
+                Cómo empezar
+              </Link>
+            </li>
           </ul>
 
           <div className="hidden items-center gap-4 md:flex">

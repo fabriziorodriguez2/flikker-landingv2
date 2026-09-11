@@ -6,7 +6,7 @@ const BENEFIT_TAGS = ["Café gratis", "Descuento", "2×1", "Regalo", "Personaliz
 export function HowItWorks() {
   return (
     <section
-      id="fidelizacion"
+      id="retencion"
       aria-labelledby="fidel-title"
       className="bg-white py-24 sm:py-32"
     >
@@ -60,7 +60,7 @@ export function HowItWorks() {
               <div className="w-[72%] overflow-hidden rounded-2xl">
                 <Image
                   src="/landing/reward-cappuccino.webp"
-                  alt="Taza de café como recompensa en programa de fidelización Flikker"
+                  alt="Taza de café como recompensa en programa de retención Flikker"
                   width={800}
                   height={500}
                   className="h-auto w-full object-cover"

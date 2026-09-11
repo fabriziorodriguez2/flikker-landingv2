@@ -90,7 +90,7 @@ export function Pricing() {
             Elegí cómo querés cuidar cada regreso.
           </h2>
           <p className="mx-auto mt-6 max-w-[650px] text-[17px] leading-[1.65] text-[#68626d] sm:text-lg">
-            Base fideliza a quienes ya vienen. Pro suma seguimiento automático
+            Base retiene a quienes ya vienen. Pro suma seguimiento automático
             para recuperar a quienes cortan el hábito.
           </p>
         </header>

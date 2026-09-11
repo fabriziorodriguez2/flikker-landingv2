@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "retener clientes negocios físicos",
     "programa de beneficios para negocios",
     "programa de recompensas digital",
-    "tarjeta de fidelización digital",
+    "sistema de retención digital",
     "recuperar clientes por WhatsApp",
     "reactivación de clientes por WhatsApp",
     "reseñas de Google para negocios",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "QR para negocios locales",
     "NFC retención clientes",
     "software retención negocios físicos Uruguay",
-    "programa fidelización negocios Uruguay",
+    "retención clientes negocios Uruguay",
     "reputación online negocio local",
   ],
   alternates: {
