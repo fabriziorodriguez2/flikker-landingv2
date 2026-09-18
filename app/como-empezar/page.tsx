@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 
 import { ComoEmpezarPage } from "@/components/sections/ComoEmpezarPage";
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Cómo empezar · Flikker",
@@ -18,5 +25,11 @@ export const metadata: Metadata = {
 };
 
 export default function ComoEmpezar() {
-  return <ComoEmpezarPage />;
+  return (
+    <div
+      className={`${montserrat.className} ${montserrat.variable} [--font-jakarta:var(--font-montserrat)]`}
+    >
+      <ComoEmpezarPage />
+    </div>
+  );
 }
