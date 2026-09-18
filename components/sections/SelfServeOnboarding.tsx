@@ -37,7 +37,7 @@ const GOALS: Goal[] = [
     label: "Convertir primeras visitas en clientes recurrentes",
     icon: Users,
   },
-  { id: "loyalty", label: "Premiar la fidelidad", icon: BadgeCheck },
+  { id: "recognition", label: "Reconocer a quienes vuelven", icon: BadgeCheck },
   {
     id: "recovery",
     label: "Recuperar clientes que dejaron de venir",
@@ -76,7 +76,7 @@ const QR_LOCATIONS = [
 const TEST_ITEMS = [
   "El QR abre correctamente",
   "La visita queda registrada",
-  "La tarjeta se ve como esperás",
+  "La experiencia se ve como esperás",
   "El beneficio se desbloquea",
   "Mi Flikker funciona en el teléfono",
 ] as const;
@@ -223,21 +223,21 @@ export function SelfServeOnboarding() {
               </h3>
             </div>
             <p className="max-w-xl text-[17px] leading-7 text-[#68626d] lg:justify-self-end">
-              Elegís el beneficio y el objetivo que lo desbloquea. La vista previa te muestra cómo llega a la tarjeta del cliente.
+              Elegís el beneficio y el objetivo que lo desbloquea. La vista previa te muestra cómo lo verá el cliente.
             </p>
           </div>
 
           <figure className="mt-14 border border-black/10 bg-[#f4f3f0] p-3 sm:p-7 lg:p-10">
             <Image
-              src="/landing/stamps-la-stampa-7.png"
-              alt="Vista previa real de una tarjeta de beneficios de La Stampa"
-              width={1050}
-              height={600}
+              src="/landing/reward-cappuccino.webp"
+              alt="Cappuccino presentado como ejemplo de beneficio"
+              width={800}
+              height={500}
               sizes="(min-width: 1200px) 1040px, 92vw"
               className="h-auto w-full"
             />
             <figcaption className="flex flex-col gap-2 border-t border-black/10 px-1 pt-5 text-sm text-[#68626d] sm:flex-row sm:items-center sm:justify-between">
-              <span>Vista previa de la tarjeta del cliente</span>
+              <span>Ejemplo de beneficio</span>
               <span className="font-semibold text-[#17151d]">Benefit · RewardGoal</span>
             </figcaption>
           </figure>
@@ -280,7 +280,7 @@ export function SelfServeOnboarding() {
               Hacelo sentir parte de tu negocio.
             </h3>
             <p className="mt-6 max-w-md text-[17px] leading-7 text-white/65">
-              Flikker mantiene el marco. Tu negocio define la tarjeta, el logo, el sello y los detalles de marca.
+              Flikker mantiene el marco. Tu negocio define el logo, los colores y los detalles de cada experiencia.
             </p>
             <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/75">
               <span className="inline-flex items-center gap-2"><Palette className="h-4 w-4 text-[#9188f5]" /> Identidad del negocio</span>

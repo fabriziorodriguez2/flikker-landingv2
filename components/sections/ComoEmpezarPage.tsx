@@ -137,14 +137,7 @@ function Step({ n, title, children, visual, flip = false }: StepProps) {
 
 function MockupCard({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("overflow-hidden rounded-3xl border border-[#eae5df] bg-white shadow-[0_8px_48px_rgba(0,0,0,0.08)]", className)}>
-      {/* Window chrome */}
-      <div className="flex items-center gap-1.5 border-b border-[#f0eeed] bg-[#f7f6f2] px-4 py-3">
-        <div className="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
-        <div className="h-2.5 w-2.5 rounded-full bg-[#ffd93d]" />
-        <div className="h-2.5 w-2.5 rounded-full bg-[#6bcb77]" />
-        <div className="ml-3 h-4 w-40 rounded-full bg-[#e4e0d8]" />
-      </div>
+    <div className={cn("border border-black/10 bg-white", className)}>
       <div className="p-6">{children}</div>
     </div>
   );
@@ -154,13 +147,13 @@ function VisualChecklist({ items }: { items: string[] }) {
   return (
     <MockupCard>
       <p className="mb-4 text-[13px] font-bold text-[#17151d]">Revisión previa al lanzamiento</p>
-      <div className="space-y-2.5">
+      <div className="border-t border-black/10">
         {items.map((item) => (
-          <div key={item} className="flex items-center gap-3 rounded-xl border border-[#d4cef0] bg-[#f8f6ff] px-3 py-2.5">
+          <div key={item} className="flex items-center gap-3 border-b border-black/10 px-1 py-3 last:border-b-0">
             <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7767db]">
               <Check className="h-3 w-3 text-white" strokeWidth={2.5} />
             </div>
-            <span className="text-[13px] text-[#4a3fa0]">{item}</span>
+            <span className="text-[13px] text-[#4f4a53]">{item}</span>
           </div>
         ))}
       </div>
@@ -171,14 +164,14 @@ function VisualChecklist({ items }: { items: string[] }) {
 function VisualAsistido({ paso }: { paso: number }) {
   const content: Record<number, React.ReactNode> = {
     1: (
-      <div className="space-y-3">
+      <div className="border-t border-black/10">
         {[
           { q: "¿Qué tipo de negocio tenés?", a: "Cafetería" },
           { q: "¿Cuántos clientes por mes?", a: "~200" },
           { q: "¿Con qué frecuencia vienen?", a: "1-2 veces/semana" },
           { q: "¿Qué objetivos tenés?", a: "Más recurrencia" },
         ].map((f) => (
-          <div key={f.q} className="rounded-xl border border-[#eae5df] bg-[#fafafa] p-3">
+          <div key={f.q} className="grid gap-1 border-b border-black/10 bg-white px-1 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
             <p className="text-[11px] text-[#9691a0]">{f.q}</p>
             <p className="text-[13px] font-semibold text-[#17151d]">{f.a}</p>
           </div>
@@ -186,13 +179,13 @@ function VisualAsistido({ paso }: { paso: number }) {
       </div>
     ),
     2: (
-      <div className="space-y-3">
+      <div className="border-t border-black/10">
         {[
           { cat: "Cafetería", regla: "5 visitas → café gratis" },
           { cat: "Peluquería", regla: "4 cortes → 20% en el próximo" },
           { cat: "Restaurante", regla: "3 visitas en 30 días → beneficio especial" },
         ].map((e) => (
-          <div key={e.cat} className="rounded-2xl border border-[#eae5df] bg-white p-4 shadow-sm">
+          <div key={e.cat} className="border-b border-black/10 bg-white px-1 py-5">
             <p className="text-[11px] font-bold uppercase tracking-wide text-[#9691a0]">{e.cat}</p>
             <p className="mt-1 text-[14px] font-bold text-[#17151d]">{e.regla}</p>
           </div>
@@ -213,7 +206,7 @@ function VisualAsistido({ paso }: { paso: number }) {
       />
     ),
     4: (
-      <div className="rounded-3xl border border-[#eae5df] bg-white p-6 shadow-sm">
+      <div className="border border-black/10 bg-white p-6">
         <p className="mb-4 text-[13px] font-bold text-[#17151d]">Vista previa antes de lanzar</p>
         <div className="flex justify-center">
           <div className="relative h-52 w-28 rounded-[28px] border-[5px] border-[#17151d] bg-[#f8f6ff]">
@@ -232,8 +225,8 @@ function VisualAsistido({ paso }: { paso: number }) {
           </div>
         </div>
         <div className="mt-4 flex gap-2">
-          <button className="flex-1 rounded-xl border border-[#eae5df] py-2 text-[12px] font-semibold text-[#5d5963]">Editar</button>
-          <button className="flex-1 rounded-xl bg-[#7767db] py-2 text-[12px] font-bold text-white">Se ve bien →</button>
+          <button className="flex-1 border border-black/15 py-2 text-[12px] font-semibold text-[#5d5963]">Editar</button>
+          <button className="flex-1 bg-[#7767db] py-2 text-[12px] font-bold text-white">Se ve bien →</button>
         </div>
       </div>
     ),
@@ -245,7 +238,7 @@ function VisualAsistido({ paso }: { paso: number }) {
           { icon: Store, label: "Mostrador" },
           { icon: Package, label: "Packaging" },
         ].map(({ icon: Icon, label }) => (
-          <div key={label} className="flex flex-col items-center gap-2 rounded-2xl border border-[#eae5df] bg-white p-4 shadow-sm">
+          <div key={label} className="flex flex-col items-center gap-2 border border-black/10 bg-white p-4">
             <Icon className="h-6 w-6 text-[#7767db]" strokeWidth={1.7} aria-hidden="true" />
             <p className="text-[12px] font-semibold text-[#5d5963]">{label}</p>
           </div>
@@ -253,9 +246,9 @@ function VisualAsistido({ paso }: { paso: number }) {
       </div>
     ),
     6: (
-      <div className="rounded-3xl border border-[#eae5df] bg-white p-5 shadow-sm">
+      <div className="border border-black/10 bg-white p-5">
         <p className="mb-3 text-[12px] font-bold text-[#17151d]">Lo que le decís a tu cliente</p>
-        <div className="rounded-2xl bg-[#f8f6ff] p-4 text-[13px] italic text-[#4a3fa0]">
+        <div className="border-l-2 border-[#7767db] bg-[#f7f6f2] p-4 text-[13px] italic text-[#4a3fa0]">
           &ldquo;Escaneá el QR, registrá tu visita y empezá a desbloquear beneficios.&rdquo;
         </div>
         <p className="mt-3 text-[11px] text-[#9691a0]">Simple. Una sola frase. Tus clientes lo entienden solos.</p>
@@ -269,7 +262,7 @@ function VisualAsistido({ paso }: { paso: number }) {
           { label: "Clientes recurrentes", val: "38" },
           { label: "Beneficios otorgados", val: "5" },
         ].map((s) => (
-          <div key={s.label} className="mb-2.5 flex items-center justify-between rounded-xl border border-[#eae5df] px-3 py-2">
+          <div key={s.label} className="flex items-center justify-between border-b border-black/10 px-1 py-3 last:border-b-0">
             <span className="text-[12px] text-[#5d5963]">{s.label}</span>
             <span className="text-[16px] font-black text-[#17151d]">{s.val}</span>
           </div>
@@ -374,11 +367,11 @@ export function ComoEmpezarPage() {
         <section id="con-asistencia" className="scroll-mt-[140px] bg-[#f7f6f2] px-6 md:px-8">
           <div className="mx-auto max-w-5xl pt-20">
             <div className="flex items-center gap-4 border-b border-[#e0dbf5] pb-10">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7767db]/10">
+              <div className="flex h-12 w-12 items-center justify-center border border-[#7767db]/25 bg-white">
                 <Users className="h-6 w-6 text-[#7767db]" strokeWidth={1.8} />
               </div>
               <div>
-                <div className="mb-1 inline-flex rounded-full bg-[#7767db] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                <div className="mb-1 inline-flex bg-[#7767db] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
                   Recomendado
                 </div>
                 <h2 className="font-display text-[28px] font-bold leading-tight tracking-[-0.025em] text-[#17151d]">
@@ -437,7 +430,7 @@ export function ComoEmpezarPage() {
                   href={WA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#7767db] px-6 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#6658c5]"
+                  className="inline-flex items-center gap-2 bg-[#7767db] px-6 py-3 text-[14px] font-bold text-white transition-colors hover:bg-[#6658c5]"
                 >
                   <MessageCircle className="h-4 w-4" />
                   Quiero implementar Flikker con ayuda
@@ -537,7 +530,7 @@ export function ComoEmpezarPage() {
                 { n: "2", icon: Smartphone, title: "Registra su visita", body: "Proceso rápido desde el navegador. Sin app." },
                 { n: "3", icon: Target, title: "Ve su progreso", body: "Visitas, beneficios y desafíos activos." },
                 { n: "4", icon: Star, title: "Vuelve", body: "Tiene una razón concreta para regresar." },
-                { n: "5", icon: Gift, title: "Desbloquea", body: "El negocio recompensa su fidelidad." },
+                { n: "5", icon: Gift, title: "Desbloquea", body: "El negocio reconoce a quienes vuelven." },
               ].map(({ n, icon: Icon, title, body }, i) => (
                 <div key={n} className="flex flex-col items-center text-center">
                   <div className="flex h-14 w-14 items-center justify-center rounded-[20px] bg-white shadow-sm">
