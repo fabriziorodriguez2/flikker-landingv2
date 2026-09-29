@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import {
   Check,
   ChevronRight,
-  Coffee,
   Gift,
   MessageCircle,
   Package,
@@ -206,27 +205,91 @@ function VisualAsistido({ paso }: { paso: number }) {
       />
     ),
     4: (
-      <div className="border border-black/10 bg-white p-6">
-        <p className="mb-4 text-[13px] font-bold text-[#17151d]">Vista previa antes de lanzar</p>
-        <div className="flex justify-center">
-          <div className="relative h-52 w-28 rounded-[28px] border-[5px] border-[#17151d] bg-[#f8f6ff]">
-            <div className="absolute left-1/2 top-1.5 h-3 w-12 -translate-x-1/2 rounded-full bg-[#17151d]" />
-            <div className="pt-7 px-2 text-center">
-              <div className="mx-auto mb-1 flex h-7 w-7 items-center justify-center rounded-xl bg-[#7767db]">
-                <Coffee className="h-3.5 w-3.5 text-white" strokeWidth={1.8} aria-hidden="true" />
-              </div>
-              <p className="text-[8px] font-bold text-[#17151d]">La Stampa</p>
-              <div className="mt-2 flex justify-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <div key={i} className={cn("h-4 w-4 rounded-full text-[7px] flex items-center justify-center", i < 3 ? "bg-[#7767db] text-white" : "border border-dashed border-[#d4cef0]")}>{i < 3 ? "✓" : ""}</div>
-                ))}
+      <div className="border border-black/10 bg-white p-5 sm:p-7">
+        <div className="flex items-start justify-between gap-4 border-b border-black/10 pb-5">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#7767db]">Experiencia del cliente</p>
+            <p className="mt-1.5 text-[17px] font-bold tracking-[-0.02em] text-[#17151d]">Vista previa antes de lanzar</p>
+          </div>
+          <span className="flex items-center gap-2 bg-[#f1efff] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#6254c8]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#7767db]" />
+            En vivo
+          </span>
+        </div>
+
+        <div className="grid gap-7 py-7 sm:grid-cols-[180px_1fr] sm:items-center">
+          <div className="flex justify-center sm:justify-start">
+            <div className="relative h-[326px] w-[164px] rounded-[34px] border-[6px] border-[#17151d] bg-[#f8f7fc] p-2 shadow-[0_22px_45px_rgba(23,21,29,0.16)]">
+              <div className="absolute left-1/2 top-2 h-4 w-16 -translate-x-1/2 rounded-full bg-[#17151d]" />
+              <div className="h-full overflow-hidden rounded-[24px] bg-white px-3 pb-3 pt-8">
+                <div className="flex items-center gap-2 border-b border-black/[0.07] pb-3">
+                  <div className="flex h-7 w-7 items-center justify-center bg-[#7767db]">
+                    <span className="text-[9px] font-black text-white">LS</span>
+                  </div>
+                  <div>
+                    <p className="text-[7px] text-[#918b96]">Tu espacio en</p>
+                    <p className="text-[9px] font-bold text-[#17151d]">La Stampa</p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-[8px] text-[#817b85]">Hola, Sofía</p>
+                <p className="mt-0.5 text-[13px] font-bold leading-[1.1] tracking-[-0.025em] text-[#17151d]">
+                  Hay algo especial para vos.
+                </p>
+
+                <div className="mt-4 bg-[#eeeaff] p-3 text-left">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#7767db] text-white">
+                    <Gift className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden="true" />
+                  </div>
+                  <p className="mt-3 text-[7px] font-bold uppercase tracking-[0.12em] text-[#6b5ed1]">Beneficio disponible</p>
+                  <p className="mt-1 text-[11px] font-bold leading-tight text-[#24202a]">Brunch para dos</p>
+                  <p className="mt-1.5 text-[7px] leading-[1.4] text-[#726c77]">Presentalo en tu próxima visita.</p>
+                </div>
+
+                <div className="mt-3 bg-[#17151d] py-2 text-center text-[8px] font-bold text-white">
+                  Ver beneficio
+                </div>
               </div>
             </div>
           </div>
+
+          <div>
+            <p className="text-[20px] font-bold leading-[1.15] tracking-[-0.03em] text-[#17151d]">
+              Todo listo para salir.
+            </p>
+            <p className="mt-2 text-[13px] leading-5 text-[#77717b]">
+              Revisá cómo se presentan tu marca, el mensaje y el beneficio antes de publicarlo.
+            </p>
+
+            <div className="mt-5 border-y border-black/10">
+              {[
+                "Nombre y colores del negocio",
+                "Beneficio visible para el cliente",
+                "Mensaje claro y listo para publicar",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 border-b border-black/10 py-3 last:border-b-0">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7767db] text-white">
+                    <Check className="h-3 w-3" strokeWidth={2.5} aria-hidden="true" />
+                  </span>
+                  <span className="text-[12px] font-semibold text-[#5d5963]">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 bg-[#f7f6f2] px-4 py-3">
+              <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#9691a0]">Estado</p>
+              <p className="mt-1 text-[12px] font-bold text-[#4f458f]">Configuración completa</p>
+            </div>
+          </div>
         </div>
-        <div className="mt-4 flex gap-2">
-          <button className="flex-1 border border-black/15 py-2 text-[12px] font-semibold text-[#5d5963]">Editar</button>
-          <button className="flex-1 bg-[#7767db] py-2 text-[12px] font-bold text-white">Se ve bien →</button>
+
+        <div className="grid gap-2 border-t border-black/10 pt-5 sm:grid-cols-[0.72fr_1.28fr]">
+          <button className="border border-black/15 px-4 py-3 text-[12px] font-semibold text-[#5d5963] transition-colors hover:bg-[#f7f6f2]">
+            Editar detalles
+          </button>
+          <button className="bg-[#7767db] px-4 py-3 text-[12px] font-bold text-white shadow-[0_10px_24px_rgba(119,103,219,0.24)] transition-colors hover:bg-[#6959d4]">
+            Aprobar y continuar →
+          </button>
         </div>
       </div>
     ),

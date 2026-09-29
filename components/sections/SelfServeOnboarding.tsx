@@ -229,16 +229,16 @@ export function SelfServeOnboarding() {
 
           <figure className="mt-14 border border-black/10 bg-[#f4f3f0] p-3 sm:p-7 lg:p-10">
             <Image
-              src="/landing/reward-cappuccino.webp"
-              alt="Cappuccino presentado como ejemplo de beneficio"
-              width={800}
-              height={500}
+              src="/landing/reward-brunch-for-two.png"
+              alt="Brunch para dos presentado como ejemplo de beneficio"
+              width={1586}
+              height={992}
               sizes="(min-width: 1200px) 1040px, 92vw"
               className="h-auto w-full"
             />
             <figcaption className="flex flex-col gap-2 border-t border-black/10 px-1 pt-5 text-sm text-[#68626d] sm:flex-row sm:items-center sm:justify-between">
               <span>Ejemplo de beneficio</span>
-              <span className="font-semibold text-[#17151d]">Benefit · RewardGoal</span>
+              <span className="font-semibold text-[#17151d]">Brunch para dos</span>
             </figcaption>
           </figure>
         </div>
