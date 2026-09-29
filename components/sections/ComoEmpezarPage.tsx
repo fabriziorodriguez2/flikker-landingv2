@@ -242,7 +242,7 @@ function VisualAsistido({ paso }: { paso: number }) {
                     <Gift className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden="true" />
                   </div>
                   <p className="mt-3 text-[7px] font-bold uppercase tracking-[0.12em] text-[#6b5ed1]">Beneficio disponible</p>
-                  <p className="mt-1 text-[11px] font-bold leading-tight text-[#24202a]">Brunch para dos</p>
+                  <p className="mt-1 text-[11px] font-bold leading-tight text-[#24202a]">Cappuccino de regalo</p>
                   <p className="mt-1.5 text-[7px] leading-[1.4] text-[#726c77]">Presentalo en tu próxima visita.</p>
                 </div>
 
