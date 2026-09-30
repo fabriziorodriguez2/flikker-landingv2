@@ -282,48 +282,6 @@ function Spinner() {
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   Success state
-───────────────────────────────────────────────────────────────── */
-
-function SuccessState({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="flex flex-col items-center py-8 text-center">
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#f0eeff]">
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#7767db"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M20 6L9 17l-5-5" />
-        </svg>
-      </div>
-
-      <h3 className="mt-5 font-display text-[20px] font-bold text-[#17151d]">
-        ¡Ya casi!
-      </h3>
-      <p className="mt-2 max-w-[280px] text-[14px] leading-relaxed text-[#5d5963]">
-        Recibimos tu información. En breve te contactamos para completar el
-        proceso de pago.
-      </p>
-
-      <button
-        type="button"
-        onClick={onClose}
-        className="mt-6 rounded-full border border-[#e8e6ed] px-6 py-2.5 text-[13px] font-semibold text-[#5d5963] transition-colors hover:border-[#c5c0d0] hover:text-[#17151d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db]"
-      >
-        Volver a la landing
-      </button>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────
    Main modal
 ───────────────────────────────────────────────────────────────── */
 
