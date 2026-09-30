@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BarChart3,
   Check,
@@ -12,7 +14,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import { APP_REGISTER_URL } from "@/lib/constants";
+import { useOpenSubscribeModal } from "@/app/providers";
 
 type PlanFeature = {
   icon: LucideIcon;
@@ -72,6 +74,8 @@ function FeatureList({
 }
 
 export function Pricing() {
+  const openModal = useOpenSubscribeModal();
+
   return (
     <section
       id="precios"
@@ -173,13 +177,15 @@ export function Pricing() {
               Pro = recuperar también a los que dejan de venir.
             </p>
 
-            <a
-              href={APP_REGISTER_URL}
+            <button
+              type="button"
+              onClick={() => openModal("YEARLY")}
+              data-testid="pricing-cta"
               className="relative mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
             >
               <Check className="h-4 w-4 text-[#6a55d2]" strokeWidth={2.5} aria-hidden="true" />
               Empezar con Pro
-            </a>
+            </button>
           </article>
         </div>
       </div>

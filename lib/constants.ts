@@ -58,6 +58,23 @@ export const CALCULATOR_FORMULAS = {
   },
 } as const;
 
+// ─── Plan pricing ────────────────────────────────────────────────────────────
+// Mensual: UYU 1.000/mes
+// Anual:   UYU 10.000/año (equivale a 10 meses — 2 meses incluidos)
+export const PLAN_PRICES = {
+  MONTHLY: 1_000,
+  YEARLY: 10_000,
+  CURRENCY: "UYU",
+} as const;
+
+// ─── Mercado Pago ─────────────────────────────────────────────────────────────
+// Almacenados aquí pero NO conectados al nuevo funnel todavía.
+// En PARTE 2 el backend creará Preferences dinámicas.
+export const MERCADO_PAGO_LINKS = {
+  MONTHLY: "https://mpago.la/1Acxajh",
+  YEARLY: "https://mpago.la/2hsbeMy",
+} as const;
+
 export const NAV_LINKS = [
   { label: "Cómo funciona", href: "#solucion" },
   { label: "Precios", href: "#precios" },

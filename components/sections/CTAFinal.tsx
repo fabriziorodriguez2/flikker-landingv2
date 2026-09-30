@@ -1,6 +1,6 @@
 "use client";
 
-import { APP_REGISTER_URL } from "@/lib/constants";
+import { useOpenSubscribeModal } from "@/app/providers";
 
 const CTA_STARS = [
   { left: 5, delay: -2, duration: 11, size: 20 },
@@ -55,6 +55,8 @@ function FloatingStars() {
 }
 
 export function CTAFinal() {
+  const openModal = useOpenSubscribeModal();
+
   return (
     <section className="bg-white px-4 py-16 md:px-8 md:py-20">
       <div
@@ -91,16 +93,18 @@ export function CTAFinal() {
           </p>
 
           <div className="mt-10">
-            <a
-              href={APP_REGISTER_URL}
+            <button
+              type="button"
+              onClick={() => openModal()}
+              data-testid="cta-final-cta"
               className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-10 py-5 text-lg font-bold text-[#17151d] shadow-[0_14px_40px_rgba(0,0,0,0.22)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07060f] md:px-14 md:py-6 md:text-xl"
             >
-              Quiero probar Flikker
-            </a>
+              Empezar con Flikker
+            </button>
           </div>
 
           <p className="mt-5 text-sm text-white/40">
-            Una conversación breve, sin compromiso.
+            Sin compromiso. Podés cancelar cuando quieras.
           </p>
         </div>
       </div>
