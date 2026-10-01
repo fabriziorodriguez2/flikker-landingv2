@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { APP_URL } from "@/lib/constants";
 
 export type ResultVariant = "success" | "pending" | "failure";
 
@@ -45,16 +46,29 @@ function AlertIcon() {
   );
 }
 
-const CONTENT = {
+interface ContentEntry {
+  icon: React.ReactNode;
+  iconColor: string;
+  iconBg: string;
+  title: string;
+  description: string;
+  secondary?: string;
+  cta: string;
+  ctaHref: string;
+}
+
+const CONTENT: Record<ResultVariant, ContentEntry> = {
   success: {
     icon: <ClockIcon />,
     iconColor: "text-[#7767db]",
     iconBg: "bg-[#f0eeff]",
-    title: "Estamos confirmando tu pago",
+    title: "Estamos confirmando tu suscripción",
     description:
-      "Recibimos tu solicitud. En cuanto confirmemos el pago te enviamos los próximos pasos por email.",
-    cta: "Volver al inicio",
-    ctaHref: "/",
+      "Mercado Pago está procesando la confirmación. Normalmente demora unos segundos.",
+    secondary:
+      "Cuando quede confirmada, vas a poder continuar con la configuración de Flikker.",
+    cta: "Ir a Flikker",
+    ctaHref: APP_URL,
   },
   pending: {
     icon: <ClockIcon />,
@@ -63,31 +77,20 @@ const CONTENT = {
     title: "Tu pago está pendiente",
     description:
       "El pago aún no fue acreditado. Esto puede tardar unos minutos. Si el problema persiste, contactanos.",
-    cta: "Volver al inicio",
-    ctaHref: "/",
+    cta: "Ir a Flikker",
+    ctaHref: APP_URL,
   },
   failure: {
     icon: <AlertIcon />,
     iconColor: "text-red-600",
     iconBg: "bg-red-50",
-    title: "No pudimos procesar el pago",
+    title: "No pudimos completar la suscripción",
     description:
-      "Algo salió mal con el pago. Podés intentarlo de nuevo o contactarnos para que te ayudemos.",
-    cta: "Intentar de nuevo",
-    ctaHref: "/#pricing",
+      "No se procesó el pago. Podés seguir usando Flikker con el plan base sin problema, o intentarlo de nuevo cuando quieras.",
+    cta: "Volver a Flikker",
+    ctaHref: APP_URL,
   },
-} satisfies Record<
-  ResultVariant,
-  {
-    icon: React.ReactNode;
-    iconColor: string;
-    iconBg: string;
-    title: string;
-    description: string;
-    cta: string;
-    ctaHref: string;
-  }
->;
+};
 
 export function CheckoutResultPage({ variant }: Props) {
   const c = CONTENT[variant];
@@ -108,6 +111,12 @@ export function CheckoutResultPage({ variant }: Props) {
         <p className="mt-3 text-[15px] leading-relaxed text-[#5d5963]">
           {c.description}
         </p>
+
+        {c.secondary && (
+          <p className="mt-3 text-[14px] leading-relaxed text-[#9691a0]">
+            {c.secondary}
+          </p>
+        )}
 
         <Link
           href={c.ctaHref}

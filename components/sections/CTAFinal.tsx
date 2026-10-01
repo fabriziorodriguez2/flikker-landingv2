@@ -1,6 +1,4 @@
-"use client";
-
-import { useOpenSubscribeModal } from "@/app/providers";
+import { APP_REGISTER_URL } from "@/lib/constants";
 
 const CTA_STARS = [
   { left: 5, delay: -2, duration: 11, size: 20 },
@@ -55,8 +53,6 @@ function FloatingStars() {
 }
 
 export function CTAFinal() {
-  const openModal = useOpenSubscribeModal();
-
   return (
     <section className="bg-white px-4 py-16 md:px-8 md:py-20">
       <div
@@ -93,14 +89,13 @@ export function CTAFinal() {
           </p>
 
           <div className="mt-10">
-            <button
-              type="button"
-              onClick={() => openModal()}
+            <a
+              href={APP_REGISTER_URL}
               data-testid="cta-final-cta"
               className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-10 py-5 text-lg font-bold text-[#17151d] shadow-[0_14px_40px_rgba(0,0,0,0.22)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07060f] md:px-14 md:py-6 md:text-xl"
             >
               Empezar con Flikker
-            </button>
+            </a>
           </div>
 
           <p className="mt-5 text-sm text-white/40">

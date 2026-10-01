@@ -13,7 +13,7 @@ import {
 } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
-import { useOpenSubscribeModal } from "@/app/providers";
+import { APP_REGISTER_URL } from "@/lib/constants";
 
 const COPY_REVEAL: Variants = {
   hidden: {},
@@ -38,7 +38,6 @@ const COPY_ITEM_REVEAL: Variants = {
 };
 
 export function Hero() {
-  const openModal = useOpenSubscribeModal();
   const stageRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const pointerX = useMotionValue(0);
@@ -118,18 +117,17 @@ export function Hero() {
             variants={COPY_ITEM_REVEAL}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <button
-              type="button"
-              onClick={() => openModal()}
+            <a
+              href={APP_REGISTER_URL}
               data-testid="hero-cta"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#2f176e] px-6 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(47,23,110,0.18)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#3b2084] hover:shadow-[0_14px_36px_rgba(47,23,110,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db] focus-visible:ring-offset-2"
             >
-              Empezar con Flikker
+              Empezar gratis
               <ArrowUpRight
                 aria-hidden="true"
                 className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
-            </button>
+            </a>
             <a
               href="#solucion"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-black/10 bg-white/55 px-6 text-sm font-semibold text-[#2b2830] transition-[background-color,border-color] duration-200 hover:border-black/20 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db] focus-visible:ring-offset-2"

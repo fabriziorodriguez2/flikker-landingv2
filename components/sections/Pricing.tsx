@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   BarChart3,
   Check,
@@ -14,7 +15,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import { useOpenSubscribeModal } from "@/app/providers";
+import { APP_REGISTER_URL, PLAN_PRICES } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 type PlanFeature = {
   icon: LucideIcon;
@@ -73,8 +75,17 @@ function FeatureList({
   );
 }
 
+type Billing = "MONTHLY" | "YEARLY";
+
 export function Pricing() {
-  const openModal = useOpenSubscribeModal();
+  const [billing, setBilling] = useState<Billing>("YEARLY");
+
+  const proPrice =
+    billing === "YEARLY"
+      ? `${PLAN_PRICES.CURRENCY} ${PLAN_PRICES.YEARLY.toLocaleString("es-UY")}`
+      : `${PLAN_PRICES.CURRENCY} ${PLAN_PRICES.MONTHLY.toLocaleString("es-UY")}`;
+  const proPeriod = billing === "YEARLY" ? "/año" : "/mes";
+  const proSignupUrl = `${APP_REGISTER_URL}?plan=PRO&billing=${billing}`;
 
   return (
     <section
@@ -100,6 +111,7 @@ export function Pricing() {
         </header>
 
         <div className="mx-auto mt-14 grid max-w-[1100px] items-stretch gap-5 sm:mt-16 lg:grid-cols-2 lg:gap-6">
+          {/* ── Base ── */}
           <article className="flex min-h-[650px] flex-col rounded-[30px] border border-black/[0.09] bg-white p-7 shadow-[0_18px_55px_rgba(40,31,53,0.06)] sm:p-9 lg:p-10">
             <div className="flex items-center justify-between gap-4">
               <span className="inline-flex rounded-full bg-[#f1eff5] px-3 py-1 text-[11px] font-bold text-[#706a76]">
@@ -120,7 +132,11 @@ export function Pricing() {
               </span>
             </div>
 
-            <p className="mt-5 max-w-[470px] text-[15px] leading-[1.65] text-[#6e6872]">
+            <p className="mt-2 text-[13px] font-medium text-[#6a55d2]">
+              Sin tarjeta. Sin compromiso.
+            </p>
+
+            <p className="mt-4 max-w-[470px] text-[15px] leading-[1.65] text-[#6e6872]">
               Para convertir cada visita en un motivo concreto para regresar.
             </p>
 
@@ -128,11 +144,16 @@ export function Pricing() {
 
             <FeatureList features={BASE_FEATURES} variant="base" />
 
-            <p className="mt-auto pt-10 text-[14px] font-semibold text-[#6854d0]">
-              Base = hacer que vuelvan.
-            </p>
+            <a
+              href={APP_REGISTER_URL}
+              data-testid="pricing-base-cta"
+              className="mt-auto pt-10 inline-flex w-full items-center justify-center gap-2 rounded-[14px] border-2 border-[#17151d] px-5 py-3.5 text-[15px] font-bold text-[#17151d] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f7f5ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db] focus-visible:ring-offset-2"
+            >
+              Empezar gratis
+            </a>
           </article>
 
+          {/* ── Pro ── */}
           <article className="relative flex min-h-[680px] flex-col overflow-hidden rounded-[30px] bg-[#0b0916] p-7 text-white shadow-[0_28px_80px_rgba(34,21,79,0.28)] ring-1 ring-[#7767db]/35 sm:p-9 lg:-translate-y-3 lg:p-10">
             <div
               aria-hidden="true"
@@ -155,14 +176,56 @@ export function Pricing() {
               Para recuperarlos también
             </p>
 
-            <div className="relative mt-5 flex items-end gap-2">
-              <span className="font-display text-[48px] font-bold leading-none tracking-[-0.045em]">
-                UYU 1.000
-              </span>
-              <span className="pb-1 text-[15px] text-white/60">/ mes</span>
+            {/* Billing toggle */}
+            <div
+              role="group"
+              aria-label="Período de facturación"
+              className="relative mt-6 inline-flex self-start rounded-full bg-white/10 p-1"
+            >
+              <button
+                type="button"
+                onClick={() => setBilling("MONTHLY")}
+                aria-pressed={billing === "MONTHLY"}
+                data-testid="billing-monthly"
+                className={cn(
+                  "rounded-full px-4 py-1.5 text-[13px] font-semibold transition-all duration-150",
+                  billing === "MONTHLY"
+                    ? "bg-white text-[#17151d] shadow-sm"
+                    : "text-white/60 hover:text-white/90"
+                )}
+              >
+                Mensual
+              </button>
+              <button
+                type="button"
+                onClick={() => setBilling("YEARLY")}
+                aria-pressed={billing === "YEARLY"}
+                data-testid="billing-yearly"
+                className={cn(
+                  "rounded-full px-4 py-1.5 text-[13px] font-semibold transition-all duration-150",
+                  billing === "YEARLY"
+                    ? "bg-white text-[#17151d] shadow-sm"
+                    : "text-white/60 hover:text-white/90"
+                )}
+              >
+                Anual
+              </button>
             </div>
 
-            <p className="relative mt-5 max-w-[470px] text-[15px] leading-[1.65] text-white/65">
+            <div className="relative mt-4 flex items-end gap-2">
+              <span className="font-display text-[48px] font-bold leading-none tracking-[-0.045em]">
+                {proPrice}
+              </span>
+              <span className="pb-1 text-[15px] text-white/60">{proPeriod}</span>
+            </div>
+
+            {billing === "YEARLY" && (
+              <p className="relative mt-2 text-[13px] font-semibold text-[#a99cff]">
+                Pagás 10 meses y usás 12
+              </p>
+            )}
+
+            <p className="relative mt-4 max-w-[470px] text-[15px] leading-[1.65] text-white/65">
               Para hacer que vuelvan y recuperar también a quienes corten el
               hábito.
             </p>
@@ -173,19 +236,14 @@ export function Pricing() {
               <FeatureList features={PRO_FEATURES} variant="pro" />
             </div>
 
-            <p className="relative mt-auto pt-10 text-[14px] font-semibold text-[#a99cff]">
-              Pro = recuperar también a los que dejan de venir.
-            </p>
-
-            <button
-              type="button"
-              onClick={() => openModal("YEARLY")}
-              data-testid="pricing-cta"
-              className="relative mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
+            <a
+              href={proSignupUrl}
+              data-testid="pricing-pro-cta"
+              className="relative mt-auto pt-10 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
             >
               <Check className="h-4 w-4 text-[#6a55d2]" strokeWidth={2.5} aria-hidden="true" />
               Empezar con Pro
-            </button>
+            </a>
           </article>
         </div>
       </div>

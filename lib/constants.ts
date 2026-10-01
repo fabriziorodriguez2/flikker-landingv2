@@ -67,14 +67,6 @@ export const PLAN_PRICES = {
   CURRENCY: "UYU",
 } as const;
 
-// ─── Mercado Pago ─────────────────────────────────────────────────────────────
-// Almacenados aquí pero NO conectados al nuevo funnel todavía.
-// En PARTE 2 el backend creará Preferences dinámicas.
-export const MERCADO_PAGO_LINKS = {
-  MONTHLY: "https://mpago.la/1Acxajh",
-  YEARLY: "https://mpago.la/2hsbeMy",
-} as const;
-
 export const NAV_LINKS = [
   { label: "Cómo funciona", href: "#solucion" },
   { label: "Precios", href: "#precios" },

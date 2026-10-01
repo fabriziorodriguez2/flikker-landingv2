@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Check, Minus, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
+import { APP_REGISTER_URL, buildWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/constants";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 
@@ -177,9 +177,7 @@ export default function PlanesPage() {
           {/* CTAs */}
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <a
-              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_starter)}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={APP_REGISTER_URL}
               className="flex items-center justify-center rounded-2xl border border-dashed border-neutral-300 px-5 py-3.5 text-[14px] font-semibold text-neutral-500 transition-colors hover:border-neutral-400 hover:bg-neutral-50"
             >
               Empezar gratis
@@ -193,12 +191,10 @@ export default function PlanesPage() {
               Empezar con Starter
             </a>
             <a
-              href={buildWhatsAppUrl(WHATSAPP_MESSAGES.pricing_pro)}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`${APP_REGISTER_URL}?plan=PRO&billing=MONTHLY`}
               className="flex items-center justify-center rounded-2xl bg-periwinkle px-5 py-3.5 text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
             >
-              Quiero el plan Pro
+              Empezar con Pro
             </a>
             <a
               href={buildWhatsAppUrl(WHATSAPP_MESSAGES.nav)}
