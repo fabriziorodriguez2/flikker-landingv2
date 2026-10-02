@@ -144,13 +144,15 @@ export function Pricing() {
 
             <FeatureList features={BASE_FEATURES} variant="base" />
 
-            <a
-              href={APP_REGISTER_URL}
-              data-testid="pricing-base-cta"
-              className="mt-auto inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] border border-[#17151d]/20 bg-[#17151d] px-5 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(23,21,29,0.12)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#2b2730] hover:shadow-[0_14px_28px_rgba(23,21,29,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db] focus-visible:ring-offset-2"
-            >
-              Empezar gratis
-            </a>
+            <div className="mt-auto pt-8">
+              <a
+                href={APP_REGISTER_URL}
+                data-testid="pricing-base-cta"
+                className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] border border-[#17151d]/20 bg-[#17151d] px-5 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(23,21,29,0.12)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#2b2730] hover:shadow-[0_14px_28px_rgba(23,21,29,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7767db] focus-visible:ring-offset-2"
+              >
+                Empezar gratis
+              </a>
+            </div>
           </article>
 
           {/* ── Pro ── */}
@@ -236,14 +238,16 @@ export function Pricing() {
               <FeatureList features={PRO_FEATURES} variant="pro" />
             </div>
 
-            <a
-              href={proSignupUrl}
-              data-testid="pricing-pro-cta"
-              className="relative mt-auto inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] hover:shadow-[0_16px_32px_rgba(0,0,0,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
-            >
-              <Check className="h-4 w-4 text-[#6a55d2]" strokeWidth={2.5} aria-hidden="true" />
-              Empezar con Pro
-            </a>
+            <div className="relative mt-auto pt-8">
+              <a
+                href={proSignupUrl}
+                data-testid="pricing-pro-cta"
+                className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-[14px] bg-white px-5 py-3.5 text-[15px] font-bold text-[#17151d] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#f2f0ff] hover:shadow-[0_16px_32px_rgba(0,0,0,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9c8eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0916]"
+              >
+                <Check className="h-4 w-4 text-[#6a55d2]" strokeWidth={2.5} aria-hidden="true" />
+                Empezar con Pro
+              </a>
+            </div>
           </article>
         </div>
       </div>
